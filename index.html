@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta https-equiv="cache-control" content="public">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta https-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="KEYWORDS" content="discovery navmap universe map freelancer game space error sirius">
+	<meta name="DESCRIPTION" content="An online version of Discovery Freelancer's in-game navigation map with quite a few extras.">
+	<link rel="icon" type="image/png" href="favicon.png">
+	<!--[if IE]><link href="favicon.ico" rel="shortcut icon" type="image/x-icon"><![endif]--><!-- Internet Exploder-->
+	<title>Discovery Navmap</title>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./styles/main.css?t=20220818">
+	<script>var dataRootPath = "output/";</script>
+</head>
+<body class="responsive">
+	<nav class="navContainer">
+		<a href="https://discoverygc.com/forums/showthread.php?tid=132266" id="helpLink" target="_blank"><i class="fa fa-question-circle"></i><span class="infoSpace"> </span><span class="infoText">Post issues/suggestions here ~Space/Error (10.10)</span></a>
+		<span id="showUniverseMap" onClick="generateUniverseMap()"><i class="fa fa-times-circle-o"></i><span class="infoSpace"> </span><span class="infoText">Show all systems</span></span>
+		<span id="navSystemTitle"></span>
+		<span id="configButton"><i class="fa fa-cogs"></i><span class="infoSpace"> </span><span class="infoText">Settings</span></span>
+		<div class="searchBox"><input id="searchField" type="text" placeholder="Where would you like to go?"><span id="inputIndicator">&gt;</span></div>
+	</nav>
+	<div class="mapLegend">
+		<div class="systemLegendContainer"><div class="system li"><label class="longLabel">Liberty</label><label class="shortLabel">Liberty</label><label class="shortestLabel">LI</label></div></div>
+		<div class="systemLegendContainer"><div class="system br"><label class="longLabel">Bretonia</label><label class="shortLabel">Bretonia</label><label class="shortestLabel">BR</label></div></div>
+		<div class="systemLegendContainer"><div class="system ku"><label class="longLabel">Kusari</label><label class="shortLabel">Kusari</label><label class="shortestLabel">KU</label></div></div>
+		<div class="systemLegendContainer"><div class="system rh"><label class="longLabel">Rheinland</label><label class="shortLabel">Rheinland</label><label class="shortestLabel">RH</label></div></div>
+		<div class="systemLegendContainer"><div class="system ga"><label class="longLabel">Gallia</label><label class="shortLabel">Gallia</label><label class="shortestLabel">GA</label></div></div>
+		<div class="systemLegendContainer"><div class="system hi"><label class="longLabel">Hispania</label><label class="shortLabel">Hispania</label><label class="shortestLabel">HI</label></div></div>
+		<div class="systemLegendContainer"><div class="system bw"><label class="longLabel">Border Worlds</label><label class="shortLabel">Border W.</label><label class="shortestLabel">BW</label></div></div>
+		<div class="systemLegendContainer"><div class="system st"><label class="longLabel">Nomad Worlds</label><label class="shortLabel">Nomad W.</label><label class="shortestLabel">NW</label></div></div>
+		<div class="systemLegendContainer"><div class="system ew"><label class="longLabel">Edge Worlds</label><label class="shortLabel">Edge W.</label><label class="shortestLabel">EW</label></div></div>
+		<div class="systemLegendContainer"><div class="system iw"><label class="longLabel">Independent Worlds</label><label class="shortLabel">Indep. W.</label><label class="shortestLabel">IW</label></div></div>
+	</div>
+	<div class="configMenu closed">
+		<h2>Universe map options</h2>
+		<div class="configOption" id="connections">
+			<input type="checkbox" checked="checked" id="switch4" name="switch4" class="switch" />
+			<label for="switch4">system connections</label>
+		</div>
+		<div class="configOption" id="oorp">
+			<input type="checkbox" id="switch5" name="switch5" class="switch" />
+			<label for="switch5">show inaccessible/oorp systems</label>
+		</div>
+		<h2>System map options</h2>
+		<div class="configOption" id="wrecks">
+			<input type="checkbox" checked="checked" id="switch1" name="switch1" class="switch" />
+			<label for="switch1">wrecks</label>
+		</div>
+		<div class="configOption" id="zones">
+			<input type="checkbox" checked="checked" id="switch2" name="switch2" class="switch" />
+			<label for="switch2">zones</label>
+		</div>
+		<div class="configOption" id="scale">
+			<input type="checkbox" checked="checked" id="switch3" name="switch3" class="switch" />
+			<label for="switch3">scale shows sector size</label>
+		</div>
+		<h2>Label options</h2>
+		<div class="configOption" id="universeLabels">
+			<input type="checkbox" checked="checked" id="switch10" name="switch10" class="switch" />
+			<label for="switch10">universe map labels</label>
+		</div>
+		<div class="configOption" id="systemLabels">
+			<input type="checkbox" checked="checked" id="switch11" name="switch11" class="switch" />
+			<label for="switch11">system map labels</label>
+		</div>
+		<div class="configOption" id="labelMove">
+			<input type="checkbox" checked="checked" id="switch9" name="switch9" class="switch" />
+			<label for="switch9">prevent label overlap</label>
+		</div>
+		<div class="configOption" id="wreckLabels">
+			<input type="checkbox" id="switch8" name="switch8" class="switch" />
+			<label for="switch8">wreck labels</label>
+		</div>
+		<div class="configOption" id="zoneLabels">
+			<input type="checkbox" id="switch7" name="switch7" class="switch" />
+			<label for="switch7">unmineable zone labels</label>
+		</div>
+		<h2>Experimental/development options</h2>
+		<div class="configOption" id="fitToWindow">
+			<input type="checkbox" id="switch18" name="switch18" class="switch" />
+			<label for="switch18">fit map to window</label>
+		</div>
+		<div class="configOption" id="showAllObjects">
+			<input type="checkbox" id="switch13" name="switch13" class="switch" />
+			<label for="switch13">show all objects</label>
+		</div>
+		<div class="configOption" id="showInfocardedObjectLabels">
+			<input type="checkbox" id="switch15" name="switch15" class="switch" />
+			<label for="switch15">show labels for infocarded objects</label>
+		</div>
+		<div class="configOption" id="showAllObjectLabels">
+			<input type="checkbox" id="switch14" name="switch14" class="switch" />
+			<label for="switch14">show all object labels</label>
+		</div>
+		<div class="configOption" id="showInternalNicknames">
+			<input type="checkbox" id="switch17" name="switch17" class="switch" />
+			<label for="switch17">show internal nicknames on hover</label>
+		</div>
+		<h2>Ingame control</h2>
+		<div class="configOption" id="onlyShowLatestPosition">
+			<input type="checkbox" checked="checked" id="switch16" name="switch16" class="switch" />
+			<label for="switch16">only show latest position</label>
+		</div>
+		<div id="dsaceConnectionContainer"><span>To enable usage of the "/map system/base" and "/pos in system" commands in-game, choose your DSAce.log file here: </span><input type='file' id="dsaceInput" accept='.log' onchange="openFile(event)"><i class="fa fa-square-o" aria-hidden="true"></i><i class="fa fa-check-square-o" aria-hidden="true"></i></div>
+	</div>
+	<div class="mapContainer">
+		<div class="map">
+			<div class="contents">
+			</div>
+			<div class="grid">
+				<div class="hzGridLine"><h3>2</h3></div>
+				<div class="hzGridLine"><h3>3</h3></div>
+				<div class="hzGridLine"><h3>4</h3></div>
+				<div class="hzGridLine"><h3>5</h3></div>
+				<div class="hzGridLine"><h3>6</h3></div>
+				<div class="hzGridLine"><h3>7</h3></div>
+				<div class="hzGridLine"><h3>8</h3></div>
+				<div class="vertGridLine"><h3>B</h3></div>
+				<div class="vertGridLine"><h3>C</h3></div>
+				<div class="vertGridLine"><h3>D</h3></div>
+				<div class="vertGridLine"><h3>E</h3></div>
+				<div class="vertGridLine"><h3>F</h3></div>
+				<div class="vertGridLine"><h3>G</h3></div>
+				<div class="vertGridLine"><h3>H</h3></div>
+				<h3 id="nullGridCell">A1</h3>
+			</div>
+		</div>
+	</div>
+	<div class="remodal-bg">
+		<div class="remodal infocardContainer" data-remodal-id="modal" data-remodal-options="hashTracking: false">
+			<button data-remodal-action="close" class="remodal-close"></button>
+			<h1>Loading...</h1>
+		</div>
+	</div>
+	<script src="./scripts/panzoom.min.js"></script>
+	<script src="./scripts/main.js?t=20220818"></script>
+	<script>
+		generateLookupArrays();
+		generateUniverseMap();
+		generateSystemConnections();
+		startSearchField();
+		checkURL();
+	</script>
+	<script>
+		var _gaq=[['_setAccount','UA-33754219-1'],['_trackPageview']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+</body>
+</html>
