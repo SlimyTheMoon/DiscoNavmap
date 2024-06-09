@@ -14,7 +14,7 @@ build = {
 	# since JSON doesn't allow comments.
 
 	# path and dest are relative to the root input and output directories
-	"fl_path": "C:/Users/nudnouil/Documents/RP/discovery/dev stuff/development",
+	"fl_path": "C:/Users/nudnouil/AppData/Local/Discovery Freelancer 5.00.8/",
 	
 	# files to copy into the output folder
 	"files": [
