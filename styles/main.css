@@ -298,6 +298,9 @@ body {
 .system.ga {
 	border-color: rgb(89, 97, 255);
 }
+.system.LW {
+	background-color: rgb(255, 255, 255);
+}
 
 .zone {
 	background-color: rgba(255,255,255,0.1);
