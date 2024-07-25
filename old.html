@@ -962,7 +962,7 @@
 						systemLabel.innerHTML = infocardArray[systemIdsNameArray[systemName.toLowerCase()]];
 						system.appendChild(systemLabel);
 						if (lawlArray.indexOf(systemName) != -1) {
-							system.className = "system LW";
+							system.className = "system lw";
 						}
 						if (oorpArray.indexOf(systemName) != -1) {
 							system.className += " oorp";
@@ -1007,7 +1007,7 @@
 										propClass += " oorp";
 									}
 									if (lawlArray.indexOf(systemName) != -1 || lawlArray.indexOf(connectionArray[system][i]) != -1) {
-										propClass += " LW";
+										propClass += " lw";
 									}
 									var connection = new Line(x1, x2, y1, y2, "systemConnection oneWayConnection", propClass, ".map", system, connectionArray[system][i]);
 								} else {
@@ -1034,7 +1034,7 @@
 										propClass += " oorp";
 									}
 									if (lawlArray.indexOf(system) != -1 || lawlArray.indexOf(jgConnectionArray[system][i]) != -1) {
-										propClass += " LW";
+										propClass += " lw";
 									}
 									var connection = new Line(x1, x2, y1, y2, "systemConnection", propClass, ".map", system, connectionArray[system][i]);
 								} else if (currentSystemSelector.className.indexOf("jgConnection") == -1) {
