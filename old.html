@@ -961,11 +961,11 @@
 						var systemLabel = document.createElement("label");
 						systemLabel.innerHTML = infocardArray[systemIdsNameArray[systemName.toLowerCase()]];
 						system.appendChild(systemLabel);
+						if (lawlArray.indexOf(systemName) != -1) {
+							system.className = "system LW";
+						}
 						if (oorpArray.indexOf(systemName) != -1) {
 							system.className += " oorp";
-						}
-						if (lawlArray.indexOf(systemName) != -1) {
-							system.className += " LW";
 						}
 						system.style.top = parseFloat(systemPosArray[systemName][1])*6.6-50 + "%";
 						system.style.left = parseFloat(systemPosArray[systemName][0])*6.6-50  + "%";
