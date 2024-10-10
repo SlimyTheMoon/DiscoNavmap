@@ -751,16 +751,17 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 /* nom jg styles and definitions end */
 
 /* unstable connection styles */
-.systemConnection.twoWayConnection[data-connected-points~="li05"][data-connected-points~="st01"] div,
-.systemConnection.twoWayConnection[data-connected-points~="st04"][data-connected-points~="ew10"] div,
-.systemConnection.twoWayConnection[data-connected-points~="iw06"][data-connected-points~="iw07"] div,
-.systemConnection.twoWayConnection[data-connected-points~="iw07"][data-connected-points~="bw05"] div,
-.systemConnection.twoWayConnection[data-connected-points~="bw05"][data-connected-points~="rh01"] div,
-.systemConnection.twoWayConnection[data-connected-points~="bw12"][data-connected-points~="bw03"] div,
-.systemConnection.twoWayConnection[data-connected-points~="iw08"][data-connected-points~="bw12"] div,
-.systemConnection.twoWayConnection[data-connected-points~="bw15"][data-connected-points~="br06"] div,
-.systemConnection.twoWayConnection[data-connected-points~="ew15"][data-connected-points~="bw16"] div,
-.systemConnection.twoWayConnection[data-connected-points~="br05"][data-connected-points~="ew07"] div{
+.systemConnection[data-connected-points~="li05"][data-connected-points~="st01"] div,
+.systemConnection[data-connected-points~="rh08"][data-connected-points~="ew04"] div,
+.systemConnection[data-connected-points~="st04"][data-connected-points~="ew10"] div,
+.systemConnection[data-connected-points~="iw06"][data-connected-points~="iw07"] div,
+.systemConnection[data-connected-points~="iw07"][data-connected-points~="bw05"] div,
+.systemConnection[data-connected-points~="bw05"][data-connected-points~="rh01"] div,
+.systemConnection[data-connected-points~="bw12"][data-connected-points~="bw03"] div,
+.systemConnection[data-connected-points~="iw08"][data-connected-points~="bw12"] div,
+.systemConnection[data-connected-points~="bw15"][data-connected-points~="br06"] div,
+.systemConnection[data-connected-points~="ew15"][data-connected-points~="bw16"] div,
+.systemConnection[data-connected-points~="br05"][data-connected-points~="ew07"] div{
 	background-color: rgba(219, 72, 55, 0.9);
 	box-shadow: 0px 0px 0.3em 0.1em rgba(121, 80, 76, 0.9);
 }
