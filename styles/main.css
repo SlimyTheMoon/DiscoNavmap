@@ -753,6 +753,7 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 /* unstable connection styles */
 .systemConnection[data-connected-points~="li05"][data-connected-points~="st01"] div,
 .systemConnection[data-connected-points~="rh08"][data-connected-points~="ew04"] div,
+.systemConnection[data-connected-points~="ku07"][data-connected-points~="st08"] div,
 .systemConnection[data-connected-points~="st04"][data-connected-points~="ew10"] div,
 .systemConnection[data-connected-points~="iw06"][data-connected-points~="iw07"] div,
 .systemConnection[data-connected-points~="iw07"][data-connected-points~="bw05"] div,
