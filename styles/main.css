@@ -764,6 +764,7 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 .systemConnection[data-connected-points~="ew15"][data-connected-points~="bw16"] div,
 .systemConnection[data-connected-points~="li02"][data-connected-points~="li09"] div,
 .systemConnection[data-connected-points~="ew03"][data-connected-points~="ew09"] div,
+.systemConnection[data-connected-points~="ew16"][data-connected-points~="ga02"] div,
 .systemConnection[data-connected-points~="br05"][data-connected-points~="ew07"] div	{
 	background-color: rgba(219, 72, 55, 0.9);
 	box-shadow: 0px 0px 0.3em 0.1em rgba(121, 80, 76, 0.9);
