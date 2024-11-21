@@ -777,7 +777,7 @@ function generateLookupArrays() {
 		/* manually moved systems, usually oorp/removed ones */
 		/* 0,0 in upper left corner, first coordinate is x and second is y */
 		systemPosArray["li09"] = [7,9.25];
-		systemPosArray["ew15"] = [2.5,0.1];
+		systemPosArray["ew15"] = [2.5,0.08];
 
 		systemIdsNameArrayState = "ready";
 		systemScaleFactorArrayState = "ready";
