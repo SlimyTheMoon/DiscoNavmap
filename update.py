@@ -142,7 +142,7 @@ def build_update():
 	with open(build_input_dir / "build.json") as json_file:
 		config = json.load(json_file)
 
-	fl_path = Path("C:/Users/nudnouil/AppData/Local/Discovery Freelancer 5.00.8")
+	fl_path = Path("C:/Users/inudn/AppData/Local/Discovery Freelancer 5.00.8")
 	if config["fl_path"] == "":
 		print("No FL path set in \"update/build.json\", looking for Discovery install...")
 		found_fl_path = get_freelancer_path(os.getenv('LOCALAPPDATA'))
