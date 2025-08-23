@@ -754,7 +754,6 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 .systemConnection[data-connected-points~="ku07"][data-connected-points~="st08"] div,
 .systemConnection[data-connected-points~="iw06"][data-connected-points~="iw07"] div,
 .systemConnection[data-connected-points~="iw07"][data-connected-points~="bw05"] div,
-.systemConnection[data-connected-points~="ew16"][data-connected-points~="ga07"] div,
 .systemConnection[data-connected-points~="hi01"][data-connected-points~="ew04"] div, 
 .systemConnection[data-connected-points~="rh08"][data-connected-points~="hi10"] div, 
 .systemConnection[data-connected-points~="ew08"][data-connected-points~="br05"] div, 
