@@ -88,7 +88,7 @@ var textureFileRegex = /(\\)([^;\\\r\n\.]*)(?=[\.\r\n])/;
 var rotationRegex = /rotate = (.*)/g;
 var textRegex = /(<(text|TEXT)>.+?<\/(text|TEXT)>|<(para|PARA)\/>)/g;
 /* oorpArray contains systems which should be considered as OORP or otherwise inaccessible by the universe map. See also:  */
-var oorpArray = [
+/*var oorpArray = [
 	"limbo", "unch01", "unch02", "unch03", "unch04", "unch04b", "unch05", "unch06",
 	"unch07", "unch08", "unch09", "unch10", "fp7_system", "ew11", "bw46", "ew14",
 	"ku08", "hi05", "bw17", "li14", "ew17", "ku16", "hlp1", "hlp2", "bw11", "ev03",
@@ -98,6 +98,18 @@ var oorpArray = [
 	"st03b", "hi19", "hi10", "hi08", "ew37", "ku15", "li07", "br22", "br14", "bw21",
 	"bw58", "li13", "ev02", "br09", "iw13", "ew19", "hi18", "ew43", "ew21", "ew20",
 	"ew97"
+];*/
+var oorpArray = [
+	"br09","br10", "bw11", "bw14", "ca01",
+	"ev01", "ev02", "ev03", "ew05", "ew12",
+	"ew14", "ew17", "ew18", "ew19", "ew20",
+	"ew21", "ew37", "ew43", "ew63", "ew85",
+	"ew97", "fp7_system", "hi10", "hi19",
+	"hlp1", "hlp2", "iw09", "ku17", "li06",
+	"li07", "li08", "li10", "limbo", "no01", 
+	"st02", "st02c", "st03b", "unch01", "unch02", 
+	"unch03", "unch04", "unch04b", "unch05", "unch06",
+	"unch07", "unch08", "unch09", "unch10", "vr01",
 ];
 var systemScaleFactor = 1;
 var searchTimedOut = "nope";
@@ -105,7 +117,7 @@ var universeFileGetResult;
 var prevLabelMoveState;
 var lastSearch;
 var longSystemName;
-//test
+
 var baseNameArray = {};
 var systemNameArray = {};
 var systemNameArrayState = "nope";
