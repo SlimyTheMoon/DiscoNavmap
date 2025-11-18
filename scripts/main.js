@@ -118,7 +118,7 @@ var universeFileGetResult;
 var prevLabelMoveState;
 var lastSearch;
 var longSystemName;
-
+//Test
 var baseNameArray = {};
 var systemNameArray = {};
 var systemNameArrayState = "nope";
