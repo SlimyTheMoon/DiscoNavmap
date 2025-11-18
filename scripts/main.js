@@ -108,9 +108,9 @@ var oorpArray = [
 	"ew97", "fp7_system", "hi10", "hi19",
 	"hlp1", "hlp2", "iw09", "ku17", "li06",
 	"li07", "li08", "li10", "limbo", "no01", 
-	"st02c", "st03b", "unch01", "unch02", 
-	"unch03", "unch04", "unch04b", "unch05", "unch06",
-	"unch07", "unch08", "unch09", "unch10", "vr01"
+	"st03b", "unch01", "unch02", "unch03", "unch04", 
+	"unch04b", "unch05", "unch06","unch07", "unch08", 
+	"unch09", "unch10", "vr01"
 ];
 var systemScaleFactor = 1;
 var searchTimedOut = "nope";
