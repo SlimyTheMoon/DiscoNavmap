@@ -1,3 +1,10 @@
+Disclaimer:
+I forked this from fifthbarrier.
+The idea to make the whole rework of
+coloring of the sigmas and align the navmap
+to the serverrules came from Cherry Blossom.
+
+
 # Navmap<img height="40" align="left" src="https://github.com/AudunVN/Navmap/blob/gh-pages/favicon.png">
 A browser-based map viewer for the Freelancer mod Discovery. This also works for vanilla Freelancer, but there is currently no public release of the map available for that (yet). Extra usage instructions for in-game map control may be found [here](https://github.com/AudunVN/Navmap/blob/gh-pages/user_guide.md).
 
