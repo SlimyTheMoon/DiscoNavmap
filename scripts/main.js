@@ -69,7 +69,7 @@ var solarRegex = /(\n[^\r\n;]*\[[Ss]olar\])([^;\[]*(?=\n\w*|$))/g;
 var baseRegex = /(\n[^\r\n;]*\[[Bb]ase\])([^;\[]*(?=\n\w*|$))/g;
 var posRegex = /pos = (.*)/g;
 var sizeRegex = /size = (.*)/g;
-var repRegex = /reputation = (.*)/g;
+var repRegex = /reputation = ([^;\r\n]*)/g;
 var pathRegex = /Path = (.*)/g;
 var gotoRegex = /[^\r\n;]*goto = ([^\r\n;]*)/g;
 var burnColourRegex = /burn_color = (.*)/g;
