@@ -1485,10 +1485,10 @@ function generateMap(system) {
 						if (object.className.indexOf("jump") != -1 && sysObjectArray[i].match(gotoRegex)) {
 							object.dataset.jumpDest = sysObjectArray[i].match(gotoRegex).join().substring(7).replace(/ /g,"").split(",")[0].toLowerCase();
 						}
-						// Check for a match directly using the regex
+						// Use the new regex to find the match safely
 						var repMatch = sysObjectArray[i].match(repRegex);
 						if (repMatch) {
-							// repMatch[1] contains the value from the capture group (...)
+							// repMatch[1] contains the clean value from the regex capture group
 							object.dataset.reputation = repMatch[1].trim();
 						}
 						if (sysObjectArray[i].indexOf("archetype") != -1) {
