@@ -90,10 +90,10 @@ var textRegex = /(<(text|TEXT)>.+?<\/(text|TEXT)>|<(para|PARA)\/>)/g;
 /* oorpArray contains systems which should be considered as OORP or otherwise inaccessible by the universe map. See also:  */
 var oorpArray = [
 	"br09","br10", "bw11", "bw14", "ca01",
-	"ev01", "ev02", "ev03", "ew05", "ew12",
-	"ew14", "ew17", "ew18", "ew19", "ew20",
-	"ew21", "ew37", "ew43", "ew63", "ew85",
-	"ew97", "fp7_system", "hi10", "hi19",
+	"ev01", "ev02", "ev03", "ew05",
+	"ew14", "ew19", "ew20",
+	"ew21", "ew37", "ew63", "ew85",
+	"fp7_system", "hi19",
 	"hlp1", "hlp2", "iw09", "ku17", "li06",
 	"li07", "li08", "li10", "limbo", "no01", 
 	"st02c", "st03b", "unch01", "unch02", "unch03", 
