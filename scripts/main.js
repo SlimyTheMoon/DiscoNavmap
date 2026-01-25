@@ -69,7 +69,7 @@ var solarRegex = /(\n[^\r\n;]*\[[Ss]olar\])([^;\[]*(?=\n\w*|$))/g;
 var baseRegex = /(\n[^\r\n;]*\[[Bb]ase\])([^;\[]*(?=\n\w*|$))/g;
 var posRegex = /pos = (.*)/g;
 var sizeRegex = /size = (.*)/g;
-var repRegex = /reputation = ([^;\r\n]*)/g;
+var repRegex = /reputation\s*=\s*([^;\r\n]+)/i;
 var pathRegex = /Path = (.*)/g;
 var gotoRegex = /[^\r\n;]*goto = ([^\r\n;]*)/g;
 var burnColourRegex = /burn_color = (.*)/g;
@@ -1484,8 +1484,11 @@ function generateMap(system) {
 						if (object.className.indexOf("jump") != -1 && sysObjectArray[i].match(gotoRegex)) {
 							object.dataset.jumpDest = sysObjectArray[i].match(gotoRegex).join().substring(7).replace(/ /g,"").split(",")[0].toLowerCase();
 						}
-						if (sysObjectArray[i].indexOf("reputation =") != -1) {
-							object.dataset.reputation = sysObjectArray[i].match(repRegex).join().substring(13).trim();
+						// Check for a match directly using the regex
+						var repMatch = sysObjectArray[i].match(repRegex);
+						if (repMatch) {
+							// repMatch[1] contains the value from the capture group (...)
+							object.dataset.reputation = repMatch[1].trim();
 						}
 						if (sysObjectArray[i].indexOf("archetype") != -1) {
 							var objectArchetype = sysObjectArray[i].match(archetypeRegex).join().substring(12).replace(/ /g,"");
