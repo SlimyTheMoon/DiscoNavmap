@@ -95,7 +95,7 @@ var oorpArray = [
 	"ew21", "ew37", "ew63", "ew85",
 	"fp7_system", "hi19",
 	"hlp1", "hlp2", "iw09", "ku17", "li06",
-	"li07", "li08", "li10", "limbo", "no01", 
+	"li07", "li08", "limbo", 
 	"st02c", "st03b", "unch01", "unch02", "unch03", 
 	"unch04", "unch04b", "unch05", "unch06","unch07", 
 	"unch08", "unch09", "unch10", "vr01"
