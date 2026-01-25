@@ -1485,7 +1485,7 @@ function generateMap(system) {
 							object.dataset.jumpDest = sysObjectArray[i].match(gotoRegex).join().substring(7).replace(/ /g,"").split(",")[0].toLowerCase();
 						}
 						if (sysObjectArray[i].indexOf("reputation =") != -1) {
-							object.dataset.reputation = sysObjectArray[i].match(repRegex).join().substring(13);
+							object.dataset.reputation = sysObjectArray[i].match(repRegex).join().substring(13).trim();
 						}
 						if (sysObjectArray[i].indexOf("archetype") != -1) {
 							var objectArchetype = sysObjectArray[i].match(archetypeRegex).join().substring(12).replace(/ /g,"");
