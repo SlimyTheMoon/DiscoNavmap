@@ -20,7 +20,8 @@ var universeFile = dataRootPath+"universe/universe.ini";
 var infocardMapFile = dataRootPath+"infocardmap.ini";
 var solarArchFile = dataRootPath+"solararch.ini";
 var planetTextureRootPath = "textures/planets/";
-var objectRegex = /(\n[^\r\n;]*\[[Oo]bject\])([^;\[]*(?=\n\w*|$))/g;
+// Removed semicolon from the second exclusion group ([^\[]*) so comments don't break the block
+var objectRegex = /(\n[^\r\n;]*\[[Oo]bject\])([^\[]*(?=\n\w*|$))/g;
 var archetypeIgnoreArray = [
 	"dsy_suprise_secret",
 	"suprise_ku_dragon_secret",
