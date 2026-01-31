@@ -1004,7 +1004,7 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 .grid {
 	width: 100%;
 	height: 100%;
-	background: url("../images/SiriusMap.jpg") black;
+	background: url("../images/Sirius_Map.png") black;
 	background-size: cover !important;
 	border-radius: 0em;
 }
