@@ -981,6 +981,25 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 	display: none !important;
 }
 
+/* show only navmap fixtures that JS explicitly marks as visible (archetype/class-based) */
+.contents .object.mooringFixture.dockable,
+.contents .object[data-archetype="docking_fixture_horizontal_navmap"] {
+	display: block !important;
+}
+.contents .object.mooringFixture.dockable > label,
+.contents .object[data-archetype="docking_fixture_horizontal_navmap"] > label {
+	display: inline-block !important;
+	opacity: 1;
+}
+/* zoomed-in icon for navmap docking fixtures */
+.zoomedIn .object.mooringFixture.dockable,
+.zoomedIn .object[data-archetype="docking_fixture_horizontal_navmap"] {
+	background-image: url('../images/icons/smallspacestation.png');
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+} 
+
 .grid {
 	width: 100%;
 	height: 100%;

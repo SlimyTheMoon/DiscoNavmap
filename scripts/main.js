@@ -46,7 +46,8 @@ var ignoreObjectRegex = new RegExp(
 var archetypeShowArray = [
 	"ithaca_station",
 	"junction_wreck",
-	"space_beamx_messina"
+	"space_beamx_messina",
+	"docking_fixture_horizontal_navmap"
 ];
 var showObjectRegex = new RegExp(
 	"archetype\\s*=\\s*(" + archetypeShowArray.join("|") + ")", 'g'
@@ -961,6 +962,14 @@ function findObjectName(internalNickname, classString) {
 		}
 	}
 	
+	/* friendly fallback for unnamed mooring/docking fixtures */
+	if (typeof classString !== "undefined" && classString.indexOf("mooringFixture") != -1) {
+		if (internalNickname && internalNickname.toLowerCase().indexOf("docking_fixture") != -1) {
+			return "Mooring Fixture";
+		}
+		return internalNickname + " (int)";
+	}
+	
 	return internalNickname + " (int)";
 }
 
@@ -1493,8 +1502,13 @@ function generateMap(system) {
 						}
 						if (sysObjectArray[i].indexOf("archetype") != -1) {
 							var objectArchetype = sysObjectArray[i].match(archetypeRegex).join().substring(12).replace(/ /g,"");
-							object.dataset.archetype = objectArchetype;
-							if (typeof solarArchArray[objectArchetype] !== "undefined") {
+							object.dataset.archetype = objectArchetype.toLowerCase();
+							/* defensive markers so CSS can reliably target visible navmap fixtures across all systems */
+					if (object.className.indexOf("dockable") != -1 || object.dataset.archetype === "docking_fixture_horizontal_navmap") {
+						object.classList.add("dockable");
+						object.dataset.navmapVisible = "1";
+					}
+					if (typeof solarArchArray[objectArchetype] !== "undefined") {
 								if (typeof solarArchArray[objectArchetype].texturePath !== "undefined") {
 									object.style.backgroundImage = "url("+solarArchArray[objectArchetype].texturePath+")";
 								}
@@ -1687,6 +1701,11 @@ function getObjectClasses(objectString) {
 	}
 	if (objectString.toLowerCase().indexOf("docking_fixture") != -1) {
 		classArray.push("mooringFixture");
+		/* navmap-specific horizontal docking fixtures should be treated as dockable
+		   so they show labels on the navmap without exposing all mooring fixtures */
+		if (objectString.toLowerCase().indexOf("docking_fixture_horizontal_navmap") != -1) {
+			classArray.push("dockable");
+		}
 	}
 	return classArray.join(" ");
 }
