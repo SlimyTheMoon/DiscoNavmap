@@ -30,7 +30,8 @@ var archetypeIgnoreArray = [
 	"suprise_bw_elite2_secret",
 	"suprise_dsy_bayonet_secret",
 	"suprise_b_battleship_secret",
-	"invisible_base"
+	"invisible_base",
+	"suprise_hf_elite2_concealed"
 ];
 var baseIgnoreArray = [
 	"no_hidden_bases",
