@@ -32,7 +32,7 @@ build = {
     "directories": [
         {"path": "IONCROSS", "dest": ""},
         {"path": "DATA/SOLAR/ASTEROIDS", "dest": "solar/asteroids"},
-        {"path": "DATA/UNIVERSE/SYSTEMS", "dest": "universe/systems"},
+        {"path": "DATA/UNIVERSE/SYSTEMS/*", "dest": "universe/systems"},
     ],
 }
 
@@ -126,7 +126,8 @@ def copy(src: str | os.PathLike[str], dest: str | os.PathLike[str]) -> None:
             shutil.copytree(
                 src_path,
                 dest_path,
-                ignore=shutil.ignore_patterns("BASES", "BASE_INTERIORS", "MODELS", "*.txm"),
+                # Don't ignore BASES/BASE_INTERIORS — include them. Still ignore large/model files and txm assets.
+                ignore=shutil.ignore_patterns("MODELS", "*.txm", "*.cmp", "*.3db", "base_interiors", "rooms"),
                 copy_function=copy_file,
                 dirs_exist_ok=False,
             )

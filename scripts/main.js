@@ -913,7 +913,12 @@ function showObjectInfo(idsNameNumber, idsInfoNumber, classString, zPosition, fa
 		} else {
 			var ownerString = "";
 		}
-		var infoString = "";
+		// normalize & validate factionNickname before using it in ownerString (avoid showing 'undefined')
+			var normFaction = (typeof factionNickname !== "undefined" && factionNickname !== null && String(factionNickname).trim() !== "") ? String(factionNickname).replace(/^['\"]|['\"]$/g, '').trim().toLowerCase() : undefined;
+			if (typeof normFaction !== "undefined" && typeof factionNameArray[normFaction] !== "undefined" && typeof infocardArray[factionNameArray[normFaction]] !== "undefined") {
+				ownerString = " It belongs to " + infocardArray[factionNameArray[normFaction]] + ".";
+			}
+			var infoString = "";
 		var miningString = "";
 		var scrollUpString = "<div class='scrollUpButton' onclick='closeModal()'><i class='fa fa-times'></i><p>Close</p></div>";
 		if (typeof dynamicCommodity !== "undefined") {
@@ -1494,12 +1499,24 @@ function generateMap(system) {
 						if (object.className.indexOf("jump") != -1 && sysObjectArray[i].match(gotoRegex)) {
 							object.dataset.jumpDest = sysObjectArray[i].match(gotoRegex).join().substring(7).replace(/ /g,"").split(",")[0].toLowerCase();
 						}
-						// Use the new regex to find the match safely
-						var repMatch = sysObjectArray[i].match(repRegex);
-						if (repMatch) {
-							// repMatch[1] contains the clean value from the regex capture group
-							object.dataset.reputation = repMatch[1].trim();
+						
+						// attach reputation (if present) to the DOM element for later use
+						// repRegex === /reputation\s*=\s*([^;\r\n]+)/i (defined earlier)
+						if (sysObjectArray[i].match(repRegex)) {
+							try {
+								var repMatch = sysObjectArray[i].match(repRegex)[1];
+								if (typeof repMatch !== "undefined" && repMatch !== null) {
+									var repVal = String(repMatch).replace(/^['\"]|['\"]$/g, '').trim().toLowerCase();
+									if (repVal.length) {
+										object.dataset.reputation = repVal;
+									}
+								}
+							} catch (e) {
+								/* defensive: don't break map generation on malformed reputation */
+								console.warn("Failed to parse reputation for object "+nameString, e);
+							}
 						}
+						
 						if (sysObjectArray[i].indexOf("archetype") != -1) {
 							var objectArchetype = sysObjectArray[i].match(archetypeRegex).join().substring(12).replace(/ /g,"");
 							object.dataset.archetype = objectArchetype.toLowerCase();
