@@ -79,9 +79,9 @@ var solarArchFile = dataRootPath + "solararch.ini";
 var archetypeIgnoreArray = [
     "dsy_suprise_secret", "suprise_ku_dragon_secret", "suprise_dsy_gmg_vhf_secret",
     "suprise_dsy_or_hf_secret", "suprise_bw_elite2_secret", "suprise_dsy_bayonet_secret",
-    "suprise_b_battleship_secret", "invisible_base"
+    "suprise_b_battleship_secret", "invisible_base", "docking_fixture", "blhazard"
 ];
-var baseIgnoreArray = ["no_hidden_bases", "no_hidden_bases"];
+var baseIgnoreArray = ["no_hidden_bases", "no_hidden_bases", "Rh02_05_1 (int)"];
 var archetypeShowArray = [
     "ithaca_station", "junction_wreck", "space_beamx_messina", "docking_fixture_horizontal_navmap"
 ];
