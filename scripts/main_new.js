@@ -84,7 +84,7 @@ var archetypeIgnoreArray = [
 var baseIgnoreArray = ["no_hidden_bases", "no_hidden_bases"];
 var baseNicknameIgnoreArray = ["li04_04_extra_dock", "iw01_01_01", "iw01_01_02", "ew06_surprise_marker",
 	"st01_azurite_tower_01", "br05_05_1a", "rh02_05_1", "li09_08_moor01", "li09_07_docking_fixture", 
-	"ga05_02_moor03", "rh03_docking_fixture_1", "li17_suprise_bw_elite2_01"
+	"ga05_02_moor03", "rh03_docking_fixture_1", "li17_suprise_bw_elite2_01" 
 ];
 // Normalized lookup (lowercased, trimmed) for fast membership tests.
 // Implemented as an object so lookups are O(1) and compatible with older browsers.
@@ -777,6 +777,11 @@ function generateSearchArray() {
                         if (baseInternalMatch && baseNicknameIgnoreSet[baseInternalMatch.join().substring(11).trim()]) {
                             continue;
                         }
+                        // also skip any internal nickname containing the substring 'suprise' or 'surprise' (case-insensitive)
+                        var _baseInternal = baseInternalMatch ? baseInternalMatch.join().substring(11).trim() : "";
+                        if (_baseInternal.indexOf("suprise") !== -1 || _baseInternal.indexOf("surprise") !== -1) {
+                            continue;
+                        }
                         var baseName = infocardArray[universeBaseArray[i].toLowerCase().match(idsSysNameRegex).join().substring(13)];
                         var systemNickname = universeBaseArray[i].toLowerCase().match(sysNameRegex).join().substring(9);
                         if (typeof baseName !== "undefined" && typeof systemNickname !== "undefined") {
@@ -1422,6 +1427,10 @@ function generateMap(system) {
                         var nameString = sysObjectArray[i].match(nameRegex).join().substring(11);
                         // if the internal nickname is listed in baseNicknameIgnoreArray, skip rendering
                         if (baseNicknameIgnoreSet && baseNicknameIgnoreSet[nameString.toLowerCase().trim()]) {
+                            continue;
+                        }
+                        // also skip any object whose internal nickname contains 'suprise' or 'surprise'
+                        if (nameString.toLowerCase().indexOf("suprise") !== -1 || nameString.toLowerCase().indexOf("surprise") !== -1) {
                             continue;
                         }
                         object.dataset.internalNickname = nameString.toLowerCase();
