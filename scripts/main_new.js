@@ -84,7 +84,7 @@ var archetypeIgnoreArray = [
 var baseIgnoreArray = ["no_hidden_bases", "no_hidden_bases"];
 var baseNicknameIgnoreArray = ["li04_04_extra_dock", "iw01_01_01", "iw01_01_02", "ew06_surprise_marker",
 	"st01_azurite_tower_01", "br05_05_1a", "rh02_05_1", "li09_08_moor01", "li09_07_docking_fixture", 
-	"ga05_02_moor03", "rh03_docking_fixture_1", "li17_suprise_bw_elite2_01", "iw08_suprise_crypt" 
+	"ga05_02_moor03", "rh03_docking_fixture_1", "li17_suprise_bw_elite2_01", "iw08_suprise_crypt", 
 ];
 
 // -- Show Arrays --
