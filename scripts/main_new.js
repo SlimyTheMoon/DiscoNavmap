@@ -79,9 +79,25 @@ var solarArchFile = dataRootPath + "solararch.ini";
 var archetypeIgnoreArray = [
     "dsy_suprise_secret", "suprise_ku_dragon_secret", "suprise_dsy_gmg_vhf_secret",
     "suprise_dsy_or_hf_secret", "suprise_bw_elite2_secret", "suprise_dsy_bayonet_secret",
-    "suprise_b_battleship_secret", "invisible_base", "docking_fixture", "blhazard"
+    "suprise_b_battleship_secret", "invisible_base", "blhazard"
 ];
-var baseIgnoreArray = ["no_hidden_bases", "no_hidden_bases", "Rh02_05_1 (int)"];
+var baseIgnoreArray = ["no_hidden_bases", "no_hidden_bases"];
+var baseNicknameIgnoreArray = ["li04_04_extra_dock", "iw01_01_01", "iw01_01_02", "ew06_surprise_marker",
+	"st01_azurite_tower_01", "br05_05_1a", "rh02_05_1", "li09_08_moor01", "li09_07_docking_fixture", 
+	"ga05_02_moor03", "rh03_docking_fixture_1"
+];
+// Normalized lookup (lowercased, trimmed) for fast membership tests.
+// Implemented as an object so lookups are O(1) and compatible with older browsers.
+var baseNicknameIgnoreSet = (function(arr) {
+    var s = {};
+    for (var i = 0; i < arr.length; i++) {
+        if (typeof arr[i] === "string") {
+            s[arr[i].toLowerCase().trim()] = true;
+        }
+    }
+    return s;
+})(baseNicknameIgnoreArray);
+// -- Show Arrays --
 var archetypeShowArray = [
     "ithaca_station", "junction_wreck", "space_beamx_messina", "docking_fixture_horizontal_navmap"
 ];
@@ -756,6 +772,11 @@ function generateSearchArray() {
                         universeBaseArray[i].toLowerCase().indexOf("system =") != -1 &&
                         universeBaseArray[i].toLowerCase().indexOf("strid_name") != -1 &&
                         !universeBaseArray[i].toLowerCase().match(ignoreObjectRegex)) {
+                        // skip bases explicitly listed in baseNicknameIgnoreArray (case-insensitive)
+                        var baseInternalMatch = universeBaseArray[i].toLowerCase().match(nameRegex);
+                        if (baseInternalMatch && baseNicknameIgnoreSet[baseInternalMatch.join().substring(11).trim()]) {
+                            continue;
+                        }
                         var baseName = infocardArray[universeBaseArray[i].toLowerCase().match(idsSysNameRegex).join().substring(13)];
                         var systemNickname = universeBaseArray[i].toLowerCase().match(sysNameRegex).join().substring(9);
                         if (typeof baseName !== "undefined" && typeof systemNickname !== "undefined") {
@@ -1399,6 +1420,10 @@ function generateMap(system) {
                         var object = document.createElement("div");
                         var posString = sysObjectArray[i].match(posRegex).join().substring(6).replace(/ /g, "");
                         var nameString = sysObjectArray[i].match(nameRegex).join().substring(11);
+                        // if the internal nickname is listed in baseNicknameIgnoreArray, skip rendering
+                        if (baseNicknameIgnoreSet && baseNicknameIgnoreSet[nameString.toLowerCase().trim()]) {
+                            continue;
+                        }
                         object.dataset.internalNickname = nameString.toLowerCase();
                         var objectClasses = getObjectClasses(sysObjectArray[i]);
                         if (sysObjectArray[i].indexOf("ids_name") != -1) {
