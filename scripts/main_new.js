@@ -79,7 +79,7 @@ var solarArchFile = dataRootPath + "solararch.ini";
 var archetypeIgnoreArray = [
     "dsy_suprise_secret", "suprise_ku_dragon_secret", "suprise_dsy_gmg_vhf_secret",
     "suprise_dsy_or_hf_secret", "suprise_bw_elite2_secret", "suprise_dsy_bayonet_secret",
-    "suprise_b_battleship_secret", "invisible_base", "blhazard"
+    "suprise_b_battleship_secret", "invisible_base", "blhazard", "li17_suprise_bw_elite2_01"
 ];
 var baseIgnoreArray = ["no_hidden_bases", "no_hidden_bases"];
 var baseNicknameIgnoreArray = ["li04_04_extra_dock", "iw01_01_01", "iw01_01_02", "ew06_surprise_marker",
