@@ -74,7 +74,7 @@ var infocardFile = dataRootPath + "infocards.txt";
 var universeFile = dataRootPath + "universe/universe.ini";
 var infocardMapFile = dataRootPath + "infocardmap.ini";
 var solarArchFile = dataRootPath + "solararch.ini";
-
+// ---
 // -- Exclusion Arrays --
 var archetypeIgnoreArray = [
     "dsy_suprise_secret", "suprise_ku_dragon_secret", "suprise_dsy_gmg_vhf_secret",
