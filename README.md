@@ -1,5 +1,6 @@
 Disclaimer:
-I forked this from fifthbarrier.
+I forked this from fifthbarrier
+The navmap was originally made by Error via this repo: https://github.com/AudunVN/Navmap
 The idea to make the whole rework of
 coloring of the sigmas and align the navmap
 to the serverrules came from Cherry Blossom.
