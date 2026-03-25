@@ -1121,7 +1121,6 @@
     // --- Init ---
     loadSettings();
     generateUniverseMap();
-    checkURL();
 
     // --- Pre-cache all data from static JSON files ---
     (function prefetchAllData() {
@@ -1143,6 +1142,9 @@
             console.log("Cached " + Object.keys(allDetails).length + " system details, " +
                 Object.keys(infocardCache).length + " infocards, " +
                 Object.keys(factionCache).length + " factions");
+
+            // Check URL after data is loaded so system maps can render
+            checkURL();
 
             // Preload and decode all unique planet/star textures
             var seen = {};
