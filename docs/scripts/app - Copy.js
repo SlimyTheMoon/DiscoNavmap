@@ -237,7 +237,6 @@
         else contentsEl.classList.remove("showInfocardedObjectLabels");
 
         hAlignLabels();
-        objectTerritorialConflictResolver();
     }
 
     function toggleClass(selector, cls, add) {
@@ -265,10 +264,6 @@
 
     // --- Label Overlap Prevention ---
     function objectTerritorialConflictResolver() {
-        // Reset all marginTop from previous runs so stale shifts don't persist
-        contentsEl.querySelectorAll("label[style*='margin-top']").forEach(function (el) {
-            el.style.marginTop = "";
-        });
         var labels = contentsEl.querySelectorAll("label:not(.hidden):not(.labelDisabled)");
         if (!labels.length || !isChecked("labelMove")) return;
         var n = labels.length;
