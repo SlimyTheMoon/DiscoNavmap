@@ -5,6 +5,8 @@ The idea to make the whole rework of
 coloring of the sigmas and align the navmap
 to the serverrules came from Cherry Blossom.
 
+Project got refactored into GoLang, static site generation and published on 25.03.2026 (hopefully)
+
 
 # Navmap<img height="40" align="left" src="https://github.com/AudunVN/Navmap/blob/gh-pages/favicon.png">
 A browser-based map viewer for the Freelancer mod Discovery. This also works for vanilla Freelancer, but there is currently no public release of the map available for that (yet). Extra usage instructions for in-game map control may be found [here](https://github.com/AudunVN/Navmap/blob/gh-pages/user_guide.md).
