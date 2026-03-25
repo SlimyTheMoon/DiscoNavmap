@@ -366,13 +366,14 @@
         pivot.className = lineClass + " " + propClass;
         pivot.style.left = yAvg + "%";
         pivot.style.top = xAvg + "%";
+        pivot.style.height = len + "%";
+        pivot.style.marginTop = (-len / 2) + "%";
         pivot.style.position = "absolute";
         pivot.dataset.connectedPoints = obj1 + " " + obj2;
         pivot.style.transform = "rotate(" + (-Math.atan2(yDiff, xDiff)) + "rad)";
 
         var line = document.createElement("div");
-        line.style.height = (len / 100) * parent.offsetHeight + "px";
-        line.style.transform = "translateY(-" + (len / 200) * parent.offsetHeight + "px)";
+        line.style.height = "100%";
         line.style.position = "absolute";
         line.className = propClass;
 
