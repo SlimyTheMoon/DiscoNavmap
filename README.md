@@ -1,23 +1,98 @@
-Disclaimer:
-I forked this from fifthbarrier
-The navmap was originally made by Error via this repo: https://github.com/AudunVN/Navmap
-The idea to make the whole rework of
-coloring of the sigmas and align the navmap
-to the serverrules came from Cherry Blossom.
+# Navmap <img height="40" align="left" src="https://github.com/AudunVN/Navmap/blob/gh-pages/favicon.png">
 
-Project got refactored into GoLang, static site generation and published on 25.03.2026 (hopefully)
+A browser-based map viewer for the Freelancer mod [Discovery](https://discoverygc.com/). Displays accuratly the full universe map with system details, bases, zones, connections, infocards, and more.
 
+## Credits & History
 
-# Navmap<img height="40" align="left" src="https://github.com/AudunVN/Navmap/blob/gh-pages/favicon.png">
-A browser-based map viewer for the Freelancer mod Discovery. This also works for vanilla Freelancer, but there is currently no public release of the map available for that (yet). Extra usage instructions for in-game map control may be found [here](https://github.com/AudunVN/Navmap/blob/gh-pages/user_guide.md).
+- Originally made by **Error** via [this repo](https://github.com/AudunVN/Navmap)
+- Forked from **fifthbarrier**
+- Sigma coloring rework and server-rules alignment by **Cherry Blossom**
+- Refactored into **Go** with static site generation (published 25.03.2026)
 
-A complete change and issue log from before this project was moved to a GitHub repo may be found in  [this DiscoveryGC forum thread](http://discoverygc.com/forums/showthread.php?tid=132266&pid=1700007#pid1700007).
+A complete change and issue log from before this project was moved to GitHub may be found in [this DiscoveryGC forum thread](http://discoverygc.com/forums/showthread.php?tid=132266&pid=1700007#pid1700007).
 
-## Updating instructions
- - Run update.py in the root directory of this repo, and follow the instructions
- - Check if the OORP systems array in index.html needs updating
-     - This thing really needs a per-version config file.
- 
-Regarding texture data: These are extracted using [UTF Image Exporter](https://github.com/AudunVN/Navmap/tree/gh-pages/utils/UTFImageExporter), then bulk converted to from txm to jpg using IrFanView, and afterwards recursively and renamed counting up from 01.jpg using Metamorphose2 to ensure that there's at least one texture available from each .txm file (namely, 01.jpg, since they may be stored using any filename inside the .txm file and the navmap has no idea what they might be named in advance, so it simply expects there to be a file named "01.jpg" inside the folder for each txm file).
+## Requirements
 
-Icons and such are converted from TGA after being exported using ImageMagick or similar: ```mogrify -flip -path png -format png *.tga```
+- Go 1.25.5+
+- A Discovery Freelancer installation (for data updates)
+
+## Quick Start
+
+### Run as HTTP server
+
+```bash
+go run main.go -data data/v5.3p2h4 -addr :8080
+```
+
+Then open `http://localhost:8080`.
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `-data` | `data/v5.3p2h4` | Path to game data directory |
+| `-addr` | `:8080` | Listen address |
+
+### Build static site (for GitHub Pages)
+
+```bash
+go run cmd/static/main.go -data data/v5.3p2h4 -out dist
+```
+
+Generates a self-contained static site in `dist/` with all JSON data inlined/pre-built. The `docs/` folder contains the current deployed build.
+
+## Updating Game Data
+
+Import data from a Discovery Freelancer installation:
+
+```bash
+go run cmd/update/main.go -out data/v5.3p2h4
+```
+
+This will auto-discover your FL install via `LOCALAPPDATA`, copy and format the required game files, and lowercase all filenames. You'll be prompted to run **FL Path Generator** and **FLInfocardIE** first.
+
+## Project Structure
+
+| Directory | Purpose |
+|-----------|---------|
+| `main.go` | HTTP server entry point |
+| `cmd/static/` | Static site generator |
+| `cmd/update/` | Game data importer |
+| `pkg/gamedata/` | Core data parser — systems, bases, factions, connections, infocards, solar archetypes |
+| `data/v5.3p2h4/` | Parsed Discovery game data (current version) |
+| `templates/` | HTML template for the map UI |
+| `scripts/` | Frontend JS (`app.js` — map rendering & UI, `panzoom.min.js`) |
+| `styles/` | CSS |
+| `images/` | Icons and map background images |
+| `textures/` | Planet/star textures (`.txm` subdirs) |
+| `docs/` | GitHub Pages deployment (pre-built static site) |
+| `archive/` | Legacy Python-based version |
+
+## API Endpoints (server mode)
+
+| Endpoint | Description |
+|----------|-------------|
+| `GET /api/systems` | All systems (lightweight) |
+| `GET /api/systems/all` | All system details (pre-gzipped) |
+| `GET /api/system/{nick}` | Single system detail by nickname |
+| `GET /api/connections` | Jump gate/hole connections |
+| `GET /api/search` | Search items for autocomplete |
+| `GET /api/infocard/{id}` | Infocard text by ID |
+| `GET /api/faction/{nick}` | Faction info by nickname |
+
+## Texture & Icon Data
+
+Textures are extracted using [UTF Image Exporter](https://github.com/AudunVN/Navmap/tree/gh-pages/utils/UTFImageExporter), then bulk converted from txm to jpg using IrFanView, and afterwards recursively renamed counting up from `01.jpg` using Metamorphose2 to ensure that there's at least one texture available from each `.txm` file (the navmap expects a file named `01.jpg` inside each txm folder).
+
+Icons are converted from TGA after being exported using ImageMagick or similar:
+```bash
+mogrify -flip -path png -format png *.tga
+```
+
+## Map Features
+
+- Interactive universe map with pan & zoom
+- System detail view with bases, planets, zones, wrecks, and jump connections
+- Mineable zone info with commodity details
+- Faction infocards
+- Search across systems and bases
+- Configurable display: connections, OORP systems, zones, wrecks, labels
+- Works in both server and static (GitHub Pages) modes
