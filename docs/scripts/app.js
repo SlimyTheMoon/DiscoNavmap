@@ -432,70 +432,57 @@
     }
 
     function objectTerritorialConflictResolver() {
-        // Reset transforms from previous runs
-        contentsEl.querySelectorAll("label[data-lshift]").forEach(function (el) {
-            el.style.transform = "";
-            el.removeAttribute("data-lshift");
+        // Reset marginTop from previous runs
+        contentsEl.querySelectorAll("label[style*='margin-top']").forEach(function (el) {
+            el.style.marginTop = "";
         });
         var labels = contentsEl.querySelectorAll("label:not(.hidden):not(.labelDisabled)");
         if (!labels.length || !isChecked("labelMove")) return;
         var n = labels.length;
         var arr = new Array(n);
         var rects = new Array(n);
-        var dx = new Array(n);
-        var dy = new Array(n);
+        var margins = new Array(n);
         // Single DOM read pass
         for (var j = 0; j < n; j++) {
             arr[j] = labels[j];
             rects[j] = labels[j].getBoundingClientRect();
-            dx[j] = 0;
-            dy[j] = 0;
+            margins[j] = 0;
         }
-        // Iterative relaxation: push overlapping labels apart along both axes
-        var PAD = 2; // px gap between labels
-        for (var iter = 0; iter < 12; iter++) {
-            var moved = false;
+        // Iterative relaxation: push overlapping labels down
+        var currentDiffSum = -1, prevDiffSum = -1, prevPrevDiffSum;
+        for (var iter = 0; iter < 8; iter++) {
+            prevPrevDiffSum = prevDiffSum;
+            prevDiffSum = currentDiffSum;
+            currentDiffSum = 0;
             for (var i = 0; i < n; i++) {
-                for (var o = i + 1; o < n; o++) {
-                    var a = rects[i], b = rects[o];
-                    var overlapX = Math.min(a.right, b.right) - Math.max(a.left, b.left);
-                    var overlapY = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
-                    if (overlapX <= 0 || overlapY <= 0) continue;
-                    moved = true;
-                    if (overlapY <= overlapX) {
-                        // Push vertically (smaller overlap axis)
-                        var sy = (overlapY + PAD) / 2;
-                        if (a.top <= b.top) {
-                            dy[i] -= sy; dy[o] += sy;
-                            rects[i] = { top: a.top - sy, bottom: a.bottom - sy, left: a.left, right: a.right };
-                            rects[o] = { top: b.top + sy, bottom: b.bottom + sy, left: b.left, right: b.right };
-                        } else {
-                            dy[i] += sy; dy[o] -= sy;
-                            rects[i] = { top: a.top + sy, bottom: a.bottom + sy, left: a.left, right: a.right };
-                            rects[o] = { top: b.top - sy, bottom: b.bottom - sy, left: b.left, right: b.right };
-                        }
+                var curRect = rects[i];
+                for (var o = 0; o < n; o++) {
+                    if (o === i) continue;
+                    var otherRect = rects[o];
+                    if (curRect.right < otherRect.left || curRect.left > otherRect.right ||
+                        curRect.bottom < otherRect.top || curRect.top > otherRect.bottom) continue;
+                    if (curRect.top <= otherRect.top) {
+                        var shift = curRect.bottom - otherRect.top;
+                        margins[o] = Math.abs(margins[o] + shift);
+                        rects[o] = { top: otherRect.top + shift, bottom: otherRect.bottom + shift,
+                            left: otherRect.left, right: otherRect.right };
+                        currentDiffSum += shift;
                     } else {
-                        // Push horizontally
-                        var sx = (overlapX + PAD) / 2;
-                        if (a.left <= b.left) {
-                            dx[i] -= sx; dx[o] += sx;
-                            rects[i] = { top: a.top, bottom: a.bottom, left: a.left - sx, right: a.right - sx };
-                            rects[o] = { top: b.top, bottom: b.bottom, left: b.left + sx, right: b.right + sx };
-                        } else {
-                            dx[i] += sx; dx[o] -= sx;
-                            rects[i] = { top: a.top, bottom: a.bottom, left: a.left + sx, right: a.right + sx };
-                            rects[o] = { top: b.top, bottom: b.bottom, left: b.left - sx, right: b.right - sx };
-                        }
+                        var shift = otherRect.bottom - curRect.top;
+                        margins[i] = Math.abs(margins[i] + shift);
+                        rects[i] = { top: curRect.top + shift, bottom: curRect.bottom + shift,
+                            left: curRect.left, right: curRect.right };
+                        curRect = rects[i];
+                        currentDiffSum += shift;
                     }
                 }
             }
-            if (!moved) break;
+            if (prevPrevDiffSum === 0) break;
         }
         // Single DOM write pass
         for (var j = 0; j < n; j++) {
-            if (dx[j] !== 0 || dy[j] !== 0) {
-                arr[j].style.transform = "translate(" + Math.round(dx[j]) + "px," + Math.round(dy[j]) + "px)";
-                arr[j].setAttribute("data-lshift", "1");
+            if (margins[j] > 0) {
+                arr[j].style.marginTop = margins[j] + "px";
             }
         }
     }

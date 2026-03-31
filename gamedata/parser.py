@@ -450,7 +450,7 @@ class GameData:
 
         # Parse objects
         for sec in _parse_sections(content, "Object"):
-            obj = self._parse_object(sec, scale_factor)
+            obj = self._parse_object(sec, scale_factor, system_nickname)
             if obj:
                 detail.objects.append(obj)
 
@@ -658,7 +658,7 @@ class GameData:
 
         return zone
 
-    def _parse_object(self, sec: str, scale_factor: float) -> Optional[MapObject]:
+    def _parse_object(self, sec: str, scale_factor: float, system_nickname: str = "") -> Optional[MapObject]:
         nick = _extract_value(sec, "nickname").strip().lower()
         if not nick:
             return None
@@ -742,9 +742,9 @@ class GameData:
             if goto_parts:
                 obj.jump_dest = goto_parts[0].strip().lower()
 
-        # Determine name for unnamed objects
-        if not obj.name:
-            obj.name = self._find_object_name(nick, obj.classes)
+        # Determine name for unnamed objects or generic "Jump Gate"/"Jump Hole"
+        if not obj.name or obj.name in ("Jump Gate", "Jump Hole"):
+            obj.name = self._find_object_name(nick, obj.classes, obj.jump_dest, system_nickname)
 
         return obj
 
@@ -818,12 +818,18 @@ class GameData:
 
         return classes
 
-    def _find_object_name(self, nick: str, classes: list[str]) -> str:
+    def _find_object_name(self, nick: str, classes: list[str],
+                           jump_dest: str = "", current_system: str = "") -> str:
         class_set = set(classes)
         if "jump" in class_set:
-            if "hole" in class_set:
-                return "Jump Hole"
-            return "Jump Gate"
+            kind = "Jump Hole" if "hole" in class_set else "Jump Gate"
+            if jump_dest:
+                src = self.systems.get(current_system)
+                dst = self.systems.get(jump_dest)
+                src_name = src.name if src else current_system
+                dst_name = dst.name if dst else jump_dest
+                return src_name + " -> " + dst_name
+            return kind
         if "mooringFixture" in class_set:
             if "docking_fixture" in nick.lower():
                 return "Mooring Fixture"
