@@ -354,7 +354,7 @@ body {
 	display: block;
 }
 
-.zone.noInfo.mineable, zone.mineable {
+.zone.noInfo.mineable, .zone.mineable {
 	display: block;
 	z-index: 0;
 }
@@ -438,7 +438,7 @@ body {
 	background-color: rgba(237, 112, 7, 0.8);
 }
 
-.wreck.hidden, .zone.hidden, .system.hidden, .systemConnectionProp.hidden, label.hidden {
+.wreck.hidden, .zone.hidden, .system.hidden, .systemConnectionProp.hidden, .object.pob.hidden, label.hidden {
 	display: none !important;
 }
 
@@ -767,9 +767,13 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 .systemConnection.jgConnection[data-connected-points~="st01"][data-connected-points~="st03"] div,
 .systemConnection.jgConnection[data-connected-points~="bw17"][data-connected-points~="iw11"] div,
 .systemConnection.jgConnection[data-connected-points~="li17"][data-connected-points~="no01"] div,
+.systemConnection.jgConnection[data-connected-points~="li09"][data-connected-points~="no01"] div,
 .systemConnection.jgConnection[data-connected-points~="st06"][data-connected-points~="st03"] div,
 .systemConnection.jgConnection[data-connected-points~="st03"][data-connected-points~="st05"] div,
 .systemConnection.jgConnection[data-connected-points~="st01"][data-connected-points~="st05"] div,
+.systemConnection.jgConnection[data-connected-points~="hi10"][data-connected-points~="rh08"] div,
+.systemConnection.jgConnection[data-connected-points~="li05"][data-connected-points~="hi10"] div,
+.systemConnection.jgConnection[data-connected-points~="ku07"][data-connected-points~="hi10"] div,
 .systemConnection.jgConnection[data-connected-points~="st05"][data-connected-points~="st07"] div	{
 	background-color: rgba(152, 69, 255, 0.9);
 	box-shadow: 0px 0px 0.3em 0.1em rgba(152, 69, 255, 0.5);
@@ -781,8 +785,7 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 .systemConnection[data-connected-points~="ku07"][data-connected-points~="st08"] div,
 .systemConnection[data-connected-points~="iw06"][data-connected-points~="iw07"] div,
 .systemConnection[data-connected-points~="iw07"][data-connected-points~="bw05"] div,
-.systemConnection[data-connected-points~="hi01"][data-connected-points~="ew04"] div, 
-.systemConnection[data-connected-points~="rh08"][data-connected-points~="hi10"] div, 
+.systemConnection[data-connected-points~="hi01"][data-connected-points~="ew04"] div,  
 .systemConnection[data-connected-points~="ew08"][data-connected-points~="br05"] div, 
 .systemConnection[data-connected-points~="bw10"][data-connected-points~="iw11"] div, 
 .systemConnection[data-connected-points~="hi01"][data-connected-points~="st06"] div, 
@@ -1526,6 +1529,29 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 	left: 0.225em;
 }
 
+.pobInfocardSection {
+	margin: 0.5em 0;
+	text-align: left;
+	width: 100% !important;
+	box-sizing: border-box;
+	background: rgba(255,255,255,0.06);
+	border: 0.1em solid rgba(30, 166, 197, 0.3);
+	border-radius: 0.3em;
+	padding: 0.5em;
+	font-size: 0.85em;
+	line-height: 1.4;
+	color: #ccc;
+}
+
+.pobInfocardLine {
+	margin: 0.15em 0;
+	padding: 0;
+}
+
+.pobInfocardLine b {
+	color: #8cf;
+}
+
 input.switch:empty {
 	margin-left: -4000px;
 }
@@ -1618,9 +1644,9 @@ input.switch:checked ~ label:after {
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 4px rgba(30, 166, 197, 0.3);
 	font-size: 12px;
 	line-height: 1.3;
-	white-space: nowrap;
 	font-family: "Consolas", "Courier New", monospace;
 	letter-spacing: 0.5px;
+	white-space: pre;
 	display: none;
 }
 
@@ -2375,4 +2401,49 @@ Remodal's default mobile first theme
 
 .lt-ie9 .remodal {
 	width: 700px;
+}
+
+/* ==========================================================================
+   POB (Player Owned Station) styles
+   ========================================================================== */
+
+.object.pob {
+	border-color: rgba(0, 180, 255, 0.7);
+	box-shadow: 0 0 3px rgba(0, 180, 255, 0.4);
+}
+.object.pob:hover {
+	box-shadow: 0 0 6px rgba(0, 180, 255, 0.8);
+}
+.object.pob label {
+	color: #7df0ff;
+	display: inline-block !important;
+	top: 130%;
+	left: -1em;
+}
+.object.pob:hover label {
+	color: #fff;
+	text-shadow: 0 0 6px rgba(0, 180, 255, 0.9) !important;
+}
+.object.pob label:hover {
+	color: #fff;
+	text-shadow: 0 0 6px rgba(0, 180, 255, 0.9) !important;
+	cursor: pointer;
+}
+
+/* Waypoint copy notification */
+.wpCopyNotification {
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: rgba(10, 20, 35, 0.95);
+	color: #4ef;
+	padding: 8px 20px;
+	border-radius: 6px;
+	border: 1px solid rgba(30, 166, 197, 0.6);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+	font-family: "Consolas", "Courier New", monospace;
+	font-size: 13px;
+	z-index: 999999;
+	pointer-events: none;
 }

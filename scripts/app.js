@@ -28,6 +28,11 @@
     var infocardCache = {};
     var factionCache = {};
 
+    // POB data fetched from external API
+    var pobCache = {};
+    // pobsBySystem: systemNickname -> [pob, pob, ...]
+    var pobsBySystem = {};
+
     // Decoded texture cache - keeps Image objects alive so browser retains decoded pixels
     var textureCache = {};
 
@@ -80,6 +85,42 @@
     document.addEventListener("click", function () {
         setTimeout(function () { dragSinceLastMouseUp = 0; }, 10);
     });
+
+    // --- Right-click to copy /wp command ---
+    contentsEl.addEventListener("contextmenu", function (e) {
+        var target = e.target.closest("[data-coords]");
+        if (!target) return;
+        e.preventDefault();
+        var coords = target.dataset.coords;
+        if (!coords) return;
+        var parts = coords.split(",").map(function (s) { return s.trim(); });
+        if (parts.length < 3) return;
+        var wpCmd = "/wp " + Math.round(parts[0]) + " " + Math.round(parts[1]) + " " + Math.round(parts[2]);
+        navigator.clipboard.writeText(wpCmd).then(function () {
+            showWaypointCopy(wpCmd);
+        }).catch(function () {
+            // Fallback for older browsers
+            var ta = document.createElement("textarea");
+            ta.value = wpCmd;
+            ta.style.position = "fixed";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+            showWaypointCopy(wpCmd);
+        });
+    });
+
+    function showWaypointCopy(text) {
+        var existing = document.querySelector(".wpCopyNotification");
+        if (existing) existing.remove();
+        var el = document.createElement("div");
+        el.className = "wpCopyNotification";
+        el.textContent = "Copied: " + text;
+        document.body.appendChild(el);
+        setTimeout(function () { el.remove(); }, 2000);
+    }
 
     function hasNotPannedRecently() {
         return dragSinceLastMouseUp < 10;
@@ -155,7 +196,7 @@
 
     // --- Cookie/LocalStorage Settings ---
     function saveSettings() {
-        var settings = {};
+        var settings = { _version: 2 };
         document.querySelectorAll("input[type='checkbox']").forEach(function (cb) {
             settings[cb.id] = cb.checked;
         });
@@ -164,12 +205,21 @@
 
     function loadSettings() {
         try {
-            var settings = JSON.parse(localStorage.getItem("navmapSettings"));
-            if (!settings) return;
+            var SETTINGS_VERSION = 2;
+            var settings = JSON.parse(localStorage.getItem("navmapSettings")) || {};
+            var savedVersion = settings._version || 0;
+            if (savedVersion < SETTINGS_VERSION) {
+                // Reset settings that changed defaults
+                settings["switch1"] = false;   // wrecks: off by default
+                settings["switch20"] = true;   // pobs: on by default
+                settings._version = SETTINGS_VERSION;
+            }
             for (var id in settings) {
+                if (id === "_version") continue;
                 var el = document.getElementById(id);
                 if (el) el.checked = settings[id];
             }
+            saveSettings();
         } catch (e) { }
     }
 
@@ -194,6 +244,7 @@
     function updateConfigClasses() {
         toggleClass(".object.wreck", "hidden", !isChecked("wrecks"));
         toggleClass(".object.wreck label", "hidden", !isChecked("wreckLabels"));
+        toggleClass(".object.pob", "hidden", !isChecked("pobs"));
         toggleClass(".zone", "hidden", !isChecked("zones"));
         toggleClass(".zone label:not(.mineable label)", "hidden", !isChecked("zoneLabels"));
         toggleClass(".oorp", "hidden", !isChecked("oorp"));
@@ -207,7 +258,7 @@
         if (isChecked("onlyShowLatestPosition")) contentsEl.classList.remove("showOldPlayerShipPositions");
         else contentsEl.classList.add("showOldPlayerShipPositions");
 
-        var isUniverse = contentsEl.querySelector(".system") !== null;
+        var isUniverse = currentSystemNickname === "Sirius";
 
         if (isChecked("connections") && isUniverse) {
             document.querySelectorAll(".systemConnectionProp").forEach(function (el) { el.style.display = ""; });
@@ -385,12 +436,18 @@
     function generateUniverseMap() {
         showLoading("Generating map...");
 
-        document.getElementById("showUniverseMap").style.display = "none";
-        gridEl.querySelectorAll(":scope > *").forEach(function (el) { el.style.display = "none"; });
-        document.querySelector(".mapLegend").style.display = "block";
-        document.getElementById("helpLink").style.display = "block";
-        document.getElementById("navSystemTitle").style.display = "none";
-        document.getElementById("searchField").value = "";
+        try {
+            var showAll = document.getElementById("showUniverseMap");
+            if (showAll) showAll.style.display = "none";
+            gridEl.querySelectorAll(":scope > *").forEach(function (el) { el.style.display = "none"; });
+            var legend = document.querySelector(".mapLegend");
+            if (legend) legend.style.display = "block";
+            var help = document.getElementById("helpLink");
+            if (help) help.style.display = "block";
+            var navTitle = document.getElementById("navSystemTitle");
+            if (navTitle) navTitle.style.display = "none";
+            var search = document.getElementById("searchField");
+            if (search) search.value = "";
 
         currentSystemNickname = "Sirius";
         gridEl.style.background = "url('./images/Sirius_Map.png') black";
@@ -466,6 +523,10 @@
         hAlignLabels();
         updateConfigClasses();
         // No objectTerritorialConflictResolver on universe map (matches original behavior)
+        } catch (e) {
+            console.error("generateUniverseMap error:", e);
+            removeLoading();
+        }
     }
 
     function generateSystemConnections() {
@@ -562,6 +623,16 @@
             renderObject(obj, scaleFactor, frag);
         });
 
+        // Render POBs for this system (wrapped to prevent errors from breaking the map)
+        try {
+            var sysNick = currentSystemNickname.toLowerCase();
+            var sysPobs = pobsBySystem[sysNick] || [];
+            console.log("Rendering " + sysPobs.length + " POBs for " + sysNick);
+            for (var pi = 0; pi < sysPobs.length; pi++) {
+                renderPOB(sysPobs[pi], scaleFactor, frag);
+            }
+        } catch (e) { console.error("POB render error:", e); }
+
         contentsEl.appendChild(frag);
 
         // Make contents visible now that all elements are placed
@@ -616,6 +687,9 @@
         div.style.left = (zone.pos[0] / 2000 * sf) + "%";
         div.dataset.zPos = zone.pos[1] * sf;
 
+        // Store game coords for tooltip
+        div.dataset.coords = zone.pos[0] + ", " + zone.pos[1] + ", " + zone.pos[2];
+
         // Size
         var isExcl = zone.zoneFlags === 131072;
         var w, h;
@@ -665,8 +739,15 @@
                 div.dataset.dynamicDifficulty = zone.lootInfo.difficulty;
             }
             var mineIcon = '<svg class="mineableIcon" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M256.001,6C117.928,6,6,117.929,6,256c0,138.071,111.928,250,250.001,250  C394.072,506,506,394.071,506,256C506,117.929,394.072,6,256.001,6z M217.135,399.953c-1.43,3.027-5.043,4.315-8.068,2.881  l-32.872-15.559c-3.022-1.43-4.311-5.041-2.881-8.066l8.401-17.02c1.133,0.677,2.166,1.252,3.045,1.667  c8.685,4.096,29.274,7.318,44.631,9.271L217.135,399.953z M294.363,291.966c-2.992,6.319-10.547,9.021-16.873,6.029  c6.326,2.992,9.029,10.546,6.034,16.87c-2.992,6.321-10.547,9.023-16.873,6.029c6.326,2.994,9.028,10.544,6.032,16.868  c-2.991,6.324-10.548,9.021-16.87,6.029c6.323,2.992,9.028,10.546,6.032,16.87c-2.481,5.242-8.091,7.934-13.538,7.018l-0.007,0.056  c0,0-47.308-4.48-60.319-10.61c-0.008-0.007-0.015-0.008-0.028-0.016c-7.87-3.725-30.067-21.676-40.265-30.074  c-3.42-2.823-6.494-6.006-9.171-9.547c-1.74-2.305-5.301-5.199-7.909-6.434l-42.835-20.277c-5.457-2.584-8.383-8.585-7.046-14.469  c4.223-18.568,12.183-37.279,28.923-60.216c3.645-4.995,10.298-6.7,15.889-4.053l39.03,18.478  c10.448,4.945,27.898,5.808,38.78,1.918l6.535-2.334c4.491-1.606,11.68-1.249,15.99,0.79l7.516,3.56  c1.277,0.601,1.824,2.134,1.223,3.409l-2.233,4.72c-2.14,8.37,5.245,14.681,15.448,19.51c13.981,6.618,33.247,10.454,40.505,13.004  C294.655,278.088,297.355,285.64,294.363,291.966z M430.383,263.831c-1.004,0.586-2.281,0.384-3.056-0.482  c-30.99-34.623-67.257-63.727-108.513-86.006l-39.883,87.315c-8.446-2.268-19.427-5.299-27.916-9.317  c-4.489-2.126-11.708-6.194-11.494-10.263l42.138-85.371c-43.573-17.951-89.281-27.625-135.923-29.657  c-1.164-0.054-2.127-0.914-2.313-2.062c-0.181-1.144,0.469-2.263,1.556-2.674c52.527-19.817,106.815-22.695,156.165-5.084  l3.191-6.473c1.435-3.027,5.046-4.316,8.071-2.885l24.829,11.752c3.022,1.43,4.315,5.044,2.881,8.071l-3.03,6.634  c44.552,27.036,76.507,70.68,94.382,123.602C431.839,262.034,431.387,263.244,430.383,263.831z" style="fill:#FFFFFF;"/></svg>';
-            if (label.textContent && label.textContent.indexOf("undefined") === -1) {
+            var hasUsableName = label.textContent
+                && label.textContent.indexOf("undefined") === -1
+                && label.textContent !== "Mineable Zone";
+            if (hasUsableName) {
                 label.innerHTML += mineIcon;
+            } else if (zone.lootInfo && zone.lootInfo.commodityName) {
+                label.innerHTML = zone.lootInfo.commodityName + mineIcon;
+            } else if (zone.lootInfo && zone.lootInfo.commodity) {
+                label.innerHTML = zone.lootInfo.commodity + mineIcon;
             } else {
                 label.innerHTML = "Mineable Zone" + mineIcon;
             }
@@ -702,6 +783,9 @@
         div.style.top = (obj.pos[2] / 2000 * sf) + "%";
         div.style.left = (obj.pos[0] / 2000 * sf) + "%";
         div.dataset.zPos = obj.pos[1] * sf;
+
+        // Store game coords for tooltip
+        div.dataset.coords = obj.pos[0] + ", " + obj.pos[1] + ", " + obj.pos[2];
 
         // Texture
         if (obj.texturePath) {
@@ -784,6 +868,97 @@
         (container || contentsEl).appendChild(div);
     }
 
+    function renderPOB(pob, sf, container) {
+        var div = document.createElement("div");
+        div.className = "object base pob";
+        div.dataset.internalNickname = pob.name;
+
+        var label = document.createElement("label");
+        label.textContent = pob.name;
+        div.appendChild(label);
+
+        // Position — pob.pos is [X, Y, Z]
+        div.style.position = "absolute";
+        div.style.top = (pob.pos[2] / 2000 * sf) + "%";
+        div.style.left = (pob.pos[0] / 2000 * sf) + "%";
+        div.dataset.zPos = pob.pos[1];
+
+        // Store coords for tooltip
+        div.dataset.coords = pob.pos[0] + ", " + pob.pos[1] + ", " + pob.pos[2];
+
+        // Click handler
+        div.addEventListener("click", function () {
+            if (hasNotPannedRecently()) showPOBInfo(pob);
+        });
+
+        (container || contentsEl).appendChild(div);
+    }
+
+    function renderPobInfocard(infocardData) {
+        if (!infocardData || !Array.isArray(infocardData)) return "";
+        var html = "";
+        for (var i = 0; i < infocardData.length; i++) {
+            var paragraph = infocardData[i];
+            if (!paragraph.phrases) continue;
+            var lineHtml = "";
+            for (var j = 0; j < paragraph.phrases.length; j++) {
+                var p = paragraph.phrases[j];
+                var text = p.phrase || "";
+                if (!text) continue;
+                if (p.bold) text = "<b>" + text + "</b>";
+                if (p.link) text = "<a href='" + p.link + "' target='_blank'>" + text + "</a>";
+                lineHtml += text;
+            }
+            if (lineHtml) {
+                html += "<p class='pobInfocardLine'>" + lineHtml + "</p>";
+            }
+        }
+        return html;
+    }
+
+    function showPOBInfo(pob) {
+        var html = "<h2>" + pob.name + "</h2>";
+        html += "<p class='technicalInfo'>Player Owned Station";
+        if (pob.factionName) html += " — " + pob.factionName;
+        if (pob.level != null) html += " — Level " + pob.level;
+        html += "</p>";
+        html += "<p class='technicalInfo'>Position: " + pob.pos[0] + ", " + pob.pos[1] + ", " + pob.pos[2] + "</p>";
+        html += "<div class='pobInfocardSection' id='pobInfocardLoading'>Loading infocard...</div>";
+        html += "<div class='scrollUpButton' onclick='document.querySelector(\".infocardContainer\").style.display=\"none\";document.querySelector(\".remodal-bg\").style.display=\"none\"'><i class='fa fa-times'></i><p>Close</p></div>";
+
+        var bg = document.querySelector(".remodal-bg");
+        var infocardEl = document.querySelector(".infocardContainer");
+        infocardEl.innerHTML = html;
+        infocardEl.style.display = "inline-block";
+        bg.style.display = "flex";
+        bg.scrollTop = 0;
+
+        var nick = pob.nickname || pob.name || "";
+        if (nick) {
+            var payload = JSON.stringify([nick]);
+            fetch("https://darkstat.dd84ai.com/api/infocards", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: payload
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var loading = document.getElementById("pobInfocardLoading");
+                if (!loading) return;
+                if (data && data.length && data[0].infocard) {
+                    loading.innerHTML = renderPobInfocard(data[0].infocard);
+                    loading.id = "";
+                } else {
+                    loading.textContent = "No infocard available.";
+                }
+            })
+            .catch(function () {
+                var loading = document.getElementById("pobInfocardLoading");
+                if (loading) loading.textContent = "Failed to load infocard.";
+            });
+        }
+    }
+
     // --- Infocard Modal ---
     // Close infocard when clicking overlay background
     document.querySelector(".remodal-bg").addEventListener("click", function (e) {
@@ -850,6 +1025,9 @@
                 html = "<h2>" + objectName + "</h2>" + (infoData.text || "") + (infoData.mapped || "");
                 html += "<h3>Technical info</h3>" + miningStr;
                 html += "<p class='technicalInfo'>This object with internal nickname " + nickname + " is located " + planePos + " the plane" + (idsName ? ", and has name infocard number " + idsName + " and infocard number " + (idsInfo || "") : "") + "." + ownerStr + "</p>";
+                if (element.dataset.coords) {
+                    html += "<p class='technicalInfo'>Coordinates: " + element.dataset.coords + "</p>";
+                }
                 html += closeBtn;
             } else if (dynamicCommodity) {
                 html = miningStr + closeBtn;
@@ -1101,7 +1279,10 @@
         if (!target) return;
         var nick = target.dataset.internalNickname || target.dataset.systemNickname || "";
         if (!nick) return;
-        nickTooltip.textContent = nick;
+        var text = nick;
+        var coords = target.dataset.coords;
+        if (coords) text += "\n(" + coords + ")";
+        nickTooltip.textContent = text;
         nickTooltip.style.display = "block";
     });
 
@@ -1125,7 +1306,34 @@
 
     // --- Pre-cache all data from static JSON files ---
     (function prefetchAllData() {
-        // Load all three data files in parallel
+        // Load POBs — sessionStorage first, then API/file fallback
+        var pobPromise;
+        var cached = sessionStorage.getItem("navmap_pobs");
+        if (cached) {
+            try {
+                pobPromise = Promise.resolve(JSON.parse(cached));
+            } catch (e) {
+                pobPromise = null;
+            }
+        }
+        if (!pobPromise) {
+            pobPromise = fetch("api/pobs")
+                .then(function (r) {
+                    if (r.ok) return r.json();
+                    return fetch("data/pobs.json").then(function (r2) { return r2.ok ? r2.json() : []; });
+                })
+                .then(function (data) {
+                    try { sessionStorage.setItem("navmap_pobs", JSON.stringify(data)); } catch (e) {}
+                    return data;
+                })
+                .catch(function () {
+                    return fetch("data/pobs.json")
+                        .then(function (r) { return r.ok ? r.json() : []; })
+                        .catch(function () { return []; });
+                });
+        }
+
+        // Load core data files in parallel
         Promise.all([
             fetch("data/systems-all.json").then(function (r) { return r.ok ? r.json() : {}; }),
             fetch("data/infocards.json").then(function (r) { return r.ok ? r.json() : {}; }),
@@ -1140,12 +1348,10 @@
                     systemDetailCache[nick] = allDetails[nick];
                 }
             }
+
             console.log("Cached " + Object.keys(allDetails).length + " system details, " +
                 Object.keys(infocardCache).length + " infocards, " +
                 Object.keys(factionCache).length + " factions");
-
-            // Check URL after data is loaded so system maps can render
-            checkURL();
 
             // Preload and decode all unique planet/star textures
             var seen = {};
@@ -1174,7 +1380,32 @@
             } else {
                 console.log("Preloading " + count + " textures");
             }
-        }).catch(function (err) { console.error("Failed to prefetch data:", err); });
+
+            // Resolve POBs after core data is ready
+            return pobPromise;
+        }).then(function (pobs) {
+            // Index POBs by system (deduplicated by name)
+            pobsBySystem = {};
+            if (Array.isArray(pobs)) {
+                var seen = {};
+                pobs.forEach(function (p) {
+                    var sn = (p.systemNickname || "").toLowerCase();
+                    if (!sn) return;
+                    var key = sn + "|" + p.name;
+                    if (seen[key]) return;
+                    seen[key] = true;
+                    if (!pobsBySystem[sn]) pobsBySystem[sn] = [];
+                    pobsBySystem[sn].push(p);
+                });
+                console.log("Cached " + pobs.length + " POBs across " + Object.keys(pobsBySystem).length + " systems");
+            }
+
+            // Check URL AFTER POBs are loaded so system maps render with POBs
+            checkURL();
+
+            // Re-apply label settings
+            updateConfigClasses();
+        }).catch(function (err) { console.error("prefetchAllData error:", err); });
     })();
 
 })();
