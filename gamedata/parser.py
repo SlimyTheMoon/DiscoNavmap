@@ -671,6 +671,11 @@ class GameData:
         if base_val == "no_hidden_bases":
             return None
 
+        # Skip child objects (visual sub-components) unless they are dockable
+        has_parent = bool(_extract_value(sec, "parent").strip())
+        if has_parent and not base_val and not _extract_value(sec, "dock_with").strip():
+            return None
+
         obj = MapObject(nickname=nick, archetype=archetype)
 
         ids_name = _extract_value(sec, "ids_name")
