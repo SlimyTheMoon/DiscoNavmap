@@ -119,7 +119,7 @@ All endpoints are served by the Flask server (`main.py`) running on the configur
 | `GET /api/search?q=...` | Returns matching systems and bases for autocomplete queries (minimum 2 characters). Searches pre-built `search_items` list loaded from universe and base data at startup. |
 | `GET /api/infocard/{id}` | Returns a parsed infocard by its numeric ID from `infocards.txt`. Response includes `text` (parsed HTML) and optionally `mapped` (linked infocard from `infocardmap.ini`). Returns 404 if ID not found. |
 | `GET /api/faction/{nick}` | Returns faction name by nickname (e.g. `fc_outriders`). Loaded from `initialworld.ini` at startup with names resolved from `infocards.txt`. Returns 404 if not found. |
-| `GET /api/pobs` | Returns all Player Owned Stations as a JSON array. Proxied from `https://darkstat.dd84ai.com/api/pobs` and cached in memory at startup (not fetched per-request). |
+| `GET /api/pobs` | Returns all Player Owned Stations as a JSON array. Fetched live from `https://discoverygc.com/forums/base_admin.php?action=getjson` with full infocard, affiliation, defense mode, and dock lists. Cached in memory at startup. |
 | `GET /api/pobs/system/{nick}` | Returns POBs filtered by system nickname (e.g. `rh01`). Uses the same cached data as `/api/pobs`. Returns empty array if no POBs in that system. |
 | `GET /data/systems-all.json` | Pre-computed system details JSON, served gzip-compressed. This is the main data file fetched by `app.js` on page load to render all system views client-side. |
 | `GET /data/infocards.json` | All parsed infocards as a `{id: {text, mapped}}` dictionary. Infocard XML is converted to HTML at startup via `parse_infocard()`. Used by the frontend for base/object infocard popups. |
@@ -161,7 +161,7 @@ The frontend (`scripts/app.js`) handles all rendering client-side:
 - Pan & zoom via `panzoom.min.js`
 - Search autocomplete, infocard modals, configurable display options
 - All system details are pre-fetched from `/data/systems-all.json` on page load
-- POB infocards fetched from darkstat API (`POST /api/infocards`)
+- POB infocards fetched live from [Discovery GC API](https://discoverygc.com) with hourly auto-refresh
 
 ## Texture & Icon Data
 
@@ -176,11 +176,14 @@ mogrify -flip -path png -format png *.tga
 
 - Interactive universe map with pan & zoom
 - System detail view with bases, planets, zones, wrecks, and jump connections
-- Mineable zone labels showing commodity names (e.g. Iridium Ore, Gold Ore)
+- Mineable zone labels showing commodity names (e.g. Osmium Ore, Gold Ore)
+- Dynamic anti-label overlap: labels automatically spread apart on both axes to stay readable, and re-resolve on zoom/pan
 - Nomad gate connections with distinct purple styling
 - Unstable connections with red styling
-- Player Owned Stations (POBs) with live infocards from [darkstat](https://darkstat.dd84ai.com)
-- Faction infocards
-- Search across systems and bases
-- Configurable display: connections, OORP systems, zones, wrecks, labels
+- Player Owned Stations (POBs) with live infocards from [Discovery GC API](https://discoverygc.com), refreshed hourly — shows affiliation, defense mode, dock access lists, and infocard text
+- Faction infocards with affiliation display on POBs (both live and static modes)
+- Search across systems, bases, and mining zones
+- Right-click any object to copy a `/wp X Y Z` waypoint command
+- In-map Help button with a quick-start tutorial
+- Configurable display: connections, OORP systems, zones, wrecks, labels, player stations
 - Works in both server and static (GitHub Pages) modes

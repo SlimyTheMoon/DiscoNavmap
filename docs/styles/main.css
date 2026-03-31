@@ -496,11 +496,13 @@ body {
 }
 
 .showAllObjects .object.unclassified,
-.showAllObjects .object.jump.unusableJump {
+.showAllObjects .object.jump.unusableJump,
+.showAllObjects .object.anomaly {
 	display: block !important;
 }
 
-.showAllObjects.showAllObjectLabels .object.unclassified label:not(.labelDisabled) {
+.showAllObjects.showAllObjectLabels .object.unclassified label:not(.labelDisabled),
+.showAllObjects.showAllObjectLabels .object.anomaly label:not(.labelDisabled) {
 	display: block !important;
 }
 
@@ -512,6 +514,17 @@ body {
 	margin-left: -0.1em;
 	border-radius: 0.1em;
 	background: #4B8BCC;
+	z-index: -1;
+}
+
+.object.anomaly {
+	display: none;
+	width: 0.3em;
+	height: 0.3em;
+	margin-top: -0.15em;
+	margin-left: -0.15em;
+	border-radius: 0.15em;
+	background: #9B59B6;
 	z-index: -1;
 }
 
@@ -1550,6 +1563,18 @@ body[data-mapscale^="5"].zoomedIn .zone.mineable label {
 
 .pobInfocardLine b {
 	color: #8cf;
+}
+
+.pobDockList {
+	margin: 0.2em 0 0.5em 1.2em;
+	padding: 0;
+	font-size: 0.85em;
+	color: #ccc;
+	list-style: disc;
+}
+
+.pobDockList li {
+	margin: 0.1em 0;
 }
 
 input.switch:empty {

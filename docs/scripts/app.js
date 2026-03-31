@@ -27,14 +27,118 @@
     // Pre-loaded infocard and faction data (for static deployment)
     var infocardCache = {};
     var factionCache = {};
+    var factionHashToName = {}; // Maps FLHash(factionNickname) → display name
 
-    // POB data fetched from external API
-    var pobCache = {};
-    // pobsBySystem: systemNickname -> [pob, pob, ...]
+    // POB data indexed by system nickname
     var pobsBySystem = {};
 
     // Decoded texture cache - keeps Image objects alive so browser retains decoded pixels
     var textureCache = {};
+
+    function escapeHtml(str) {
+        if (!str) return "";
+        return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // --- FLHash (Freelancer nickname hash) ---
+    // CRC-32 with polynomial 0xA001 << 14 = 0x28004000, then byte-reverse + shift + set high bit.
+    // Reference: darklab8/fl-darkstat flhash.py / flhash_nick.go
+    var FLHashTable = (function () {
+        var POLY = 0x28004000; // 0xA001 << (30 - 16)
+        var table = new Array(256);
+        for (var i = 0; i < 256; i++) {
+            var crc = i;
+            for (var bit = 0; bit < 8; bit++) {
+                if (crc & 1) {
+                    crc = (crc >>> 1) ^ POLY;
+                } else {
+                    crc = crc >>> 1;
+                }
+            }
+            table[i] = crc;
+        }
+        return table;
+    })();
+
+    function flHash(nick) {
+        var hash = 0;
+        var nickLower = nick.toLowerCase();
+        for (var i = 0; i < nickLower.length; i++) {
+            hash = (hash >>> 8) ^ FLHashTable[(hash & 0xFF) ^ nickLower.charCodeAt(i)];
+        }
+        // byte-reverse
+        hash = ((hash >>> 24) & 0xFF) |
+               ((hash >>> 8) & 0x0000FF00) |
+               ((hash << 8) & 0x00FF0000) |
+               ((hash << 24) & 0xFF000000);
+        hash = hash >>> 0; // ensure unsigned
+        // right-shift by 2 and set high bit
+        hash = ((hash >>> 2) | 0x80000000) >>> 0;
+        return hash;
+    }
+
+    // Build reverse map: hash (number) → system nickname (string)
+    var hashToNickname = {};
+    (function buildHashToNickname() {
+        for (var nick in systems) {
+            if (systems.hasOwnProperty(nick)) {
+                hashToNickname[flHash(nick)] = nick;
+            }
+        }
+    })();
+
+    // Fetch PoBs from the Discovery GC API
+    function getPoBBases() {
+        var url = "https://discoverygc.com/forums/base_admin.php?action=getjson";
+        return fetch(url)
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                var bases = data.bases || {};
+                var result = [];
+                var names = Object.keys(bases);
+                for (var i = 0; i < names.length; i++) {
+                    var name = names[i];
+                    var base = bases[name];
+                    var parts = (base.pos || "0, 0, 0").split(",");
+                    var x = Number(parts[0].trim()) || 0;
+                    var y = Number(parts[1] ? parts[1].trim() : "0") || 0;
+                    var z = Number(parts[2] ? parts[2].trim() : "0") || 0;
+                    var sysNick = hashToNickname[base.system] || "";
+                    result.push({
+                        name: name,
+                        pos: [x, y, z],
+                        systemNickname: sysNick,
+                        affiliation: base.affiliation,
+                        defenseMode: base.defensemode,
+                        infotext: base.infocard_paragraphs || [],
+                        hostileTags: base.hostile_tag_list || "",
+                        hostileNames: base.hostile_name_list || "",
+                        allyTags: base.ally_tag_list || "",
+                        allyNames: base.ally_name_list || ""
+                    });
+                }
+                // Merge faction names from darkstat
+                return fetch("https://darkstat.dd84ai.com/api/pobs")
+                    .then(function (r) { return r.json(); })
+                    .then(function (dsData) {
+                        var nameMap = {};
+                        for (var d = 0; d < dsData.length; d++) {
+                            var dp = dsData[d];
+                            var fn = dp.faction_name || "";
+                            if (fn) {
+                                var key = ((dp.system_nickname || "") + "|" + (dp.name || "")).toLowerCase();
+                                nameMap[key] = fn;
+                            }
+                        }
+                        for (var r2 = 0; r2 < result.length; r2++) {
+                            var key2 = (result[r2].systemNickname + "|" + result[r2].name).toLowerCase();
+                            if (nameMap[key2]) result[r2].factionName = nameMap[key2];
+                        }
+                        return result;
+                    })
+                    .catch(function () { return result; });
+            });
+    }
 
     // --- DOM References ---
     var mapEl = document.querySelector(".map");
@@ -69,6 +173,9 @@
         } else {
             document.body.classList.remove("zoomedIn");
         }
+
+        // Re-resolve label overlaps after zoom/pan
+        if (currentSystemNickname !== "Sirius") scheduleLabelResolve();
     });
 
     mapEl.addEventListener("panzoompan", function (event) {
@@ -315,58 +422,80 @@
     }
 
     // --- Label Overlap Prevention ---
+    var _labelResolveTimer = null;
+    function scheduleLabelResolve() {
+        if (_labelResolveTimer) clearTimeout(_labelResolveTimer);
+        _labelResolveTimer = setTimeout(function () {
+            _labelResolveTimer = null;
+            objectTerritorialConflictResolver();
+        }, 120);
+    }
+
     function objectTerritorialConflictResolver() {
-        // Reset all marginTop from previous runs so stale shifts don't persist
-        contentsEl.querySelectorAll("label[style*='margin-top']").forEach(function (el) {
-            el.style.marginTop = "";
+        // Reset transforms from previous runs
+        contentsEl.querySelectorAll("label[data-lshift]").forEach(function (el) {
+            el.style.transform = "";
+            el.removeAttribute("data-lshift");
         });
         var labels = contentsEl.querySelectorAll("label:not(.hidden):not(.labelDisabled)");
         if (!labels.length || !isChecked("labelMove")) return;
         var n = labels.length;
         var arr = new Array(n);
         var rects = new Array(n);
-        var margins = new Array(n);
-        // Single DOM read pass (one reflow)
+        var dx = new Array(n);
+        var dy = new Array(n);
+        // Single DOM read pass
         for (var j = 0; j < n; j++) {
             arr[j] = labels[j];
             rects[j] = labels[j].getBoundingClientRect();
-            margins[j] = 0;
+            dx[j] = 0;
+            dy[j] = 0;
         }
-        // All iterations run purely in-memory (zero reflows)
-        var currentDiffSum = -1, prevDiffSum = -1, prevPrevDiffSum;
-        for (var iter = 0; iter < 8; iter++) {
-            prevPrevDiffSum = prevDiffSum;
-            prevDiffSum = currentDiffSum;
-            currentDiffSum = 0;
+        // Iterative relaxation: push overlapping labels apart along both axes
+        var PAD = 2; // px gap between labels
+        for (var iter = 0; iter < 12; iter++) {
+            var moved = false;
             for (var i = 0; i < n; i++) {
-                var curRect = rects[i];
-                for (var o = 0; o < n; o++) {
-                    if (o === i) continue;
-                    var otherRect = rects[o];
-                    if (curRect.right < otherRect.left || curRect.left > otherRect.right ||
-                        curRect.bottom < otherRect.top || curRect.top > otherRect.bottom) continue;
-                    if (curRect.top <= otherRect.top) {
-                        var shift = curRect.bottom - otherRect.top;
-                        margins[o] = Math.abs(margins[o] + shift);
-                        rects[o] = { top: otherRect.top + shift, bottom: otherRect.bottom + shift,
-                            left: otherRect.left, right: otherRect.right };
-                        currentDiffSum += shift;
+                for (var o = i + 1; o < n; o++) {
+                    var a = rects[i], b = rects[o];
+                    var overlapX = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+                    var overlapY = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+                    if (overlapX <= 0 || overlapY <= 0) continue;
+                    moved = true;
+                    if (overlapY <= overlapX) {
+                        // Push vertically (smaller overlap axis)
+                        var sy = (overlapY + PAD) / 2;
+                        if (a.top <= b.top) {
+                            dy[i] -= sy; dy[o] += sy;
+                            rects[i] = { top: a.top - sy, bottom: a.bottom - sy, left: a.left, right: a.right };
+                            rects[o] = { top: b.top + sy, bottom: b.bottom + sy, left: b.left, right: b.right };
+                        } else {
+                            dy[i] += sy; dy[o] -= sy;
+                            rects[i] = { top: a.top + sy, bottom: a.bottom + sy, left: a.left, right: a.right };
+                            rects[o] = { top: b.top - sy, bottom: b.bottom - sy, left: b.left, right: b.right };
+                        }
                     } else {
-                        var shift = otherRect.bottom - curRect.top;
-                        margins[i] = Math.abs(margins[i] + shift);
-                        rects[i] = { top: curRect.top + shift, bottom: curRect.bottom + shift,
-                            left: curRect.left, right: curRect.right };
-                        curRect = rects[i];
-                        currentDiffSum += shift;
+                        // Push horizontally
+                        var sx = (overlapX + PAD) / 2;
+                        if (a.left <= b.left) {
+                            dx[i] -= sx; dx[o] += sx;
+                            rects[i] = { top: a.top, bottom: a.bottom, left: a.left - sx, right: a.right - sx };
+                            rects[o] = { top: b.top, bottom: b.bottom, left: b.left + sx, right: b.right + sx };
+                        } else {
+                            dx[i] += sx; dx[o] -= sx;
+                            rects[i] = { top: a.top, bottom: a.bottom, left: a.left + sx, right: a.right + sx };
+                            rects[o] = { top: b.top, bottom: b.bottom, left: b.left - sx, right: b.right - sx };
+                        }
                     }
                 }
             }
-            if (prevPrevDiffSum === 0) break;
+            if (!moved) break;
         }
-        // Single DOM write pass (one style recalc)
+        // Single DOM write pass
         for (var j = 0; j < n; j++) {
-            if (margins[j] > 0) {
-                arr[j].style.marginTop = margins[j] + "px";
+            if (dx[j] !== 0 || dy[j] !== 0) {
+                arr[j].style.transform = "translate(" + Math.round(dx[j]) + "px," + Math.round(dy[j]) + "px)";
+                arr[j].setAttribute("data-lshift", "1");
             }
         }
     }
@@ -894,36 +1023,52 @@
         (container || contentsEl).appendChild(div);
     }
 
-    function renderPobInfocard(infocardData) {
-        if (!infocardData || !Array.isArray(infocardData)) return "";
-        var html = "";
-        for (var i = 0; i < infocardData.length; i++) {
-            var paragraph = infocardData[i];
-            if (!paragraph.phrases) continue;
-            var lineHtml = "";
-            for (var j = 0; j < paragraph.phrases.length; j++) {
-                var p = paragraph.phrases[j];
-                var text = p.phrase || "";
-                if (!text) continue;
-                if (p.bold) text = "<b>" + text + "</b>";
-                if (p.link) text = "<a href='" + p.link + "' target='_blank'>" + text + "</a>";
-                lineHtml += text;
-            }
-            if (lineHtml) {
-                html += "<p class='pobInfocardLine'>" + lineHtml + "</p>";
+    function showPOBInfo(pob) {
+        var html = "<h2>" + escapeHtml(pob.name) + "</h2>";
+
+        // Render infotext paragraphs as main body (like station infocard text)
+        if (pob.infotext && pob.infotext.length) {
+            for (var i = 0; i < pob.infotext.length; i++) {
+                html += "<p>" + escapeHtml(pob.infotext[i]) + "</p>";
             }
         }
-        return html;
-    }
 
-    function showPOBInfo(pob) {
-        var html = "<h2>" + pob.name + "</h2>";
-        html += "<p class='technicalInfo'>Player Owned Station";
-        if (pob.factionName) html += " — " + pob.factionName;
-        if (pob.level != null) html += " — Level " + pob.level;
-        html += "</p>";
-        html += "<p class='technicalInfo'>Position: " + pob.pos[0] + ", " + pob.pos[1] + ", " + pob.pos[2] + "</p>";
-        html += "<div class='pobInfocardSection' id='pobInfocardLoading'>Loading infocard...</div>";
+        // Technical info section (same structure as station infocards)
+        html += "<h3>Technical info</h3>";
+
+        var affiliationName = factionHashToName[pob.affiliation] || pob.factionName || "";
+        html += "<p class='technicalInfo'>Player Owned Station" + (affiliationName ? ". It belongs to " + escapeHtml(affiliationName) + "." : ".") + "</p>";
+        html += "<p class='technicalInfo'>Coordinates: " + pob.pos[0] + ", " + pob.pos[1] + ", " + pob.pos[2] + "</p>";
+
+        // Defense mode
+        if (pob.defenseMode) {
+            var modeLabel = pob.defenseMode == 1 ? "IFF Whitelist (Restricted Docking)" : pob.defenseMode == 2 ? "IFF Blacklist (Open Docking)" : "Unknown (" + escapeHtml(String(pob.defenseMode)) + ")";
+            html += "<p class='technicalInfo'>Defense Mode: " + modeLabel + "</p>";
+        }
+
+        // Docking access lists
+        function splitDockList(val) {
+            if (Array.isArray(val)) return val.map(function (s) { return String(s).trim(); }).filter(Boolean);
+            if (typeof val === "string" && val) return val.split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+            return [];
+        }
+        var dockLists = [];
+        if (pob.allyTags || pob.allyNames) {
+            var allies = splitDockList(pob.allyTags).concat(splitDockList(pob.allyNames));
+            if (allies.length) dockLists.push({ title: "Allies (Can Dock)", items: allies });
+        }
+        if (pob.hostileTags || pob.hostileNames) {
+            var hostiles = splitDockList(pob.hostileTags).concat(splitDockList(pob.hostileNames));
+            if (hostiles.length) dockLists.push({ title: "Hostiles (Cannot Dock)", items: hostiles });
+        }
+        for (var dl = 0; dl < dockLists.length; dl++) {
+            html += "<p class='technicalInfo'><strong>" + dockLists[dl].title + ":</strong></p><ul class='pobDockList'>";
+            for (var di = 0; di < dockLists[dl].items.length; di++) {
+                html += "<li>" + escapeHtml(dockLists[dl].items[di]) + "</li>";
+            }
+            html += "</ul>";
+        }
+
         html += "<div class='scrollUpButton' onclick='document.querySelector(\".infocardContainer\").style.display=\"none\";document.querySelector(\".remodal-bg\").style.display=\"none\"'><i class='fa fa-times'></i><p>Close</p></div>";
 
         var bg = document.querySelector(".remodal-bg");
@@ -932,32 +1077,32 @@
         infocardEl.style.display = "inline-block";
         bg.style.display = "flex";
         bg.scrollTop = 0;
-
-        var nick = pob.nickname || pob.name || "";
-        if (nick) {
-            var payload = JSON.stringify([nick]);
-            fetch("https://darkstat.dd84ai.com/api/infocards", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: payload
-            })
-            .then(function (r) { return r.json(); })
-            .then(function (data) {
-                var loading = document.getElementById("pobInfocardLoading");
-                if (!loading) return;
-                if (data && data.length && data[0].infocard) {
-                    loading.innerHTML = renderPobInfocard(data[0].infocard);
-                    loading.id = "";
-                } else {
-                    loading.textContent = "No infocard available.";
-                }
-            })
-            .catch(function () {
-                var loading = document.getElementById("pobInfocardLoading");
-                if (loading) loading.textContent = "Failed to load infocard.";
-            });
-        }
     }
+
+    // --- Help Infocard ---
+    function showHelpInfocard() {
+        var html = "<h2>Discovery Navmap Help</h2>";
+        html += "<p><b>Navigate:</b> Click any system on the universe map to view its details. Click <i>Show all systems</i> (top-left) to return.</p>";
+        html += "<p><b>Search:</b> Use the search bar (top-right) to find systems, bases, and mining zones by name.</p>";
+        html += "<p><b>Copy Waypoint:</b> Right-click any object, zone, or station in a system view to copy a <code>/wp X Y Z</code> command to your clipboard.</p>";
+        html += "<p><b>Pan &amp; Zoom:</b> Scroll to zoom in/out. Click and drag to pan the map.</p>";
+        html += "<p><b>Settings:</b> Click the gear icon (top-right) to toggle connections, zones, wrecks, labels, player stations, and more.</p>";
+        html += "<p><b>Infocards:</b> Click any base, planet, or mineable zone to view its infocard with detailed info.</p>";
+        html += "<p><b>Player Stations:</b> PoB data is fetched live from Discovery and refreshed every hour.</p>";
+        html += "<div class='scrollUpButton' onclick='document.querySelector(\".infocardContainer\").style.display=\"none\";document.querySelector(\".remodal-bg\").style.display=\"none\"'><i class='fa fa-times'></i><p>Close</p></div>";
+
+        var bg = document.querySelector(".remodal-bg");
+        var infocardEl = document.querySelector(".infocardContainer");
+        infocardEl.innerHTML = html;
+        infocardEl.style.display = "inline-block";
+        bg.style.display = "flex";
+        bg.scrollTop = 0;
+    }
+
+    document.getElementById("helpLink").addEventListener("click", function (e) {
+        e.preventDefault();
+        showHelpInfocard();
+    });
 
     // --- Infocard Modal ---
     // Close infocard when clicking overlay background
@@ -1087,9 +1232,9 @@
             if (sysNick.toLowerCase() !== currentSystemNickname.toLowerCase()) {
                 generateSystemMap(sysNick);
             }
-            // Try to highlight the matching base/object
+            // Try to highlight the matching base/object or zone
             setTimeout(function () {
-                var labels = contentsEl.querySelectorAll(".object label");
+                var labels = contentsEl.querySelectorAll(".object label, .zone label");
                 for (var j = 0; j < labels.length; j++) {
                     if (labels[j].textContent.toLowerCase() === item.name.toLowerCase()) {
                         createHighlight(labels[j].parentNode);
@@ -1306,32 +1451,14 @@
 
     // --- Pre-cache all data from static JSON files ---
     (function prefetchAllData() {
-        // Load POBs — sessionStorage first, then API/file fallback
-        var pobPromise;
-        var cached = sessionStorage.getItem("navmap_pobs");
-        if (cached) {
-            try {
-                pobPromise = Promise.resolve(JSON.parse(cached));
-            } catch (e) {
-                pobPromise = null;
-            }
-        }
-        if (!pobPromise) {
-            pobPromise = fetch("api/pobs")
-                .then(function (r) {
-                    if (r.ok) return r.json();
-                    return fetch("data/pobs.json").then(function (r2) { return r2.ok ? r2.json() : []; });
-                })
-                .then(function (data) {
-                    try { sessionStorage.setItem("navmap_pobs", JSON.stringify(data)); } catch (e) {}
-                    return data;
-                })
-                .catch(function () {
-                    return fetch("data/pobs.json")
-                        .then(function (r) { return r.ok ? r.json() : []; })
-                        .catch(function () { return []; });
-                });
-        }
+        // Load POBs from Discovery GC, falling back to static data
+        var pobPromise = getPoBBases()
+            .catch(function () {
+                console.warn("Failed to fetch POBs from Discovery GC, using static fallback");
+                return fetch("data/pobs.json")
+                    .then(function (r) { return r.ok ? r.json() : []; })
+                    .catch(function () { return []; });
+            });
 
         // Load core data files in parallel
         Promise.all([
@@ -1342,6 +1469,13 @@
             var allDetails = results[0];
             infocardCache = results[1];
             factionCache = results[2];
+
+            // Build faction hash → display name map for PoB affiliation lookups
+            for (var fNick in factionCache) {
+                if (factionCache.hasOwnProperty(fNick)) {
+                    factionHashToName[flHash(fNick)] = factionCache[fNick];
+                }
+            }
 
             for (var nick in allDetails) {
                 if (!systemDetailCache[nick]) {
@@ -1384,28 +1518,49 @@
             // Resolve POBs after core data is ready
             return pobPromise;
         }).then(function (pobs) {
-            // Index POBs by system (deduplicated by name)
-            pobsBySystem = {};
-            if (Array.isArray(pobs)) {
-                var seen = {};
-                pobs.forEach(function (p) {
-                    var sn = (p.systemNickname || "").toLowerCase();
-                    if (!sn) return;
-                    var key = sn + "|" + p.name;
-                    if (seen[key]) return;
-                    seen[key] = true;
-                    if (!pobsBySystem[sn]) pobsBySystem[sn] = [];
-                    pobsBySystem[sn].push(p);
-                });
-                console.log("Cached " + pobs.length + " POBs across " + Object.keys(pobsBySystem).length + " systems");
-            }
+            indexPoBs(pobs);
 
             // Check URL AFTER POBs are loaded so system maps render with POBs
             checkURL();
 
             // Re-apply label settings
             updateConfigClasses();
+
+            // Refresh PoB data every hour
+            setInterval(function () {
+                getPoBBases().then(function (freshPobs) {
+                    indexPoBs(freshPobs);
+                    // Re-render POBs on the current system view
+                    var sysNick = (currentSystemNickname || "").toLowerCase();
+                    if (sysNick && sysNick !== "sirius") {
+                        document.querySelectorAll(".object.pob").forEach(function (el) { el.remove(); });
+                        var sysPobs = pobsBySystem[sysNick] || [];
+                        for (var pi = 0; pi < sysPobs.length; pi++) {
+                            renderPOB(sysPobs[pi], systemScaleFactor, contentsEl);
+                        }
+                        updateConfigClasses();
+                    }
+                    console.log("PoB data refreshed");
+                }).catch(function (err) { console.warn("PoB refresh failed:", err); });
+            }, 3600000);
         }).catch(function (err) { console.error("prefetchAllData error:", err); });
     })();
+
+    function indexPoBs(pobs) {
+        pobsBySystem = {};
+        if (Array.isArray(pobs)) {
+            var seen = {};
+            pobs.forEach(function (p) {
+                var sn = (p.systemNickname || "").toLowerCase();
+                if (!sn) return;
+                var key = sn + "|" + p.name;
+                if (seen[key]) return;
+                seen[key] = true;
+                if (!pobsBySystem[sn]) pobsBySystem[sn] = [];
+                pobsBySystem[sn].push(p);
+            });
+            console.log("Cached " + pobs.length + " POBs across " + Object.keys(pobsBySystem).length + " systems");
+        }
+    }
 
 })();

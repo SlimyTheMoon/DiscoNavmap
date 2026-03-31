@@ -352,6 +352,11 @@ class GameData:
         for name, sys_nick in extras.items():
             self.search_items.append(SearchResult(name=name, system_nickname=sys_nick, type="base"))
 
+        for mz in self._MANUAL_ZONES:
+            self.search_items.append(SearchResult(
+                name=mz["name"], system_nickname=mz["system"], type="base"
+            ))
+
     # ------------------------------------------------------------------
     # Pre-computation
     # ------------------------------------------------------------------
@@ -426,7 +431,49 @@ class GameData:
             if obj:
                 detail.objects.append(obj)
 
+        # Manual mining zone overrides for zones missing from exported data
+        self._apply_manual_zones(system_nickname, detail, scale_factor)
+
         return detail
+
+    # Manual mining zone overrides for zones absent from the data export
+    _MANUAL_ZONES: list[dict] = [
+        {
+            "system": "ew12",
+            "nickname": "zone_ew12_osmium_mining",
+            "name": "Osmium Mining Zone",
+            "pos": [12190.0, -7214.0, 27489.0],
+            "size": [8000.0, 8000.0, 8000.0],
+            "shape": "sphere",
+            "commodity": "commodity_osmium",
+            "commodity_name": "Osmium Ore",
+            "count": "1, 3",
+            "difficulty": "7",
+        },
+    ]
+
+    def _apply_manual_zones(
+        self, system_nickname: str, detail: "SystemDetail", scale_factor: float
+    ) -> None:
+        for mz in self._MANUAL_ZONES:
+            if mz["system"] != system_nickname:
+                continue
+            loot = LootInfo(
+                commodity=mz["commodity"],
+                commodity_name=mz["commodity_name"],
+                count=mz.get("count", ""),
+                difficulty=mz.get("difficulty", ""),
+            )
+            zone = MapZone(
+                nickname=mz["nickname"],
+                name=mz.get("name", ""),
+                pos=list(mz["pos"]),
+                size=list(mz["size"]),
+                shape=mz.get("shape", "sphere"),
+                mineable=True,
+                loot_info=loot,
+            )
+            detail.zones.append(zone)
 
     def _parse_asteroid_files(
         self, sys_content: str, system_nickname: str
@@ -434,17 +481,9 @@ class GameData:
         lootable_zones: dict[str, LootInfo] = {}
         asteroid_zones: dict[str, bool] = {}
 
-        for m in re.finditer(r"(?i)\[Asteroids\]\s*\r?\n([^\[]*?)(?:\n\[|\Z)", sys_content):
-            block = m.group(1)
-            lines = block.split("\n")
-            file_uri = ""
-            zone_nick = ""
-            for line in lines:
-                line = line.strip()
-                if line.lower().startswith("file = "):
-                    file_uri = line[7:].strip()
-                if line.lower().startswith("zone = "):
-                    zone_nick = line[7:].strip().lower()
+        for sec in _parse_sections(sys_content, "Asteroids"):
+            file_uri = _extract_value(sec, "file")
+            zone_nick = _extract_value(sec, "zone").strip().lower()
             if not file_uri or not zone_nick:
                 continue
             asteroid_zones[zone_nick] = True
@@ -687,7 +726,15 @@ class GameData:
         has_ids_name = "ids_name" in sec_lower
         has_rep = "reputation =" in sec_lower or "reputation=" in sec_lower
 
-        if has_atmosphere and not has_star:
+        # Detect anomaly/blackhole archetypes so they are not mis-classified as planets
+        archetype_match = re.search(r"(?i)archetype\s*=\s*(\S+)", sec)
+        archetype = archetype_match.group(1).lower() if archetype_match else ""
+        is_anomaly = ("anomaly" in archetype or "blackhole" in archetype
+                      or archetype == "fischerplanet_flow_basefx")
+
+        if is_anomaly:
+            classes.append("anomaly")
+        elif has_atmosphere and not has_star:
             classes.append("planet")
         elif has_base or has_dock:
             classes.append("base")

@@ -14,36 +14,132 @@ from gamedata import GameData, OORP_SYSTEMS, parse_infocard
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 log = logging.getLogger(__name__)
 
-POBS_API_URL = "https://darkstat.dd84ai.com/api/pobs"
+DARKSTAT_API_URL = "https://darkstat.dd84ai.com/api/pobs"
+DISCOVERYGC_API_URL = "https://discoverygc.com/forums/base_admin.php?action=getjson"
 
 
-def fetch_pobs_for_static() -> list[dict]:
+def _fl_hash(nickname: str) -> int:
+    """Compute FLHash for a Freelancer nickname string."""
+    POLY = 0xA001 << 14  # 0x28004000
+    table = [0] * 256
+    for i in range(256):
+        crc = i
+        for _ in range(8):
+            if crc & 1:
+                crc = (crc >> 1) ^ POLY
+            else:
+                crc >>= 1
+        table[i] = crc
+    crc = 0
+    for b in nickname.lower().encode("utf-8"):
+        crc = (crc >> 8) ^ table[(crc ^ b) & 0xFF]
+    b0, b1, b2, b3 = (crc >> 24) & 0xFF, (crc >> 16) & 0xFF, (crc >> 8) & 0xFF, crc & 0xFF
+    rev = (b3 << 24) | (b2 << 16) | (b1 << 8) | b0
+    return ((rev >> 2) | 0x80000000) & 0xFFFFFFFF
+
+
+def _list_to_csv(val) -> str:
+    """Convert a value to a comma-separated string (handles list, str, or None)."""
+    if isinstance(val, list):
+        return ", ".join(str(v) for v in val if v)
+    return val or ""
+
+
+def _fetch_discoverygc(system_nicks: list[str]) -> list[dict]:
+    """Fetch full PoB data from the Discovery GC API (has infocard, dock lists)."""
+    import urllib.request
+    hash_to_nick = {}
+    for nick in system_nicks:
+        hash_to_nick[_fl_hash(nick)] = nick
+    log.info("Fetching POBs from %s ...", DISCOVERYGC_API_URL)
+    req = urllib.request.Request(DISCOVERYGC_API_URL, headers={"User-Agent": "DiscoNavmap/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+    bases = data.get("bases", {})
+    pobs = []
+    for name, base in bases.items():
+        parts = (base.get("pos") or "0, 0, 0").split(",")
+        x = int(float(parts[0].strip())) if parts[0].strip() else 0
+        y = int(float(parts[1].strip())) if len(parts) > 1 and parts[1].strip() else 0
+        z = int(float(parts[2].strip())) if len(parts) > 2 and parts[2].strip() else 0
+        sys_nick = hash_to_nick.get(base.get("system"), "")
+        if not sys_nick:
+            continue
+        aff_hash = base.get("affiliation")
+        pob = {
+            "name": name,
+            "pos": [x, y, z],
+            "systemNickname": sys_nick,
+            "affiliation": aff_hash,
+            "defenseMode": base.get("defensemode"),
+            "infotext": base.get("infocard_paragraphs") or [],
+            "hostileTags": _list_to_csv(base.get("hostile_tag_list")),
+            "hostileNames": _list_to_csv(base.get("hostile_name_list")),
+            "allyTags": _list_to_csv(base.get("ally_tag_list")),
+            "allyNames": _list_to_csv(base.get("ally_name_list")),
+        }
+        pobs.append(pob)
+    log.info("Loaded %d POBs from Discovery GC", len(pobs))
+    return pobs
+
+
+def _fetch_darkstat() -> list[dict]:
+    """Fallback: fetch PoB data from darkstat API (limited fields)."""
     import urllib.request
     import html as htmlmod
+    log.info("Fetching POBs from %s ...", DARKSTAT_API_URL)
+    req = urllib.request.Request(DARKSTAT_API_URL, headers={"User-Agent": "DiscoNavmap/1.0"})
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        raw = json.loads(resp.read().decode("utf-8"))
+    pobs = []
+    for pob in raw:
+        sys_nick = (pob.get("system_nickname") or "").lower()
+        base_pos = pob.get("base_pos")
+        if not sys_nick or not base_pos:
+            continue
+        name = htmlmod.unescape(pob.get("name", ""))
+        pobs.append({
+            "name": name,
+            "pos": [base_pos.get("X", 0), base_pos.get("Y", 0), base_pos.get("Z", 0)],
+            "systemNickname": sys_nick,
+            "factionName": pob.get("faction_name") or "",
+            "defenseMode": pob.get("defense_mode"),
+        })
+    log.info("Loaded %d POBs from darkstat", len(pobs))
+    return pobs
+
+
+def fetch_pobs_for_static(system_nicks: list[str] | None = None) -> list[dict]:
+    pobs = None
     try:
-        log.info("Fetching POBs from %s ...", POBS_API_URL)
-        req = urllib.request.Request(POBS_API_URL, headers={"User-Agent": "DiscoNavmap/1.0"})
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            raw = json.loads(resp.read().decode("utf-8"))
-        pobs = []
-        for pob in raw:
-            sys_nick = (pob.get("system_nickname") or "").lower()
-            base_pos = pob.get("base_pos")
-            if not sys_nick or not base_pos:
-                continue
-            name = htmlmod.unescape(pob.get("name", ""))
-            pobs.append({
-                "name": name,
-                "pos": [base_pos.get("X", 0), base_pos.get("Y", 0), base_pos.get("Z", 0)],
-                "systemNickname": sys_nick,
-                "factionName": pob.get("faction_name") or "",
-                "level": pob.get("level"),
-            })
-        log.info("Loaded %d POBs", len(pobs))
-        return pobs
+        pobs = _fetch_discoverygc(system_nicks or [])
     except Exception as e:
-        log.warning("Failed to fetch POBs: %s", e)
-        return []
+        log.warning("Discovery GC API failed (%s), falling back to darkstat", e)
+    if pobs is None:
+        try:
+            return _fetch_darkstat()
+        except Exception as e2:
+            log.warning("Darkstat API also failed: %s", e2)
+            return []
+    # Merge faction names from darkstat into Discovery GC results
+    try:
+        darkstat_pobs = _fetch_darkstat()
+        name_to_faction = {}
+        for dp in darkstat_pobs:
+            key = (dp.get("systemNickname", "").lower() + "|" + dp.get("name", "")).lower()
+            if dp.get("factionName"):
+                name_to_faction[key] = dp["factionName"]
+        merged = 0
+        for p in pobs:
+            key = (p.get("systemNickname", "").lower() + "|" + p.get("name", "")).lower()
+            fn = name_to_faction.get(key, "")
+            if fn:
+                p["factionName"] = fn
+                merged += 1
+        log.info("Merged %d faction names from darkstat", merged)
+    except Exception as e:
+        log.warning("Could not merge darkstat faction data: %s", e)
+    return pobs
 
 
 def main():
@@ -99,7 +195,7 @@ def main():
 
     # 4. Generate data/pobs.json
     log.info("Generating data/pobs.json...")
-    pobs = fetch_pobs_for_static()
+    pobs = fetch_pobs_for_static(list(gd.systems.keys()))
     write_json_file(os.path.join(args.out, "data", "pobs.json"), pobs)
 
     # 5. Generate index.html from template
