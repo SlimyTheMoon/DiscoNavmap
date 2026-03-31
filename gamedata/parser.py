@@ -371,6 +371,29 @@ class GameData:
             detail = self.get_system_detail(nick)
             if detail:
                 self.all_system_details[nick] = detail.to_dict()
+        self._index_mineable_zones()
+
+    def _index_mineable_zones(self) -> None:
+        """Add mineable zones from precomputed system details to the search index."""
+        seen = set()
+        for nick, detail in self.all_system_details.items():
+            for z in detail.get("zones", []):
+                if not z.get("mineable") or not z.get("lootInfo"):
+                    continue
+                li = z["lootInfo"]
+                zone_name = z.get("name")
+                if not zone_name or zone_name == "Mineable Zone":
+                    zone_name = None
+                name = zone_name or li.get("commodityName") or li.get("commodity") or ""
+                if not name:
+                    continue
+                key = (nick, name)
+                if key in seen:
+                    continue
+                seen.add(key)
+                self.search_items.append(SearchResult(
+                    name=name, system_nickname=nick, type="zone"
+                ))
 
     # ------------------------------------------------------------------
     # Search
@@ -449,6 +472,18 @@ class GameData:
             "commodity_name": "Osmium Ore",
             "count": "1, 3",
             "difficulty": "7",
+        },
+        {
+            "system": "bw08",
+            "nickname": "zone_bw08_beryllium01",
+            "name": "Beryllium Field",
+            "pos": [15901.0, 0.0, 30266.0],
+            "size": [4000.0, 5000.0, 8000.0],
+            "shape": "ellipsoid",
+            "commodity": "commodity_beryllium_ore",
+            "commodity_name": "Beryllium Ore",
+            "count": "3",
+            "difficulty": "",
         },
     ]
 

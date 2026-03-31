@@ -182,8 +182,8 @@ mogrify -flip -path png -format png *.tga
 - Unstable connections with red styling
 - Player Owned Stations (POBs) with live infocards from [Discovery GC API](https://discoverygc.com), refreshed hourly — shows affiliation, defense mode, dock access lists, and infocard text
 - Faction infocards with affiliation display on POBs (both live and static modes)
-- Search across systems, bases, and mining zones
+- Search across systems, bases, player stations, and mining zones
 - Right-click any object to copy a `/wp X Y Z` waypoint command
-- In-map Help button with a quick-start tutorial
+- In-map Help button with a quick-start tutorial and link to [GitHub Issues](https://github.com/SlimyTheMoon/DiscoNavmap/issues)
 - Configurable display: connections, OORP systems, zones, wrecks, labels, player stations
 - Works in both server and static (GitHub Pages) modes

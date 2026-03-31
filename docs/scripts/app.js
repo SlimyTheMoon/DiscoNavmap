@@ -1089,6 +1089,7 @@
         html += "<p><b>Settings:</b> Click the gear icon (top-right) to toggle connections, zones, wrecks, labels, player stations, and more.</p>";
         html += "<p><b>Infocards:</b> Click any base, planet, or mineable zone to view its infocard with detailed info.</p>";
         html += "<p><b>Player Stations:</b> PoB data is fetched live from Discovery and refreshed every hour.</p>";
+        html += "<p><b>Feedback:</b> Report bugs or suggest features on <a href='https://github.com/SlimyTheMoon/DiscoNavmap/issues' target='_blank' rel='noopener noreferrer'>GitHub Issues</a>.</p>";
         html += "<div class='scrollUpButton' onclick='document.querySelector(\".infocardContainer\").style.display=\"none\";document.querySelector(\".remodal-bg\").style.display=\"none\"'><i class='fa fa-times'></i><p>Close</p></div>";
 
         var bg = document.querySelector(".remodal-bg");
@@ -1295,9 +1296,10 @@
             // Show system name for bases, or type badge for systems
             var metaSpan = document.createElement("span");
             metaSpan.className = "ac-meta";
-            if (item.type === "base") {
+            if (item.type === "base" || item.type === "pob" || item.type === "zone") {
                 var sysName = systemNameLookup[item.systemNickname] || item.systemNickname;
-                metaSpan.textContent = sysName;
+                var suffix = item.type === "pob" ? " (PoB)" : item.type === "zone" ? " (Zone)" : "";
+                metaSpan.textContent = sysName + suffix;
             } else {
                 metaSpan.textContent = "System";
             }
@@ -1548,6 +1550,8 @@
 
     function indexPoBs(pobs) {
         pobsBySystem = {};
+        // Remove previous POB search entries
+        searchItems = searchItems.filter(function (s) { return s.type !== "pob"; });
         if (Array.isArray(pobs)) {
             var seen = {};
             pobs.forEach(function (p) {
@@ -1558,6 +1562,7 @@
                 seen[key] = true;
                 if (!pobsBySystem[sn]) pobsBySystem[sn] = [];
                 pobsBySystem[sn].push(p);
+                searchItems.push({ name: p.name, systemNickname: sn, type: "pob" });
             });
             console.log("Cached " + pobs.length + " POBs across " + Object.keys(pobsBySystem).length + " systems");
         }
