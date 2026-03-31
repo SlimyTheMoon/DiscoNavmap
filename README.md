@@ -108,19 +108,22 @@ This will auto-discover your FL install via `LOCALAPPDATA`, copy and format the 
 
 ## API Endpoints (server mode)
 
+All endpoints are served by the Flask server (`main.py`) running on the configured port (default 8080). Data is loaded from the game data directory at startup.
+
 | Endpoint | Description |
 |----------|-------------|
-| `GET /api/systems` | All systems (lightweight) |
-| `GET /api/systems/all` | All system details (pre-gzipped) |
-| `GET /api/system/{nick}` | Single system detail by nickname |
-| `GET /api/connections` | Jump gate/hole connections |
-| `GET /api/search?q=...` | Search items for autocomplete |
-| `GET /api/infocard/{id}` | Infocard text by ID |
-| `GET /api/faction/{nick}` | Faction info by nickname |
-| `GET /api/pobs` | Player Owned Stations (proxied from darkstat) |
-| `GET /data/systems-all.json` | Pre-computed system details (used by frontend) |
-| `GET /data/infocards.json` | Parsed infocards with HTML (used by frontend) |
-| `GET /data/factions.json` | Faction name lookup (used by frontend) |
+| `GET /api/systems` | Returns a dictionary of all systems with lightweight data (nickname, name, class, position, scale, OORP flag). Parsed from `universe/universe.ini` at startup. |
+| `GET /api/systems/all` | Returns all system details as a single JSON blob (zones, objects, bases, asteroids, etc.). Pre-computed at startup and served gzip-compressed when the client sends `Accept-Encoding: gzip`. |
+| `GET /api/system/{nick}` | Returns full detail for a single system by nickname (e.g. `br01`). Parsed on-the-fly from the per-system `.ini` file in `universe/systems/`. Returns 404 if not found. |
+| `GET /api/connections` | Returns all jump gate/hole connections as a JSON array. Built at startup from `systems_shortest_path.ini` (all connections) and `shortest_legal_path.ini` (nomad gate connections, marked with `jgOnly`). |
+| `GET /api/search?q=...` | Returns matching systems and bases for autocomplete queries (minimum 2 characters). Searches pre-built `search_items` list loaded from universe and base data at startup. |
+| `GET /api/infocard/{id}` | Returns a parsed infocard by its numeric ID from `infocards.txt`. Response includes `text` (parsed HTML) and optionally `mapped` (linked infocard from `infocardmap.ini`). Returns 404 if ID not found. |
+| `GET /api/faction/{nick}` | Returns faction name by nickname (e.g. `fc_outriders`). Loaded from `initialworld.ini` at startup with names resolved from `infocards.txt`. Returns 404 if not found. |
+| `GET /api/pobs` | Returns all Player Owned Stations as a JSON array. Proxied from `https://darkstat.dd84ai.com/api/pobs` and cached in memory at startup (not fetched per-request). |
+| `GET /api/pobs/system/{nick}` | Returns POBs filtered by system nickname (e.g. `rh01`). Uses the same cached data as `/api/pobs`. Returns empty array if no POBs in that system. |
+| `GET /data/systems-all.json` | Pre-computed system details JSON, served gzip-compressed. This is the main data file fetched by `app.js` on page load to render all system views client-side. |
+| `GET /data/infocards.json` | All parsed infocards as a `{id: {text, mapped}}` dictionary. Infocard XML is converted to HTML at startup via `parse_infocard()`. Used by the frontend for base/object infocard popups. |
+| `GET /data/factions.json` | Faction nickname-to-name lookup dictionary. Built at startup from `initialworld.ini` with names resolved from infocards. Used by the frontend for faction labels. |
 
 ## How It Works
 
