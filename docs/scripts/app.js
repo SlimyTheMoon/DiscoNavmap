@@ -1078,7 +1078,8 @@
         html += "<p><b>Player Stations:</b> PoB data is fetched live from Discovery and refreshed every hour.</p>";
         html += "<p><b>Feedback:</b> Report bugs or suggest features on <a href='https://github.com/SlimyTheMoon/DiscoNavmap/issues' target='_blank' rel='noopener noreferrer'>GitHub Issues</a>.</p>";
 		html += "<p><b>Credits:</b> Originally created by Space/Error <a href='https://github.com/AudunVN/Navmap' target='_blank' rel='noopener noreferrer'>Original Repository</a>.</p>";
-        html += "<div class='scrollUpButton' onclick='document.querySelector(\".infocardContainer\").style.display=\"none\";document.querySelector(\".remodal-bg\").style.display=\"none\"'><i class='fa fa-times'></i><p>Close</p></div>";
+        html += "<p><b>Credits:</b> Cherry Blossom to align the coloring to the server rules.</p>";
+		html += "<div class='scrollUpButton' onclick='document.querySelector(\".infocardContainer\").style.display=\"none\";document.querySelector(\".remodal-bg\").style.display=\"none\"'><i class='fa fa-times'></i><p>Close</p></div>";
 
         var bg = document.querySelector(".remodal-bg");
         var infocardEl = document.querySelector(".infocardContainer");
