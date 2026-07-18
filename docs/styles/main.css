@@ -342,8 +342,34 @@ body {
 	border-radius: 0;
 }
 
+/* Cylinder zones: jump tunnels / path corridors */
+.zone.cylinderZone {
+	background-color: rgba(87, 255, 255, 0.15);
+	box-shadow: 0 0 0.1em 0.05em rgba(87, 255, 255, 0.2);
+}
+
 .zone.noInfo.noZoneType  {
 	display: none;
+}
+
+/* Tunnels are usually unnamed and untyped — keep them visible anyway */
+.zone.noInfo.noZoneType.cylinderZone {
+	display: block;
+}
+
+/* NPC patrol path cylinders — hidden unless enabled in options */
+.zone.patrolPath.hiddenPatrol {
+	display: none !important;
+}
+
+/* NPC trader traffic lane cylinders — hidden unless enabled in options */
+.zone.tradePath.hiddenTrade {
+	display: none !important;
+}
+
+/* Exclusion zones outside any field/nebula (nothing to cut out of) */
+.zone.orphanExclusion {
+	display: none !important;
 }
 
 .zone.noInfo label {
@@ -421,6 +447,17 @@ body {
 	margin-top: -0.25em;
 	margin-left: -0.25em;
 	border-radius: 100%;
+}
+
+/* Encounter / battlezone markers (classified from game data) */
+.object.encounter {
+	width: 0.9em;
+	height: 0.9em;
+	margin-top: -0.45em;
+	margin-left: -0.45em;
+	background-color: rgba(255, 106, 0, 0.85);
+	box-shadow: 0 0 0.5em 0.15em rgba(255, 106, 0, 0.45);
+	border-radius: 0.1em;
 }
 
 .wreck {

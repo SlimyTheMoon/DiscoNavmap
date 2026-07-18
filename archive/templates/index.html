@@ -1,4 +1,4 @@
-{{define "index.html"}}<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="cache-control" content="public">
@@ -15,7 +15,7 @@
 </head>
 <body class="responsive">
 	<nav class="navContainer">
-		<a href="https://discoverygc.com/forums/showthread.php?tid=132266" id="helpLink" target="_blank"><i class="fa fa-question-circle"></i><span class="infoSpace"> </span><span class="infoText">Post issues/suggestions here ~Space/Error (10.10)</span></a>
+		<a href="#" id="helpLink" onclick="return false;"><i class="fa fa-question-circle"></i><span class="infoSpace"> </span><span class="infoText">Help and Info - Originally created by Space/Error. </span></a>
 		<span id="showUniverseMap"><i class="fa fa-times-circle-o"></i><span class="infoSpace"> </span><span class="infoText">Show all systems</span></span>
 		<span id="navSystemTitle"></span>
 		<span id="configButton"><i class="fa fa-cogs"></i><span class="infoSpace"> </span><span class="infoText">Settings</span></span>
@@ -45,8 +45,12 @@
 		</div>
 		<h2>System map options</h2>
 		<div class="configOption" id="wrecks">
-			<input type="checkbox" checked="checked" id="switch1" name="switch1" class="switch" />
+			<input type="checkbox" id="switch1" name="switch1" class="switch" />
 			<label for="switch1">wrecks</label>
+		</div>
+		<div class="configOption" id="pobs">
+			<input type="checkbox" checked="checked" id="switch20" name="switch20" class="switch" />
+			<label for="switch20">player stations</label>
 		</div>
 		<div class="configOption" id="zones">
 			<input type="checkbox" checked="checked" id="switch2" name="switch2" class="switch" />
@@ -139,13 +143,12 @@
 		</div>
 	</div>
 
-	<!-- Preloaded data from Go server (no AJAX needed for initial load) -->
 	<script>
 		var serverData = {
-			systems: {{json .Systems}},
-			connections: {{json .Connections}},
-			searchItems: {{json .SearchItems}},
-			oorpSystems: {{json .OORPSystems}}
+			systems: {{ systems | noescapejson }},
+			connections: {{ connections | noescapejson }},
+			searchItems: {{ search_items | noescapejson }},
+			oorpSystems: {{ oorp_systems | noescapejson }}
 		};
 	</script>
 
@@ -153,4 +156,3 @@
 	<script src="/scripts/app.js"></script>
 </body>
 </html>
-{{end}}

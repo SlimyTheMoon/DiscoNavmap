@@ -1,6 +1,4 @@
-
-utils/FLInfocardIE/src/obj/Debug/FLInfocardIE\.csproj\.CoreCompileInputs\.cache
-
-utils/FLInfocardIE/src/obj/Debug/FLInfocardIE\.csprojAssemblyReference\.cache
+__pycache__/
+*.pyc
 
 *.go

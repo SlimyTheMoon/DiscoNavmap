@@ -1,0 +1,11 @@
+[project]
+name = "disconavmap"
+version = "1.0.0"
+description = "Browser-based map viewer for the Freelancer mod Discovery"
+requires-python = ">=3.11"
+dependencies = ["flask>=3.0"]
+
+[project.scripts]
+navmap-serve = "main:main"
+navmap-static = "cmd_py.static:main"
+navmap-update = "cmd_py.update:main"

@@ -725,6 +725,23 @@ class GameData:
                 except ValueError:
                     pass
 
+        # Planet classification must match the game's own solararch type.
+        # Heuristics (like "has atmosphere") wrongly catch anomalies, hazards
+        # and mission satellites, which would render as untextured blue dots.
+        if "planet" in obj.classes and sa is not None and (sa.type or "") != "planet":
+            obj.classes.remove("planet")
+            if not any(c in obj.classes for c in ("star", "base", "anomaly")):
+                obj.classes.append("anomaly")
+
+        # Encounter/battlezone markers: classified purely from game data
+        # (display name or a waypoint-circle navmap shape)
+        name_l = (obj.name or "").lower()
+        shape_l = ((sa.shape if sa else "") or "").lower()
+        if "encounter" in name_l or "battlezone" in name_l or "waypoint" in shape_l:
+            if "unclassified" in obj.classes:
+                obj.classes.remove("unclassified")
+            obj.classes.append("encounter")
+
         # Atmosphere range
         atm = _extract_value(sec, "atmosphere_range")
         if atm:

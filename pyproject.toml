@@ -7,5 +7,5 @@ dependencies = ["flask>=3.0"]
 
 [project.scripts]
 navmap-serve = "main:main"
-navmap-static = "cmd_py.static:main"
+navmap-build = "build:main"
 navmap-update = "cmd_py.update:main"

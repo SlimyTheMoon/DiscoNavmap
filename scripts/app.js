@@ -19,7 +19,18 @@
     var systems = serverData.systems || {};
     var connections = serverData.connections || [];
     var searchItems = serverData.searchItems || [];
-    var oorpSystems = serverData.oorpSystems || {};
+
+    // Out-of-RP / inaccessible systems: primarily the OORP_SYSTEMS array
+    // defined in index.html (easy to edit), with the build data as fallback.
+    var oorpSystems = {};
+    (function () {
+        var list = (typeof OORP_SYSTEMS !== "undefined" && OORP_SYSTEMS) || serverData.oorpSystems || [];
+        if (Array.isArray(list)) {
+            for (var i = 0; i < list.length; i++) oorpSystems[String(list[i]).toLowerCase()] = true;
+        } else {
+            oorpSystems = list || {};
+        }
+    })();
 
     // Pre-cached system details
     var systemDetailCache = {};
@@ -42,7 +53,6 @@
 
     // --- FLHash (Freelancer nickname hash) ---
     // CRC-32 with polynomial 0xA001 << 14 = 0x28004000, then byte-reverse + shift + set high bit.
-    // Reference: darklab8/fl-darkstat flhash.py / flhash_nick.go
     var FLHashTable = (function () {
         var POLY = 0x28004000; // 0xA001 << (30 - 16)
         var table = new Array(256);
@@ -117,7 +127,7 @@
                         allyNames: base.ally_name_list || ""
                     });
                 }
-                // Merge faction names from darkstat
+                // Merge faction names from the public PoB API
                 return fetch("https://darkstat.dd84ai.com/api/pobs")
                     .then(function (r) { return r.json(); })
                     .then(function (dsData) {
@@ -353,6 +363,8 @@
         toggleClass(".object.wreck label", "hidden", !isChecked("wreckLabels"));
         toggleClass(".object.pob", "hidden", !isChecked("pobs"));
         toggleClass(".zone", "hidden", !isChecked("zones"));
+        toggleClass(".zone.patrolPath", "hiddenPatrol", !isChecked("patrolPaths"));
+        toggleClass(".zone.tradePath", "hiddenTrade", !isChecked("tradePaths"));
         toggleClass(".zone label:not(.mineable label)", "hidden", !isChecked("zoneLabels"));
         toggleClass(".oorp", "hidden", !isChecked("oorp"));
 
@@ -598,7 +610,7 @@
             var div = document.createElement("div");
             div.dataset.systemNickname = nick;
             div.className = "system " + (sys.class || "");
-            if (sys.oorp) div.className += " oorp";
+            if (oorpSystems[nick]) div.className += " oorp";
 
             var label = document.createElement("label");
             label.textContent = sys.name;
@@ -706,6 +718,10 @@
         var scaleFactor = sys.scaleFactor || 1;
         systemScaleFactor = scaleFactor;
         currentSystemName = sys.name;
+        // Freelancer navmap convention: one grid cell spans 35K / NavMapScale
+        // game units. The legacy render math was built around a 33.33K cell
+        // (pos/2000 percent basis), so convert the scale factor accordingly.
+        var renderSf = scaleFactor * 20 / 21;
 
         // Set ambient color
         if (detail.ambientColor) {
@@ -714,7 +730,8 @@
 
         // Scale indicator
         var mapScale = document.querySelector(".mapScale") || createMapScale();
-        var baseSize = isChecked("scale") ? 30 : 27.5;
+        // Checked: grid cell (sector) size; unchecked: the ruler's own length (10.5% of 8 cells)
+        var baseSize = isChecked("scale") ? 35 : 29.4;
         var scaleText = (Math.round(baseSize / scaleFactor * 10) / 10) + "K";
         mapScale.querySelector("h2").textContent = scaleText;
 
@@ -730,13 +747,44 @@
         // Render zones and objects using DocumentFragment for batch DOM insert
         var frag = document.createDocumentFragment();
 
-        (detail.zones || []).forEach(function (zone) {
-            renderZone(zone, scaleFactor, frag);
+        // Exclusion zones are cut-outs of fields/nebulae — mark ones floating
+        // on empty background so they can be hidden. Exclusions that overlap a
+        // field directly are anchored; anchoring propagates along touching
+        // exclusion chains (tunnels often poke out of the field they cut).
+        var zonesArr = detail.zones || [];
+        var fieldZones = [];
+        var exclusions = [];
+        zonesArr.forEach(function (z) {
+            var cls = z.zoneClass || "";
+            if (EXCLUSION_CLASSES[cls]) { exclusions.push(z); return; }
+            if (cls || z.mineable || z.fogColor) fieldZones.push(z);
+        });
+        var anchored = exclusions.map(function (z) { return zoneOverlapsField(z, fieldZones); });
+        var changed = true;
+        while (changed) {
+            changed = false;
+            for (var ei = 0; ei < exclusions.length; ei++) {
+                if (anchored[ei]) continue;
+                for (var ej = 0; ej < exclusions.length; ej++) {
+                    if (ei !== ej && anchored[ej] && zonesOverlap2D(exclusions[ei], exclusions[ej])) {
+                        anchored[ei] = true;
+                        changed = true;
+                        break;
+                    }
+                }
+            }
+        }
+        var anchorByNick = {};
+        exclusions.forEach(function (z, idx) { anchorByNick[z.nickname] = anchored[idx]; });
+        zonesArr.forEach(function (zone) {
+            zone.orphanExclusion = !!EXCLUSION_CLASSES[zone.zoneClass || ""] &&
+                !anchorByNick[zone.nickname];
+            renderZone(zone, renderSf, frag);
         });
 
         // Render objects
         (detail.objects || []).forEach(function (obj) {
-            renderObject(obj, scaleFactor, frag);
+            renderObject(obj, renderSf, frag);
         });
 
         // Render POBs for this system (wrapped to prevent errors from breaking the map)
@@ -745,7 +793,7 @@
             var sysPobs = pobsBySystem[sysNick] || [];
             console.log("Rendering " + sysPobs.length + " POBs for " + sysNick);
             for (var pi = 0; pi < sysPobs.length; pi++) {
-                renderPOB(sysPobs[pi], scaleFactor, frag);
+                renderPOB(sysPobs[pi], renderSf, frag);
             }
         } catch (e) { console.error("POB render error:", e); }
 
@@ -776,6 +824,78 @@
         return ms;
     }
 
+    // --- 3D → 2D rotation projection ---
+    // Freelancer forward vector is [0, 0, -1]; the navmap is the X/Z plane (Y-up).
+    // Returns the on-map angle of the rotated forward vector and its projected
+    // length (used to foreshorten pitched zones/tunnels).
+    function projectToNavMap(rx, ry, rz) {
+        var toRad = Math.PI / 180;
+        var v = [0, 0, -1];
+        var c, s;
+        // pitch (X)
+        c = Math.cos(rx * toRad); s = Math.sin(rx * toRad);
+        v = [v[0], c * v[1] - s * v[2], s * v[1] + c * v[2]];
+        // yaw (Y)
+        c = Math.cos(ry * toRad); s = Math.sin(ry * toRad);
+        v = [c * v[0] + s * v[2], v[1], -s * v[0] + c * v[2]];
+        // roll (Z)
+        c = Math.cos(rz * toRad); s = Math.sin(rz * toRad);
+        v = [c * v[0] - s * v[1], s * v[0] + c * v[1], v[2]];
+
+        var fx = v[0], fz = v[2];
+        var projLen = Math.sqrt(fx * fx + fz * fz);
+        // atan2(fx, -fz): angle from "north" of the map (-Z direction)
+        var angleDeg = Math.atan2(fx, -fz) * 180 / Math.PI;
+        if (projLen < 1e-9) projLen = 0;
+        return { angle: angleDeg, length: projLen };
+    }
+
+    var EXCLUSION_CLASSES = { zoneExclusion1: true, zoneExclusion2: true, zoneExclusion3: true };
+
+    // Half-extents (game units) of a zone as drawn on the map plane, plus its map angle
+    function zoneMapExtents(z) {
+        var rot = z.rotation || [0, 0, 0];
+        var proj = z.shape === "cylinder"
+            ? projectToNavMap(rot[0] + 90, rot[1], rot[2])
+            : projectToNavMap(rot[0], rot[1], rot[2]);
+        var rx, rz;
+        if (z.shape === "sphere") { rx = z.size[0]; rz = z.size[0]; }
+        else if (z.shape === "cylinder") { rx = z.size[0]; rz = z.size[1] * proj.length / 2; }
+        else if (z.shape === "box") { rx = z.size[0] / 2; rz = z.size[2] * proj.length / 2; }
+        else { rx = z.size[0]; rz = z.size[2] * proj.length; }
+        if (proj.length === 0) rz = rx;
+        var round = z.shape === "sphere" || z.shape === "ellipsoid" || proj.length === 0;
+        return { angle: proj.angle, rx: rx, rz: rz, round: round };
+    }
+
+    // Approximate 2D overlap test between two zones (rotated extents on the map plane)
+    function zonesOverlap2D(a, b) {
+        if (!a.pos || !a.size || !b.pos || !b.size) return false;
+        var ea = zoneMapExtents(a);
+        var er = Math.max(ea.rx, ea.rz);
+        var m = zoneMapExtents(b);
+        var dx = a.pos[0] - b.pos[0];
+        var dz = a.pos[2] - b.pos[2];
+        var ang = m.angle * Math.PI / 180;
+        var ca = Math.cos(ang), sa = Math.sin(ang);
+        var lx = dx * ca + dz * sa;
+        var lz = -dx * sa + dz * ca;
+        var rx = m.rx + er, rz = m.rz + er;
+        if (m.round) {
+            return (lx * lx) / (rx * rx) + (lz * lz) / (rz * rz) <= 1;
+        }
+        return Math.abs(lx) <= rx && Math.abs(lz) <= rz;
+    }
+
+    // Approximate 2D overlap test between an exclusion zone and any field/nebula zone
+    function zoneOverlapsField(excl, fields) {
+        if (!excl.pos || !excl.size) return true;
+        for (var i = 0; i < fields.length; i++) {
+            if (fields[i].pos && fields[i].size && zonesOverlap2D(excl, fields[i])) return true;
+        }
+        return false;
+    }
+
     function renderZone(zone, sf, container) {
         var div = document.createElement("div");
         div.className = "zone";
@@ -788,10 +908,21 @@
         if (!zone.idsInfo) div.classList.add("noInfo");
         if (zone.zoneClass) div.classList.add(zone.zoneClass);
         else div.classList.add("noZoneType");
+        if (zone.orphanExclusion) div.classList.add("orphanExclusion");
 
         if (zone.shape === "ellipsoid" || zone.shape === "sphere") div.classList.add("roundZone");
         else if (zone.shape === "cylinder") div.classList.add("cylinderZone");
         else if (zone.shape === "box") div.classList.add("boxZone");
+
+        // NPC patrol path cylinders (hidden by default, toggle in options)
+        if (zone.shape === "cylinder" && /_path_|_p_[a-z]/.test(zone.nickname) && !/trade|traffic/.test(zone.nickname)) {
+            div.classList.add("patrolPath");
+            if (!isChecked("patrolPaths")) div.classList.add("hiddenPatrol");
+        } else if (zone.shape === "cylinder" && !zone.zoneClass && !zone.idsName) {
+            // NPC trader traffic lanes (hidden by default, toggle in options)
+            div.classList.add("tradePath");
+            if (!isChecked("tradePaths")) div.classList.add("hiddenTrade");
+        }
 
         var label = document.createElement("label");
         label.textContent = zone.name || "";
@@ -806,45 +937,58 @@
         // Store game coords for tooltip
         div.dataset.coords = zone.pos[0] + ", " + zone.pos[1] + ", " + zone.pos[2];
 
-        // Size
-        var isExcl = zone.zoneFlags === 131072;
-        var w, h;
-        if (isExcl) {
-            h = sf * zone.size[2] / 2000;
-            w = sf * zone.size[0] / 2000;
+        // Rotation projection: full 3D rotation → map
+        // angle + projected length for foreshortening pitched zones/tunnels.
+        var rot = zone.rotation || [0, 0, 0];
+        var proj;
+        if (zone.shape === "cylinder") {
+            // Cylinder axis is Y-up; pitch by 90° so the axis projects onto the map plane
+            proj = projectToNavMap(rot[0] + 90, rot[1], rot[2]);
         } else {
-            h = sf * zone.size[2] / 1000;
-            w = sf * zone.size[0] / 1000;
+            proj = projectToNavMap(rot[0], rot[1], rot[2]);
         }
-        div.style.height = h + "%";
-        div.style.width = w + "%";
+        var rotAngle = proj.angle;
+        var rotLength = proj.length;
 
-        var zIdx = Math.floor(-sf * zone.size[2] / 1000 * sf * zone.size[0] / 1000);
+        // Size (per shape, foreshortened along the projected axis;
+        // sphere/ellipsoid sizes are radii, box/cylinder-length are full extents)
+        var w, h;
         if (zone.shape === "sphere") {
-            div.style.height = div.style.width;
+            w = sf * zone.size[0] / 1000;
+            h = w;
+        } else if (zone.shape === "cylinder") {
+            // Cylinder size = [radius, length]; length lies along the rotated axis
+            w = sf * zone.size[0] / 1000;
+            h = sf * zone.size[1] * rotLength / 2000;
+        } else if (zone.shape === "box") {
+            // Box sizes are full extents, not radii
+            w = sf * zone.size[0] / 2000;
+            h = sf * zone.size[2] * rotLength / 2000;
+        } else {
+            // ellipsoid / default
+            w = sf * zone.size[0] / 1000;
+            h = sf * zone.size[2] * rotLength / 1000;
+        }
+        // Vertical zones (axis pointing out of the map) render as circles
+        if (rotLength === 0) {
+            w = sf * zone.size[0] / 1000;
+            h = w;
+        }
+        div.style.width = w + "%";
+        div.style.height = h + "%";
+
+        var zLen = zone.shape === "cylinder" ? zone.size[1] : zone.size[2];
+        var zIdx = Math.floor(-sf * zLen / 1000 * sf * zone.size[0] / 1000);
+        if (zone.shape === "sphere") {
             zIdx = Math.floor(-sf * zone.size[0] / 1000 * sf * zone.size[0] / 1000);
         }
         div.style.zIndex = zIdx;
 
-        if (isExcl) {
-            div.style.marginTop = (-sf * zone.size[2] / 4000) + "%";
-            div.style.marginLeft = (-sf * zone.size[0] / 4000) + "%";
-        } else {
-            div.style.marginTop = (-sf * zone.size[2] / 2000) + "%";
-            div.style.marginLeft = (-sf * zone.size[0] / 2000) + "%";
-        }
-        if (zone.shape === "sphere") {
-            div.style.marginTop = div.style.marginLeft;
-        }
-
         if (zone.fogColor) div.style.backgroundColor = zone.fogColor;
 
-        // Rotation
-        if (zone.rotation && (zone.rotation[0] || zone.rotation[1] || zone.rotation[2])) {
-            var rotSign = (zone.rotation[0] === 180 || zone.rotation[0] === -180) ? -1 : 1;
-            div.style.transform = "rotate(" + (-rotSign * zone.rotation[1]) + "deg)";
-            label.style.transform = "rotate(" + (rotSign * zone.rotation[1]) + "deg)";
-        }
+        // Center on position and rotate around the center
+        div.style.transform = "translate(-50%, -50%) rotate(" + rotAngle + "deg)";
+        if (rotAngle) label.style.transform = "rotate(" + (-rotAngle) + "deg)";
 
         // Mineable
         if (zone.mineable) {
@@ -1334,6 +1478,8 @@
 
     // --- Show Universe Map Button ---
     document.getElementById("showUniverseMap").addEventListener("click", function () {
+        // Reset the URL to the clean page (no query string / hash)
+        try { history.replaceState(null, "", location.pathname); } catch (e) { }
         generateUniverseMap();
     });
 

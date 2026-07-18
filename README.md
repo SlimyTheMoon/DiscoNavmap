@@ -42,15 +42,19 @@ Then open `http://localhost:8080`.
 ### Build static site (for GitHub Pages)
 
 ```bash
-python -m cmd_py.static -data data/v5.3p2h5 -out docs
+python build.py
 ```
 
-Generates a self-contained static site in `docs/` with all JSON data inlined/pre-built. The `docs/` folder contains the current deployed build.
+One command builds everything into `docs/`: writes `data/universe.js` (systems,
+connections, search index) plus the `data/*.json` files, copies `index.html`
+and static assets. `index.html` is plain static HTML — no templating, no
+inlined data. The `docs/` folder contains the current deployed build.
 
 | Flag | Default | Description |
 |------|---------|-------------|
 | `-data` | `data/v5.3p2h5` | Path to game data directory |
-| `-out` | `dist` | Output directory for static site |
+| `-out` | `docs` | Output directory for static site |
+| `--skip-pobs` | off | Skip fetching player bases |
 
 ### Docker
 
@@ -71,7 +75,8 @@ docker run -p 80:80 disconavmap            # static mode
 
 ## Updating Game Data
 
-Import data from a Discovery Freelancer installation:
+Import data from a Discovery Freelancer installation — fully automatic, no
+external tools required:
 
 ```bash
 python -m cmd_py.update -out data/v5.3p2h5
@@ -82,21 +87,24 @@ python -m cmd_py.update -out data/v5.3p2h5
 | `-config` | `update/build.json` | Path to build.json config file |
 | `-out` | *(required)* | Output directory |
 
-This will auto-discover your FL install via `LOCALAPPDATA`, copy and format the required game files, and lowercase all filenames. You'll be prompted to run **FL Path Generator** and **FLInfocardIE** first.
+This will auto-discover your FL install (or use `fl_path` from build.json),
+extract all names and infocards directly from the game's resource DLLs,
+decode any BINI-compiled INIs to plain text, copy the required game files,
+and lowercase all filenames. No FLInfocardIE or FL Path Generator needed.
 
 ## Project Structure
 
 | Path | Purpose |
 |------|---------|
 | `main.py` | Flask HTTP server entry point |
+| `build.py` | Static site builder (single build command) |
 | `gamedata/` | Core data package |
 | `gamedata/types.py` | Data classes — System, Base, Faction, Connection, etc. |
 | `gamedata/parser.py` | INI parser, system detail loader, infocard renderer |
-| `cmd_py/static.py` | Static site generator |
 | `cmd_py/update.py` | Game data importer from FL install |
 | `generate_dockerfile.py` | Generates a Dockerfile for flask or static serving |
 | `data/v5.3p2h5/` | Parsed Discovery game data (current version) |
-| `templates/` | Jinja2 HTML template for the map UI |
+| `templates/` | Static HTML page for the map UI (copied verbatim by the build) |
 | `scripts/` | Frontend JS (`app.js` — map rendering & UI, `panzoom.min.js`) |
 | `styles/` | CSS |
 | `images/` | Icons and map background images |

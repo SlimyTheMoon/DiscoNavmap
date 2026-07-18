@@ -7,16 +7,14 @@ import logging
 import os
 import sys
 
-from flask import Flask, Response, jsonify, render_template, request, send_from_directory
-
-from markupsafe import Markup
+from flask import Flask, Response, jsonify, request, send_from_directory
 
 from gamedata import GameData, OORP_SYSTEMS, parse_infocard
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 log = logging.getLogger(__name__)
 
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__)
 
 gd: GameData | None = None
 all_systems_gzipped: bytes = b""
@@ -24,15 +22,6 @@ all_systems_gzipped: bytes = b""
 POBS_API_URL = "https://darkstat.dd84ai.com/api/pobs"
 pobs_cache: list[dict] = []
 pobs_by_system: dict[str, list[dict]] = {}
-
-
-def no_escape_json(value):
-    """Jinja2 filter that serializes to JSON without escaping HTML."""
-    return Markup(json.dumps(value, ensure_ascii=False))
-
-
-app.jinja_env.filters["noescapejson"] = no_escape_json
-app.jinja_env.policies["json.dumps_kwargs"] = {"ensure_ascii": False}
 
 
 def load_game_data(data_dir: str) -> None:
@@ -97,16 +86,20 @@ def fetch_pobs() -> None:
 # Page routes
 # ------------------------------------------------------------------
 
+_index_html_cache: bytes | None = None
+
+
 @app.route("/")
 def handle_index():
-    assert gd is not None
-    return render_template(
-        "index.html",
-        systems={k: v.to_dict() for k, v in gd.systems.items()},
-        connections=[c.to_dict() for c in gd.connections],
-        search_items=[s.to_dict() for s in gd.search_items],
-        oorp_systems=OORP_SYSTEMS,
-    )
+    # index.html is plain static HTML; all data is loaded from /data/*.
+    # Asset URLs get stamped with the server start time for cache busting.
+    global _index_html_cache
+    if _index_html_cache is None:
+        import time
+        with open(os.path.join("templates", "index.html"), encoding="utf-8") as f:
+            html = f.read()
+        _index_html_cache = html.replace("{BUILD_VERSION}", str(int(time.time()))).encode("utf-8")
+    return Response(_index_html_cache, content_type="text/html; charset=utf-8")
 
 
 # ------------------------------------------------------------------
@@ -256,6 +249,25 @@ def serve_systems_all():
 
 _infocards_cache: bytes | None = None
 _factions_cache: bytes | None = None
+_universe_js_cache: bytes | None = None
+
+
+@app.route("/data/universe.js")
+def serve_universe_js():
+    global _universe_js_cache
+    assert gd is not None
+    if _universe_js_cache is None:
+        from build import build_universe_js
+        _universe_js_cache = build_universe_js(gd).encode("utf-8")
+    return Response(_universe_js_cache, content_type="application/javascript",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+@app.route("/data/pobs.json")
+def serve_pobs_json():
+    resp = jsonify(pobs_cache)
+    resp.headers["Cache-Control"] = "max-age=3600"
+    return resp
 
 
 @app.route("/data/infocards.json")
