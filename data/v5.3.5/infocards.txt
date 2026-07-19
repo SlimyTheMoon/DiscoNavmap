@@ -3433,27 +3433,27 @@ Nomad stationary gun
 10907
 Nomad Airlock
 10908
-Airlock for travel between secure areas.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Airlock for travel between secure areas.</TEXT><PARA/><POP/></RDL>
 10909
 Nomad Tunnel
 10910
-Inside walls of the Nomad Lair
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Inside walls of the Nomad Lair</TEXT><PARA/><POP/></RDL>
 10911
 Nomad Lair Core
 10912
-Central core and power center of the Nomad Lair
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Central core and power center of the Nomad Lair</TEXT><PARA/><POP/></RDL>
 10913
 Nomad Dyson Sphere
 10914
-A formerly hypothetical structure first described in 1959 A.D. by the physicist Freeman Dyson in a short paper entitled '"Search for Artificial Stellar Sources of Infra-Red Radiation", a Dyson sphere is an artificial hollow sphere of matter around a star designed to capture nearly all of the star's radiated energy for industrial use. The original proposal by Dyson did not go into much detail about how a Dyson sphere would be constructed, focusing instead on the more fundamental issue of how an advanced civilization could expand its energy production to the maximum possible for a given solar system. Such a civilization would be classified as a Phase II civilization under the classification scheme developed by Nikolai Kardashev.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A formerly hypothetical structure first described in 1959 A.D. by the physicist Freeman Dyson in a short paper entitled '"Search for Artificial Stellar Sources of Infra-Red Radiation", a Dyson sphere is an artificial hollow sphere of matter around a star designed to capture nearly all of the star's radiated energy for industrial use. The original proposal by Dyson did not go into much detail about how a Dyson sphere would be constructed, focusing instead on the more fundamental issue of how an advanced civilization could expand its energy production to the maximum possible for a given solar system. Such a civilization would be classified as a Phase II civilization under the classification scheme developed by Nikolai Kardashev.</TEXT><PARA/><POP/></RDL>
 10915
 Nomad Generator
 10916
-Nomad power generator
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad power generator</TEXT><PARA/><POP/></RDL>
 10917
 Nomad Gate
 10918
-The "front door" of the Nomad Dyson Sphere.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>The "front door" of the Nomad Dyson Sphere.</TEXT><PARA/><POP/></RDL>
 10919
 Nomad Weapons Tower
 10920
@@ -11221,7 +11221,7 @@ Bounty Hunters
 55022
 Unknown Object
 55023
-Unknown. No further data available.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Unknown. No further data available.</TEXT><PARA/><POP/></RDL>
 56004
 [801 AS] Rheinland Expats Flock to Manhattan
 56005
@@ -11367,11 +11367,11 @@ Generic Solar Objects and Descriptions
 60201
 Sun
 60202
-Sun Descript
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Sun Descript</TEXT><PARA/><POP/></RDL>
 60203
 Planet
 60204
-Planet Descript
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Planet Descript</TEXT><PARA/><POP/></RDL>
 60205
 Moon
 60206
@@ -11387,27 +11387,27 @@ A Jump Gate is a conveyance technology that allows instantaneous travel between 
 60211
 Jump Hole
 60212
-***GRAVITATIONAL ANOMALY DETECTED*** Magnetic and gravimetric readings consistent with a 'jump hole'.  Like Jump Gates, jump holes are semi-permeable areas in real-space that have a tendency to breach the natural boundaries of linear time and space. Unlike Jump Gates, though, these anomalies occur naturally and so are both unpredictable and unstable. Traveling through jump holes is a risky proposition at best. Though some have been charted and, based on accounts from ships that have accidentally encountered them, have had their exit points logged, just as many ships have never been heard from again. It is believed that these ships were either crushed in the violent, cataclysmic vortex that lies outside the narrow corridor of a jump tunnel, or were sent to a place far enough away to make communication or a return trip infeasible. In either case, those missing are presumed dead. Ageira Technologies and Deep Space Engineering urge all citizens to use the prescribed Trade Lanes and Jump Gates and to avoid all contact with jump holes.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>***GRAVITATIONAL ANOMALY DETECTED***</TEXT><PARA/><TEXT>Magnetic and gravimetric readings consistent with a 'jump hole'.</TEXT><PARA/><PARA/><TEXT>Like Jump Gates, jump holes are semi-permeable areas in real-space that have a tendency to breach the natural boundaries of linear time and space. Unlike Jump Gates, though, these anomalies occur naturally and so are both unpredictable and unstable. Traveling through jump holes is a risky proposition at best. Though some have been charted and, based on accounts from ships that have accidentally encountered them, have had their exit points logged, just as many ships have never been heard from again. It is believed that these ships were either crushed in the violent, cataclysmic vortex that lies outside the narrow corridor of a jump tunnel, or were sent to a place far enough away to make communication or a return trip infeasible. In either case, those missing are presumed dead. Ageira Technologies and Deep Space Engineering urge all citizens to use the prescribed Trade Lanes and Jump Gates and to avoid all contact with jump holes.</TEXT><PARA/><POP/></RDL>
 60213
 Manufacturing Platform
 60214
-A small base dedicated to the manufacture of goods.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A small base dedicated to the manufacture of goods.</TEXT><PARA/><POP/></RDL>
 60215
 Trade Depot
 60216
-A small base.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A small base.</TEXT><PARA/><POP/></RDL>
 60217
 Small Space Station
 60218
-A small space station.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A small space station.</TEXT><PARA/><POP/></RDL>
 60219
 Large Space Station
 60220
-A large space station.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A large space station.</TEXT><PARA/><POP/></RDL>
 60221
 Trade Outpost
 60222
-A medium sized base, usually a hub for goods and equipment traders.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A medium sized base, usually a hub for goods and equipment traders.</TEXT><PARA/><POP/></RDL>
 60223
 Gas Miner
 60224
@@ -11427,7 +11427,7 @@ A base built into a large asteroid.
 60231
 Shipyard
 60232
-An enormous structure used in the construction, maintenance and repair of large ships.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>An enormous structure used in the construction, maintenance and repair of large ships.</TEXT><PARA/><POP/></RDL>
 60233
 Telescope
 60234
@@ -11435,15 +11435,15 @@ Used for peering deeper into space, it has both scientific and military applicat
 60235
 Communications Satellite
 60236
-A relay station for local and deep space communications.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A relay station for local and deep space communications.</TEXT><PARA/><POP/></RDL>
 60237
 Gas Collector
 60238
-A unit used to capture space gasses and dust for later refinement.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A unit used to capture space gasses and dust for later refinement.</TEXT><PARA/><POP/></RDL>
 60239
 HAZARD
 60240
-Unstable spatial anomaly.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Unstable spatial anomaly.</TEXT><PARA/><POP/></RDL>
 60241
 Solar Plant
 60242
@@ -11451,15 +11451,15 @@ Solar energy collectors.
 60243
 Weapon Platform
 60244
-Heavily armed defense platform.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Heavily armed defense platform.</TEXT><PARA/><POP/></RDL>
 60245
 Trade Lane Ring
 60246
-Trade lanes are used for superluminal travel within a system. Trade lanes must be entered from their origin point, usually located near key industrial, military, or civilian bases.  The first Trade Lane was established through a joint venture between the corporations now known as Deep Space Engineering and Ageira Technologies in the year 280 AS. By 350 AS, most of Liberty space was crisscrossed by Trade Lanes. Through financing from Interspace Commerce, the Trade Lane network was rapidly extended into the other colonies, helping to create a truly sector-wide economy. Trade lanes are the fastest and safest method of transporting goods and personnel within and between the colonies. Plans to expand the Trade Lanes to connect interests in the independent territories outside of the colonies are pending.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Trade lanes are used for superluminal travel within a system. Trade lanes must be entered from their origin point, usually located near key industrial, military, or civilian bases.</TEXT><PARA/><PARA/><TEXT>The first Trade Lane was established through a joint venture between the corporations now known as Deep Space Engineering and Ageira Technologies in the year 280 AS. By 350 AS, most of Liberty space was crisscrossed by Trade Lanes. Through financing from Interspace Commerce, the Trade Lane network was rapidly extended into the other colonies, helping to create a truly sector-wide economy. Trade lanes are the fastest and safest method of transporting goods and personnel within and between the colonies. Plans to expand the Trade Lanes to connect interests in the independent territories outside of the colonies are pending.</TEXT><PARA/><POP/></RDL>
 60247
 Debris
 60248
-Debris object.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Debris object.</TEXT><PARA/><POP/></RDL>
 60249
 Black Hole
 60250
@@ -11467,7 +11467,7 @@ Remains of a collapsed star.
 60251
 Storage Tank
 60252
-Storage Tanks can contain fuel, water, or oxygen.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Storage Tanks can contain fuel, water, or oxygen.</TEXT><PARA/><POP/></RDL>
 65543
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Dern</TEXT><PARA/><TEXT>GRAVITY: Complete</TEXT><PARA/><TEXT>DOCKING: Yes</TEXT><PARA/><TEXT>AMENITIES: Yes</TEXT><PARA/><TEXT>CREW: 850</TEXT><PARA/><POP/></RDL>
 65549
@@ -38029,7 +38029,7 @@ Mineable Zone
 593396
 Carrier Malachite
 593397
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Zephyr</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>Originally laid down in the distant Crayter System, the Carrier Malachite was one of three warships converted into improvised Sleeper Ships, alongside the Hades and Helios. During an event known as The Calamity, Crayter's colonies were fatally struck by a gamma ray burst, forcing the settlers to flee for survival. After centuries of travel in stasis, the Crayterian flotilla arrived in Sirius' desolate Tau sector. Discovering Tau-44 in 811 AS, Crayter pathfinders soon struck an alliance with the Independent Miners Guild. Crayterian officers were shocked and horrified to learn of the sheer advancement of Sirian technology, which had rendered their own vessels entirely obsolete.</TEXT><PARA/><PARA/><TEXT>Singapore Shipyard helped to bridge this gap, slowly refitting the fleet with open market hull plating, armaments, and propulsion. The early Republic had little in the way of resources or credits, and instead bartered the Malachite to the Guild for the materials needed to modernize the Hades and Helios. As a result, the Malachite saw service across Orkney and Tau-23, where it primarily deterred Outcast incursions as a mobile patrol base. Following the Gallic Invasion of Tau-44 in 818 AS and the occupation of the Taus more broadly, the Guild returned the Malachite to Crayter control, fearing the Gallic Royal Navy would confiscate it. In this capacity, it aided in the evacuation of Crayter citizens from the Taus to Coronado.</TEXT><PARA/><PARA/><TEXT>Following the construction of Sabah Shipyard and the provision of Bretonian and Libertonian aid, the Malachite was fully modernized and pushed back into service. Throughout the Gallic Invasion, it saw extensive service across the nearby Independent Worlds and Barrier Pass. In the aftermath of the Gallic War, the Malachite has primarily served as a garrison ship for Coronado, save a deployment to the Taus in 831 AS, where it assisted the joint CR and IMG efforts to support rebellious slaves on Malta.</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Zephyr</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>Originally laid down in the distant Crayter System, the Carrier Malachite was one of three warships converted into improvised Sleeper Ships, alongside the Hades and Helios. During an event known as The Calamity, Crayter's colonies were fatally struck by a gamma ray burst, forcing the settlers to flee for survival. After centuries of travel in stasis, the Crayterian flotilla arrived in Sirius' desolate Tau sector. Discovering Tau-44 in 811 AS, Crayter pathfinders soon struck an alliance with the Independent Miners Guild. Crayterian officers were shocked and horrified to learn of the sheer advancement of Sirian technology, which had rendered their own vessels entirely obsolete.</TEXT><PARA/><PARA/><TEXT>Singapore Shipyard helped to bridge this gap, slowly refitting the fleet with open market hull plating, armaments, and propulsion. The early Republic had little in the way of resources or credits, and instead bartered the Malachite to the Guild for the materials needed to modernize the Hades and Helios. As a result, the Malachite saw service across Orkney and Tau-23, where it primarily deterred Outcast incursions as a mobile patrol base. Following the Gallic Invasion of Tau-44 in 818 AS and the occupation of the Taus more broadly, the Guild returned the Malachite to Crayter control, fearing the Gallic Royal Navy would confiscate it. In this capacity, it aided in the evacuation of Crayter citizens from the Taus to Coronado.</TEXT><PARA/><PARA/><TEXT>Following the construction of Sabah Shipyard and the provision of Bretonian and Libertonian aid, the Malachite was fully modernized and pushed back into service. Throughout the Gallic Invasion, it saw extensive service across the nearby Independent Worlds and Barrier Pass. In the aftermath of the Gallic War, the Malachite has primarily served as a garrison ship for Coronado, save a deployment to the Taus in 831 AS, where it assisted the joint CR and IMG efforts to support rebellious slaves on Malta.</TEXT><PARA/><POP/></RDL>
 593398
 Battlezone
 593399
@@ -38960,6 +38960,8 @@ Tau-53
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>TAU EDGE WORLDS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>Tau-53 was first charted in 804 AS by Samura scouts, who informally recorded the area as Rishiri. Not a star system in a tradition sense, the sector is a confluence point of the Barrier, Crow and Edge nebulae, lending the sector its unusual coloration and composition. Once a teeming trade corridor between Kusari and Gallia, the system was left devastated and abandoned in the aftermath of Kusari's Invasion of Gallia in 827 AS.</TEXT><PARA/><PARA/><TRA data="0xE0C38705" mask="-1"/><TEXT>Settled Planets</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>None</TEXT><PARA/><PARA/><TRA data="0xE0C38705" mask="-1"/><TEXT>Bases</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>None</TEXT><PARA/><PARA/><TRA data="0xE0C38705" mask="-1"/><TEXT>Corporations</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>None</TEXT><PARA/><PARA/><TRA data="0xE0C38705" mask="-1"/><TEXT>Criminals</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>None</TEXT><PARA/><PARA/><TRA data="0xE0C38705" mask="-1"/><TEXT>Produces - mining</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>Hydrocarbons</TEXT><PARA/><TEXT>Scrap Metal</TEXT><PARA/><TEXT>Water</TEXT><PARA/><PARA/><TRA data="0xE0C38705" mask="-1"/><TEXT>Produces - exports</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>None</TEXT><PARA/><PARA/><TRA data="0xE0C38705" mask="-1"/><TEXT>Produces - contraband</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>None</TEXT><PARA/><POP/></RDL>
 593862
 Oshidomari Nebula
+593863
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Defense Platform</TEXT><PARA/><POP/></RDL>
 593864
 Unstable Tau-53 Jump Hole
 593865
@@ -78540,12 +78542,16 @@ Gunboat Internal Railgun
 Xeno Corvette Mine
 722968
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Xeno Corvette Mine</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Placeholder text.</TEXT><PARA/><POP/></RDL>
+722969
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Nomad Jump Drive Batteries</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>There is no information on this item.</TEXT><PARA/><POP/></RDL>
+722970
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Unknown</TEXT><PARA/><POP/></RDL>
 786432
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>ARTIFACTS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Remnants of an alien civilization that existed long before humanity crawled from the ocean. The particulars of each individual Artifact vary, but archeologists and scientists have been unable to determine their function; for all intents and purposes they appear to be inert chunks of crystal and metal inscribed with decorative patterns. A thriving market for Artifacts has sprung up over the years among art collectors and the social elite looking for a new status symbol.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $105</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786433
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>BASIC ALLOYS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Melding the strength of Titanium with the lightness of Aluminum, Basic Alloys can be used economically to construct durable machine parts. The non-ferrous nature of parts constructed from Basic Alloys and their resistance to oxidization makes them ideal for use in almost any manufacturing environment. When Basic Alloys are infused with a matrix of Boron fibers and combined with Super Alloys, the resulting material is then fabricated into the Ship Hull Panels used by shipyards throughout the colonies.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $5</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786434
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>BERYLLIUM</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>In its processed metallic form, Beryllium is one of the lightest and stiffest naturally occurring materials known to science; unfortunately, it is also highly brittle, making unalloyed Beryllium unsuitable for most industrial processes. However, Beryllium was discovered to be extraordinarily effective at absorbing neutron radiation, and has since become a key component in the construction of modern reactors and engines.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 250</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>BERYLLIUM</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>In its processed metallic form, Beryllium is one of the lightest and stiffest naturally occurring materials known to science; unfortunately, it is also highly brittle, making unalloyed Beryllium unsuitable for most industrial processes. However, Beryllium was discovered to be extraordinarily effective at absorbing neutron radiation, and has since become a key component in the construction of modern reactors and engines.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786435
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>BORON</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Boron is an essential element in a number of industrial processes. In its fibrous form, Boron filaments are used as a stiffener in the creation of Ship Hull Panels, lending them unparalleled structural integrity. An isotope of Boron, Boron-10, is also used for control rods in the nuclear reactors that power large ships, stations, and planetside bases.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $8</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786436
@@ -78553,7 +78559,7 @@ Xeno Corvette Mine
 786437
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>COBALT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Thousands of years ago the distinctive coloration of Cobalt was used to create blue-tinged glass that was admired throughout the known world. Since that time, Cobalt has become recognized as a strategic metal with diverse military and commercial applications. Brittle in its unalloyed form, Cobalt Alloys exhibit tremendous hardness and resistance to corrosion. When combined with Niobium, the resulting High-Temperature Alloy can withstand even the intense heat and pressure generated by the combustion chamber of a fusion engine.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $7</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786438
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>CONSUMER GOODS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Once the basic necessities of survival have been met, most human beings look for ways to improve their life or to entertain themselves along the way. Consumer Goods satisfy these needs and include a broad range of relatively inexpensive bulk items such as clothing, toiletries, housewares, and Consumer Optronics. While most Consumer Goods are mass produced in automated factories, the ongoing rise in the prison population within the colonies has yielded a cheap labor force that many governments have turned to for handmade goods.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 250</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>CONSUMER GOODS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Once the basic necessities of survival have been met, most human beings look for ways to improve their life or to entertain themselves along the way. Consumer Goods satisfy these needs and include a broad range of relatively inexpensive bulk items such as clothing, toiletries, housewares, and Consumer Optronics. While most Consumer Goods are mass produced in automated factories, the ongoing rise in the prison population within the colonies has yielded a cheap labor force that many governments have turned to for handmade goods.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786439
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>COPPER</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Copper is a malleable, ductile, and essential component of room temperature Superconductors. Superconductors must be surrounded by shunt materials capable of carrying heavy currents around occasional Superconductor faults. For many of the same reasons that Copper was originally used in electrical wiring, it is an ideal shunt material in Niobium Superconductors. And, of course, Superconductors are an important component of modern Jump Gates and Trade Lanes.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $34</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786440
@@ -78563,7 +78569,7 @@ Xeno Corvette Mine
 786442
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>FERTILIZERS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Fertilizers increase crop yields and enable plants to grow in planetary environments that lack the necessary nutrients due either to natural conditions or as a result of large-scale harvesting and grazing. Fertilizers are also a key component of the terraforming process, acting as a catalyst to accelerate the production of the self-sustaining plant ecologies that regulate climate and provide food for more advanced lifeforms.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $6</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786443
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>FOOD RATIONS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Most planets in the Sirius Sector are rich in natural resources, but few are capable of supporting large-scale agriculture. As a result, Food remains one of the basic but essential inputs of the Sirius economy. A large assortment of Food stuffs are available in the different colonies, with Bretonian, Gallic and Kusari Food Rations largely consisting of 'traditionally' harvested plants and proteins. Despite this, Synth Foods has cornered much of the sector's market with its revolutionary Synth Paste, a fact that is an ongoing source of resentment and concern for farmers of 'traditional' produce.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 250</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>FOOD RATIONS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Most planets in the Sirius Sector are rich in natural resources, but few are capable of supporting large-scale agriculture. As a result, Food remains one of the basic but essential inputs of the Sirius economy. A large assortment of Food stuffs are available in the different colonies, with Bretonian, Gallic and Kusari Food Rations largely consisting of 'traditionally' harvested plants and proteins. Despite this, Synth Foods has cornered much of the sector's market with its revolutionary Synth Paste, a fact that is an ongoing source of resentment and concern for farmers of 'traditional' produce.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786444
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>OXYGEN</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>A typical human being consumes over 12,000 liters of Oxygen (O2) daily. Oxygen, usually mixed with a neutral gas such as nitrogen, is absorbed through the tissues of the lungs and then diffused into the bloodstream, where it is carried throughout the body. All humans require a constant supply of Oxygen or they will perish within minutes.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786445
@@ -78573,7 +78579,7 @@ Xeno Corvette Mine
 786447
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>HIGH TEMPERATURE ALLOY</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>High temperature alloys are essential to the construction of engine components: only a material with the strength of cobalt and the temperature resistance of niobium could withstand the tremendous amount of heat and pressure that exists within the combustion chamber of a fusion engine. However, the rarity of niobium and the complex fabrication methods employed mean that high temperature alloys are relatively expensive -- but without them, modern space travel would be impossible.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $30</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786448
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>HULL PANELS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>One of the most important pieces of technology developed during the course of settling the Sirius Sector has been resilient hull panels, used in the building of ships large and small as well as space stations and other spaceborne constructs. These wonders of materials research combine a polymer and hydrocarbon base along with basic and super alloys to create a substance that is light and flexible, while providing insulation from hard vacuum and all but the most intense radiation. Boron fibers are infused into the panels to endow them with structural rigidity, protecting ships against kinetic impact and high-energy weapons fire.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $5</TEXT><PARA/><TEXT>Container Hitpoints: 250</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>HULL PANELS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>One of the most important pieces of technology developed during the course of settling the Sirius Sector has been resilient hull panels, used in the building of ships large and small as well as space stations and other spaceborne constructs. These wonders of materials research combine a polymer and hydrocarbon base along with basic and super alloys to create a substance that is light and flexible, while providing insulation from hard vacuum and all but the most intense radiation. Boron fibers are infused into the panels to endow them with structural rigidity, protecting ships against kinetic impact and high-energy weapons fire.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $5</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786449
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>HYDROCARBONS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Hydrocarbons are a class of organic compounds composed only of hydrogen and carbon molecules, resulting in a wide variety of substances that have important industrial applications. While hydrocarbons naturally occur in a gaseous state almost everywhere in the known universe, frozen deposits present the most easily exploited form of the substance. Hydrocarbon mining is key to the industrialization of the Sirius Sector as it provides the raw materials for the creation of the Ship Hull Panels and Optronics, upon which modern society depends.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $2</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786450
@@ -78613,7 +78619,7 @@ Xeno Corvette Mine
 786467
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>TOXIC WASTE</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>The inevitable byproduct of many of the industrial processes used by the different colonies is Toxic Waste. While some companies specialize in waste removal or elimination, many companies still use the more basic but still effective method of simply dumping Toxic Waste into the nearest available stellar body.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $4</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786468
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>WATER</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Dihydrogen monoxide (H2O) is odorless, tasteless, transparent, and absolutely essential to human life. Roughly 75% of the human body is composed of Water. Deprived of Water, most humans can only live three days. The process of dehydration is a painful one, as tissues shrivel and vessels shrink in a desperate bid by the dying body to preserve its remaining vital functions.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>WATER</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Dihydrogen monoxide (H2O) is odorless, tasteless, transparent, and absolutely essential to human life. Roughly 75% of the human body is composed of Water. Deprived of Water, most humans can only live three days. The process of dehydration is a painful one, as tissues shrivel and vessels shrink in a desperate bid by the dying body to preserve its remaining vital functions.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><TEXT> in Asteroid Miners: 0.5</TEXT><PARA/><POP/></RDL>
 786469
 Sealed Container
 786470
@@ -78621,7 +78627,7 @@ Sealed Container
 786471
 Iron
 786472
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>IRON</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Iron is a hard, magnetic metal that is found in abundance across Sirius. Mined from asteroid fields and the crusts or mantels of rocky planets, Iron is incredibly cheap and used for a wide range of industrial alloys and functions. Despite the proliferation of robust and durable Basic Alloys, Iron alloys continue to have a place in applications where minimizing cost is an overriding interest. Some disreputable smelters have been known to adulterate Basic Alloy with Iron, compromising its attributes to reduce overheads.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $6</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>IRON</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Iron is a hard, magnetic metal that is found in abundance across Sirius. Mined from asteroid fields and the crusts or mantels of rocky planets, Iron is incredibly cheap and used for a wide range of industrial alloys and functions. Despite the proliferation of robust and durable Basic Alloys, Iron alloys continue to have a place in applications where minimizing cost is an overriding interest. Some disreputable smelters have been known to adulterate Basic Alloy with Iron, compromising its attributes to reduce overheads.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $6</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><TEXT> in Asteroid Miners: 0.5</TEXT><PARA/><POP/></RDL>
 786473
 Bioproduce
 786474
@@ -78761,11 +78767,11 @@ Deuterium
 786541
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>VIPS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Not many citizens of Sirius houses can afford space travels. VIP's are mostly businessmen, government officials, celebrities or top-tier criminals. They prefer to travel in comfort, but as armored transports are favourite attack targets for many terroristic groups operating in Sirius, they might also hire freelancers to get to distant places of interest in safety. Each VIP takes up to 5 standard units of cargo space, yet they usually complain about how crowded your ship is! Don't worry about complaints, they always pay what they promised in the end of the journey.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $20000</TEXT><PARA/><TEXT>Container Hitpoints: 1000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1000</TEXT><PARA/><TEXT> in Liners: 500</TEXT><PARA/><POP/></RDL>
 786542
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PRISONERS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Prisoners are Criminals who have been held aboard House prison facilities. These individuals have either served their sentence or been remanded to a lower security facility, and will be transferred back to House planets for release or further processing. Transports carrying Prisoners are frequently targeted by pirates and smugglers in an attempt to free their incarcerated comrades.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $5</TEXT><PARA/><TEXT>Container Hitpoints: 1000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PRISONERS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Prisoners are Criminals who have been held aboard House prison facilities. These individuals have either served their sentence or been remanded to a lower security facility, and will be transferred back to House planets for release or further processing. Transports carrying Prisoners are frequently targeted by pirates and smugglers in an attempt to free their incarcerated comrades.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $5</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786543
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PIRATE PILOT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>All pirate spaceships are equipped with standard eject mechanisms. When a pirate loses a fight, the pilot automatically ejects right before the ship explodes. Then, the winner might pick up the unlucky foe - or let him or her die in open space. Pirates will pay good money to get their captured brethren back, but bounty hunters may pay even more.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $50</TEXT><PARA/><TEXT>Container Hitpoints: 1000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><TEXT> in Light Fighters: 1</TEXT><PARA/><TEXT> in Heavy Fighters: 1</TEXT><PARA/><TEXT> in Freighters: 1</TEXT><PARA/><TEXT> in Very Heavy Fighters: 1</TEXT><PARA/><TEXT> in Bombers: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PIRATE PILOT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>All pirate spaceships are equipped with standard eject mechanisms. When a pirate loses a fight, the pilot automatically ejects right before the ship explodes. Then, the winner might pick up the unlucky foe - or let him or her die in open space. Pirates will pay good money to get their captured brethren back, but bounty hunters may pay even more.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $50</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><TEXT> in Light Fighters: 1</TEXT><PARA/><TEXT> in Heavy Fighters: 1</TEXT><PARA/><TEXT> in Freighters: 1</TEXT><PARA/><TEXT> in Very Heavy Fighters: 1</TEXT><PARA/><TEXT> in Bombers: 1</TEXT><PARA/><POP/></RDL>
 786544
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PILOT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>All spaceships, including smallest civilian crafts, are equipped with standard eject mechanisms. When the ship is destroyed in a fight or in some sort of accident, the pilot automatically ejects. If you succeed to pick up the eject pod, you may try to sell it at a nearby pirate base - some criminal groups give good money for civilian pilots.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $50</TEXT><PARA/><TEXT>Container Hitpoints: 1000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><TEXT> in Light Fighters: 1</TEXT><PARA/><TEXT> in Heavy Fighters: 1</TEXT><PARA/><TEXT> in Freighters: 1</TEXT><PARA/><TEXT> in Very Heavy Fighters: 1</TEXT><PARA/><TEXT> in Bombers: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PILOT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>All spaceships, including smallest civilian crafts, are equipped with standard eject mechanisms. When the ship is destroyed in a fight or in some sort of accident, the pilot automatically ejects. If you succeed to pick up the eject pod, you may try to sell it at a nearby pirate base - some criminal groups give good money for civilian pilots.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $50</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><TEXT> in Light Fighters: 1</TEXT><PARA/><TEXT> in Heavy Fighters: 1</TEXT><PARA/><TEXT> in Freighters: 1</TEXT><PARA/><TEXT> in Very Heavy Fighters: 1</TEXT><PARA/><TEXT> in Bombers: 1</TEXT><PARA/><POP/></RDL>
 786545
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>MILITARY PILOT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Attention! Every pilot who finds an eject pod of a navy ship must tractor it and bring to the nearest police or military base. Pilots who refuse to give out navy pilots when scanned will be treated as criminals.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $50</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786546
@@ -78893,7 +78899,7 @@ Phantom Pilot
 786607
 Crew
 786608
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>CREW</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Crew consists of the engineers, workers, soldiers, medics, navigators, and various other specialists needed to operate space stations or large vessels. They can be hired on any space station where employment can be found. Station crew will pay for transport back to the closest planet.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $200</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><TEXT> in Liners: 2</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>CREW</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Crew consists of the engineers, workers, soldiers, medics, navigators, and various other specialists needed to operate space stations or large vessels. They can be hired on any space station where employment can be found. Station crew will pay for transport back to the closest planet.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $200</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><TEXT> in Liners: 1</TEXT><PARA/><POP/></RDL>
 786609
 Discovery PvP 24/7 Server Rules
 786610
@@ -78965,7 +78971,7 @@ Nomad Power Cell
 786643
 Liberty Security Force Agent
 786644
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>INTELLIGENCE AGENT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>The escape pod of a captured low-level house intelligence official. While not likely to carry many state secrets, many would nonetheless pay a high price to get their hands on one.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $15</TEXT><PARA/><TEXT>Container Hitpoints: 1000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>INTELLIGENCE AGENT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>The escape pod of a captured low-level house intelligence official. While not likely to carry many state secrets, many would nonetheless pay a high price to get their hands on one.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $15</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
 786645
 Cryocubes
 786646
@@ -79061,7 +79067,7 @@ Construction Machinery
 786691
 Scientists
 786692
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>SCIENTISTS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Scientists are highly trained individuals, usually in a specialized field of expertise. Their skills are in high demand and despite the often dangerous locations in which scientists may be working, there is rarely a shortage of applicants to the various research installations across Sirius. Due to the classified nature of much of their work, scientists are valuable captives to pirate and terrorist organizations who hope to subvert their expertise for more illicit purposes.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $200</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><TEXT> in Liners: 2</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>SCIENTISTS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Scientists are highly trained individuals, usually in a specialized field of expertise. Their skills are in high demand and despite the often dangerous locations in which scientists may be working, there is rarely a shortage of applicants to the various research installations across Sirius. Due to the classified nature of much of their work, scientists are valuable captives to pirate and terrorist organizations who hope to subvert their expertise for more illicit purposes.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $200</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><POP/></RDL>
 786693
 Kusari Wild
 786694
@@ -79941,7 +79947,7 @@ Damaged Containment Pod
 787131
 Event Commodity 1
 787132
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Contact an administrator of your server to acquire this item.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 250</TEXT><PARA/><TEXT>Cargo Space Per Unit: 4500</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Contact an administrator of your server to acquire this item.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 4500</TEXT><PARA/><POP/></RDL>
 787133
 Event Commodity 2
 787134
@@ -80244,6 +80250,30 @@ Military Intelligence (Kusari)
 Military Intelligence (Liberty)
 787283
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>MILITARY INTELLIGENCE (LIBERTY)</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Military Intelligence covers a wide range of classified military material, from the disposition of ships and plans for future attacks, to classified technological secrets and logistical arrangements. These datavaults contain sensitive intelligence about Liberty, likely obtained through sabotage, espionage, or interrogation of Prisoners of War.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1000</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787284
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>BERYLLIUM</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>In its processed metallic form, Beryllium is one of the lightest and stiffest naturally occurring materials known to science; unfortunately, it is also highly brittle, making unalloyed Beryllium unsuitable for most industrial processes. However, Beryllium was discovered to be extraordinarily effective at absorbing neutron radiation, and has since become a key component in the construction of modern reactors and engines.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $15</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787285
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>CONSUMER GOODS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Once the basic necessities of survival have been met, most human beings look for ways to improve their life or to entertain themselves along the way. Consumer Goods satisfy these needs and include a broad range of relatively inexpensive bulk items such as clothing, toiletries, housewares, and Consumer Optronics. While most Consumer Goods are mass produced in automated factories, the ongoing rise in the prison population within the colonies has yielded a cheap labor force that many governments have turned to for handmade goods.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $15</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787286
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>FOOD RATIONS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Most planets in the Sirius Sector are rich in natural resources, but few are capable of supporting large-scale agriculture. As a result, Food remains one of the basic but essential inputs of the Sirius economy. A large assortment of Food stuffs are available in the different colonies, with Bretonian, Gallic and Kusari Food Rations largely consisting of 'traditionally' harvested plants and proteins. Despite this, Synth Foods has cornered much of the sector's market with its revolutionary Synth Paste, a fact that is an ongoing source of resentment and concern for farmers of 'traditional' produce.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $5</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787287
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>HULL PANELS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>One of the most important pieces of technology developed during the course of settling the Sirius Sector has been resilient hull panels, used in the building of ships large and small as well as space stations and other spaceborne constructs. These wonders of materials research combine a polymer and hydrocarbon base along with basic and super alloys to create a substance that is light and flexible, while providing insulation from hard vacuum and all but the most intense radiation. Boron fibers are infused into the panels to endow them with structural rigidity, protecting ships against kinetic impact and high-energy weapons fire.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $30</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787288
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PRISONERS</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Prisoners are Criminals who have been held aboard House prison facilities. These individuals have either served their sentence or been remanded to a lower security facility, and will be transferred back to House planets for release or further processing. Transports carrying Prisoners are frequently targeted by pirates and smugglers in an attempt to free their incarcerated comrades.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $180</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787289
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PIRATE PILOT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>All pirate spaceships are equipped with standard eject mechanisms. When a pirate loses a fight, the pilot automatically ejects right before the ship explodes. Then, the winner might pick up the unlucky foe - or let him or her die in open space. Pirates will pay good money to get their captured brethren back, but bounty hunters may pay even more.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $10</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 2</TEXT><PARA/><TEXT> in Light Fighters: 1</TEXT><PARA/><TEXT> in Heavy Fighters: 1</TEXT><PARA/><TEXT> in Freighters: 1</TEXT><PARA/><TEXT> in Very Heavy Fighters: 1</TEXT><PARA/><TEXT> in Bombers: 1</TEXT><PARA/><POP/></RDL>
+787290
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PIRATE PILOT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>All pirate spaceships are equipped with standard eject mechanisms. When a pirate loses a fight, the pilot automatically ejects right before the ship explodes. Then, the winner might pick up the unlucky foe - or let him or her die in open space. Pirates will pay good money to get their captured brethren back, but bounty hunters may pay even more.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $50</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787291
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>PILOT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>All spaceships, including smallest civilian crafts, are equipped with standard eject mechanisms. When the ship is destroyed in a fight or in some sort of accident, the pilot automatically ejects. If you succeed to pick up the eject pod, you may try to sell it at a nearby pirate base - some criminal groups give good money for civilian pilots.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $50</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787292
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>INTELLIGENCE AGENT</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>The escape pod of a captured low-level house intelligence official. While not likely to carry many state secrets, many would nonetheless pay a high price to get their hands on one.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $16</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787293
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Contact an administrator of your server to acquire this item.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 1</TEXT><PARA/><POP/></RDL>
+787294
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Contact an administrator of your server to acquire this item.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 40</TEXT><PARA/><POP/></RDL>
+787295
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Contact an administrator of your server to acquire this item.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Properties</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Base Price: $1</TEXT><PARA/><TEXT>Container Hitpoints: 4000</TEXT><PARA/><TEXT>Cargo Space Per Unit: 500</TEXT><PARA/><POP/></RDL>
 851968
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>K0-D3X "Absolution" Tactical Missile</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Very little information is available about this weapon.</TEXT><PARA/><PARA/><TEXT>*Fired by Absolution Tactical Missile Launcher</TEXT><PARA/><POP/></RDL>
 851969
@@ -80299,7 +80329,7 @@ Passenger Liner Engine
 851994
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Escape Pod Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 851995
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Starflier Engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 650</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Starflier Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 650 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 851996
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>CE-Lw Civilian Engine Mk I</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Originally designed for CTE series civilian vessels, the CE engines soon became popular among other independent ship manufacturers and due to their ease of maintenance as well as cost-efficiency are widely used by freelancer pilots and minor organizations and groups to reduce the costs of upkeep to its bare minimum. This engine is intended for use primarily on light fighters.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 575 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 3s</TEXT><PARA/><POP/></RDL>
 851997
@@ -80673,7 +80703,7 @@ Passenger Liner Engine
 852181
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Order Heavy Fighter Graviton Shield</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>This shield is specifically designed for the Order Heavy Fighter, however, it can be mounted on some of the other Heavy Fighters. This is a graviton-based shield that provides improved protection from laser and photon weapons. This shield is specifically designed for the Heavy Fighter class ships.</TEXT><PARA/><POP/></RDL>
 852182
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>transport engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 500</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>transport engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852183
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>large transport engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852184
@@ -80683,23 +80713,23 @@ Passenger Liner Engine
 852186
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>liberty battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852187
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>liberty dreadnought engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 500</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>liberty dreadnought engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852188
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia destroyer engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 500</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia destroyer engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852189
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia battleship engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 170</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 170 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 180s</TEXT><PARA/><POP/></RDL>
 852190
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia gunboat engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852191
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>kusari gunboat engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852192
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>kusari destroyer engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 500</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>kusari destroyer engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852193
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>kusari battleship engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 500</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>kusari battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852194
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>rheinland gunboat engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852195
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>rheinland cruiser engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 500</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>rheinland cruiser engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
 852196
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>rheinland battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852197
@@ -80707,15 +80737,15 @@ Passenger Liner Engine
 852198
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>lifter engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852199
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>luxury liner engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 500</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>luxury liner engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
 852200
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Passenger Liner Engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 350</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Passenger Liner Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852201
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Fighter Engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 550</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Fighter Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 550 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852202
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Gunboat Engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 510</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Gunboat Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 510 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 852203
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Battleship Engine</TEXT><PARA/><PARA/><TEXT> Top Speed (theoretical): 500</TEXT><PARA/><TEXT> Energy Drain / sec: 0</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Battleship Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 10s</TEXT><PARA/><POP/></RDL>
 852204
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Osiris Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 10s</TEXT><PARA/><POP/></RDL>
 852205
@@ -84008,6 +84038,62 @@ The Core Roundel (L)
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>XV-690 Engine Mk II</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Based on the original designs of Liberty engines manufactured by Ageira Technologies, the XV series engines have found popularity in core systems of Sirius sector. Operating on plasma fuel cells, these engines have received a custom array by the Lane Hackers optimized specifically for their shipline. This engine is intended to be used primarily on transports.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 853849
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>XV-330 Focused Plasma Array Mk I</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><TEXT>Based on the original designs of the Liberty engines manufactured by Ageira Technologies, the XV series engines have found popularity in core systems of the Sirius sector. Operating on plasma fuel cells, XV series are frequently used by short range explorers and the inter-system travellers alike. This engine is intended for use primarily on light fighters.</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 575 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853850
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Starflier Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853851
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>transport engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853852
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>liberty dreadnought engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853853
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>liberty dreadnought engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 10s</TEXT><PARA/><POP/></RDL>
+853854
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia destroyer engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 200 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><TEXT>Cruise Disruption Paralysis: 1s</TEXT><PARA/><POP/></RDL>
+853855
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia destroyer engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 400 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853856
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia destroyer engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853857
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 415 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853858
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853859
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853860
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>bretonia battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 10s</TEXT><PARA/><POP/></RDL>
+853861
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>kusari destroyer engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853862
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>kusari battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853863
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>kusari battleship engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 10s</TEXT><PARA/><POP/></RDL>
+853864
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>rheinland cruiser engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 10s</TEXT><PARA/><POP/></RDL>
+853865
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>luxury liner engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 350 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853866
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Passenger Liner Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 7s</TEXT><PARA/><POP/></RDL>
+853867
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Fighter Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853868
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Fighter Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 510 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 1s</TEXT><PARA/><POP/></RDL>
+853869
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Fighter Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 510 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853870
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Fighter Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 525 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 1s</TEXT><PARA/><POP/></RDL>
+853871
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Fighter Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 525 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853872
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Fighter Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 575 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853873
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Gunboat Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853874
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Gunboat Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 10s</TEXT><PARA/><POP/></RDL>
+853875
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Gunboat Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 525 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
+853876
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Battleship Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 250 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 15s</TEXT><PARA/><POP/></RDL>
+853877
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nomad Battleship Engine</TEXT><PARA/><PARA/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Stats</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>Cruise Speed: 500 m/s</TEXT><PARA/><TEXT>Cruise Charge Time: 5s</TEXT><PARA/><POP/></RDL>
 917504
 Arrival of Freeport 7 Survivors
 917505
@@ -96705,7 +96791,7 @@ Tsukishima  Equipment Dealer Tousei Shiraishi
 987544
 Ageira Technologies Dr. Coral Rutherford
 987545
-Renzu Corporation Kazumasa Mikami
+Kusari Naval Forces Commander Yumi Ishikawa
 987546
 Deep Space Engineering Jake Cutter
 987547
@@ -100131,13 +100217,13 @@ Neutral Arena Equipment Dealer RBT-100
 989265
 Artificial Intelligence Primus Bartender RBT-82
 989294
-A rumor is circling about a recently found Gate to another world populated by the Great Spirits.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A rumor is circling about a recently found Gate to another world populated by the Great Spirits.</TEXT><PARA/><POP/></RDL>
 989295
-The Red Hessians were once with us against the Corsairs, but they feared our influence and broke the alliance. Bretonia called for our help against the Gallic Royal Navy, but betrayed us as soon as that threat was gone. Many Sirians don't stay our allies for long, but those we made dependent on Cardamine like the Liberty Rogues will always remain loyal to us as they have no other choice.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>The Red Hessians were once with us against the Corsairs, but they feared our influence and broke the alliance. Bretonia called for our help against the Gallic Royal Navy, but betrayed us as soon as that threat was gone. Many Sirians don't stay our allies for long, but those we made dependent on Cardamine like the Liberty Rogues will always remain loyal to us as they have no other choice.</TEXT><PARA/><POP/></RDL>
 989296
-No one really knows what disaster befell Corsica, but drilling the shipyard complex into the planetoid's husk saved us a lot of money on station hull plates. First was Corsica, named after the rock, followed by Valletta and Venice is the newest addition to the Outer Sanctum.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>No one really knows what disaster befell Corsica, but drilling the shipyard complex into the planetoid's husk saved us a lot of money on station hull plates. First was Corsica, named after the rock, followed by Valletta and Venice is the newest addition to the Outer Sanctum.</TEXT><PARA/><POP/></RDL>
 989297
-If you take the jump hole from Tau-44 to Tau-37 you will see the wreck of the carrier Hades on the other side. We hauled it as a trophy from Tau-44 to serve as a reminder to those who would dare cross the Outcasts.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>If you take the jump hole from Tau-44 to Tau-37 you will see the wreck of the carrier Hades on the other side. We hauled it as a trophy from Tau-44 to serve as a reminder to those who would dare cross the Outcasts.</TEXT><PARA/><POP/></RDL>
 989298
 The Core Yaren Bartender Adam Michelsen
 989299
@@ -104257,7 +104343,7 @@ Xenos Ramsey Commodity Trader Ryan Mitchell
 991418
 Xenos Ramsey Equipment Dealer Barry Carson
 991419
-We have been experimenting with Cardamine in an attempt to make it grow inside the station's bio-dome. If this venture proves successful we would no longer be chained to Malta. Sadly there has been little success so far.
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>We have been experimenting with Cardamine in an attempt to make it grow inside the station's bio-dome. If this venture proves successful we would no longer be chained to Malta. Sadly there has been little success so far.</TEXT><PARA/><POP/></RDL>
 991420
 Outcasts Dr Antonio Elivanni
 991421
@@ -105366,6 +105452,8 @@ Kusari Naval Forces Adjutant Shungo Saito
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Deshima is a critical supply point for projecting force into Liberty. Its hangars and cargo warehouses dwarf those of our battleships, allowing us to garrison a great many strike squadrons and all of their support staff. A great deal of work is underway to convert the factories and other facilities to purposes that will further aid us in our efforts against Liberty.</TEXT><PARA/><POP/></RDL>
 992010
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Operation Ichi-Go -- the first strike against Liberty -- was as successful as we could have hoped for. Our ambition was to cow the Libertonians with a show of overwhelming power, that lays bare their vulnerability to our superior technology. We can strike anywhere, no-where is safe. Once they fully absorb this lesson, we expect they will seek to negotiate terms. The war will be over in a matter of weeks.</TEXT><PARA/><POP/></RDL>
+992011
+Renzu Corporation Kazumasa Mikami
 1048576
 ACTIVATE EXPERIMENTAL CAMERA
 1048577

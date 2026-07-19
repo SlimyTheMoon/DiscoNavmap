@@ -266,13 +266,13 @@ OORP_SYSTEMS: dict[str, bool] = {
 }
 
 ARCHETYPE_IGNORE_LIST: dict[str, bool] = {
-    "dsy_suprise_secret": True, "suprise_ku_dragon_secret": True,
-    "suprise_dsy_gmg_vhf_secret": True, "suprise_dsy_or_hf_secret": True,
-    "suprise_bw_elite2_secret": True, "suprise_dsy_bayonet_secret": True,
-    "suprise_b_battleship_secret": True, "invisible_base": True,
-    "blhazard": True, "li17_suprise_bw_elite2_01": True,
-    "suprise_hf_elite2_concealed": True, "suprise_bw_elite2": True,
-    "suprise_co_elite2": True,
+    "dsy_suprise_secret": False, "suprise_ku_dragon_secret": False,
+    "suprise_dsy_gmg_vhf_secret": True, "suprise_dsy_or_hf_secret": False,
+    "suprise_bw_elite2_secret": False, "suprise_dsy_bayonet_secret": False,
+    "suprise_b_battleship_secret": False, "invisible_base": False,
+    "blhazard": False, "li17_suprise_bw_elite2_01": False,
+    "suprise_hf_elite2_concealed": False, "suprise_bw_elite2": False,
+    "suprise_co_elite2": False,
 }
 
 BASE_NICKNAME_IGNORE_LIST: dict[str, bool] = {
