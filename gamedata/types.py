@@ -274,8 +274,8 @@ BASE_NICKNAME_IGNORE_LIST: dict[str, bool] = {
     "ew06_surprise_marker": True, "st01_azurite_tower_01": True,
     "br05_05_1a": True, "rh02_05_1": True, "li09_08_moor01": True,
     "li09_07_docking_fixture": True, "ga05_02_moor03": True,
-    "rh03_docking_fixture_1": True, "li17_suprise_bw_elite2_01": True,
-    "iw08_suprise_crypt": True, "st08_03_orbital_terminal_extra": True,
+    "rh03_docking_fixture_1": True, "li17_suprise_bw_elite2_01": False,
+    "iw08_suprise_crypt": False, "st08_03_orbital_terminal_extra": True,
 }
 
 ARCHETYPE_SHOW_LIST: dict[str, bool] = {
