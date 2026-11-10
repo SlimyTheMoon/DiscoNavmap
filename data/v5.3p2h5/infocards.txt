@@ -7751,7 +7751,7 @@ Cruiser Division 14
 35251
 Battlecruiser Juniata
 35252
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>The Battlecruiser Juniata was ordered from Juneau Shipyard in 833 AS, with the intention of relieving the Battleship Alma as a more cost-effective Pennsylvania garrison ship. By the time the vessel was deployed into active service late the following year, the deteriorating situation along the northern border led instead to a Colorado posting. Assuming command of Cruiser Division 14 under the Carrier Ohio's fleet, the battlecruiser is currently participating in what are officially routine fleet readiness drills.</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><PARA/><TEXT>CLASS: Interdictor Block IVe</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT> The Battlecruiser Juniata was ordered from Juneau Shipyard in 833 AS, with the intention of relieving the Battleship Alma as a more cost-effective Pennsylvania garrison ship. By the time the vessel was deployed into active service late the following year, the deteriorating situation along the northern border led instead to a Colorado posting. Assuming command of Cruiser Division 14 under the Carrier Ohio's fleet, the battlecruiser participated in the initial repelling of Kusari's attack on the Colorado gate and subsequent Liberty advance in Galileo.</TEXT><PARA/><PARA/><TEXT> Juniata took heavy damage in the attack on the Shikoku Gate when Cruiser Division 14 met overwhelming resistance from Kusari's Center Force. Juniata's heavy armor took withering fire as she fought on, saving dozens of lives as the sinking cruisers Oklahoma City and Nashville launched escape pods. Juniata retired to the rear under her own power following the battle, however the battlecruiser's fate is uncertain due to the extent of the damage she received.</TEXT><PARA/><POP/></RDL>
 35253
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>The Liner Belmont was intercepted by the LSF in 834 AS while traveling through California, and detained on smuggling charges. After the owners were prosecuted for drug and arms trafficking, the vessel became government property. To quickly fulfill a Navy training requirement, the vessel was provided to the Naval Corps of Engineers, who renovated it to act as a basic drone carrier. Now deployed to Colorado's live fire range, it provides practical training scenarios for simulated fleet actions. Following escalation of tensions with Kusari following the Samura Ban, the vessel was towed to One Police Plaza pending reassignment for training purposes.</TEXT><PARA/><POP/></RDL>
 35254
@@ -11596,6 +11596,8 @@ Storage Tank
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>TYPE: M6</TEXT><PARA/><TEXT>LUMINOSITY: V</TEXT><PARA/><TEXT>COLOR: Blue</TEXT><PARA/><TEXT>TEMPERATURE: 3K</TEXT><PARA/><TEXT>MASS: 1.45 x 10e30 kg</TEXT><PARA/><TEXT>DIAMETER: 0.92 x 10e7 km</TEXT><PARA/><POP/></RDL>
 66160
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>TYPE: M6</TEXT><PARA/><TEXT>LUMINOSITY: V</TEXT><PARA/><TEXT>COLOR: Green</TEXT><PARA/><TEXT>TEMPERATURE: 3K</TEXT><PARA/><TEXT>MASS: 1.45 x 10e30 kg</TEXT><PARA/><TEXT>DIAMETER: 0.92 x 10e7 km</TEXT><PARA/><POP/></RDL>
+66161
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>This is the first time this ship has been out of the Union in years, and where did they send us? Brittany. This god-forsaken system has more graves than living in it.</TEXT><PARA/><POP/></RDL>
 66165
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>TYPE: O2</TEXT><PARA/><TEXT>LUMINOSITY: V</TEXT><PARA/><TEXT>COLOR: Blue</TEXT><PARA/><TEXT>TEMPERATURE: 25K</TEXT><PARA/><TEXT>MASS: 1.78 x 10e30 kg</TEXT><PARA/><TEXT>DIAMETER: 1.22 x 10e7 km</TEXT><PARA/><POP/></RDL>
 66166
@@ -30657,11 +30659,11 @@ Friendly
 501226
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>This station bares faded markings of the Rheinland Federal Police</TEXT><PARA/><POP/></RDL>
 501230
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>This planet it littered with silent ruins of past colonization efforts.</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>This planet is littered with silent ruins of past colonization efforts.</TEXT><PARA/><POP/></RDL>
 501235
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Nothing is known about this ship.</TEXT><PARA/><POP/></RDL>
 501276
-Wrecked Police Outpost
+Wrecked Outpost
 501278
 Republican Storage Depot
 501279
@@ -32463,7 +32465,7 @@ Montpellier Minefield
 590577
 Unstable Champagne Jump Hole
 590578
-Sealed Orkney Jump Gate
+Unsealed Orkney Jump Gate
 590579
 Dublin Drive Breach
 590580
@@ -37545,7 +37547,7 @@ Battlecruiser Sisteron
 593119
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Obstinate</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><POP/></RDL>
 593120
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Built at Rambouillet Shipyards for the Gallic Royal Intelligence, the Sisteron has since been the foremost vessel in Gallia's arsenal tasked with surveillance missions against the state's rivals.</TEXT><PARA/><PARA/><TEXT>Its first deployments came in early 826 AS, when it set up near Kusari's border, monitoring for any fleet movements. Enjoying a quiet post, it remained in Orkney until the end of the Kingdom, a moment in which it found itself with little contact to other Gallic forces. Choosing to side with remnants of the Royalist units that were left behind in Bretonia, the Sisteron became their main warship of the Royalist remnants during the invasion of Gallia by Kusari forces in the Languedoc system.</TEXT><PARA/><PARA/><TEXT>Shortly after redeployment back into the Taus, Sisteron found itself in the middle of an apparent Nomad invasion into the Orkney system. Being unable to face the aliens head on, it resorted to hit and run tactics, poised to give both Issoudun and Vierzon time to evacuate. After both stations were destroyed, The nomad activity in the area sharply went down. Despite that, a decision was made to lock down the system's gate into Languedoc system, and the battlecruiser remained stationed in the area to keep tabs on the alien menace.</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Built at Rambouillet Shipyards for the Gallic Royal Intelligence, the Sisteron's first deployments came in 826 AS, when it set up near Kusari's border, monitoring fleet movements. It remained in Orkney until the end of the Kingdom, a moment in which it found itself with little contact to other Gallic forces. Choosing to side with remnants of the Royalist units that were left behind in Bretonia, the Sisteron became their main warship of the Royalist remnants during the invasion of Gallia by Kusari forces in the Languedoc system.</TEXT><PARA/><PARA/><TEXT>Sisteron found itself in the middle of a nomad invasion after redeployment back into Orkney. It launched hit and run attacks to buy Issoudun and Vierzon time to evacuate. After the nomad activity in the system subsided, the battlecruiser was tasked keep tabs on the alien menace.</TEXT><PARA/><PARA/><TEXT>Now, with the reopening of hostilities with Bretonia, the Sisteron has been called upon to lead the reopening of the system and scout ahead for Gallia's naval forces.</TEXT><PARA/><POP/></RDL>
 593121
 Toulon Mining Station
 593122
@@ -47419,37 +47421,37 @@ Munich
 598150
 Wrecked Station
 598151
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Any signs of life have long sense faded.</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Any signs of life have long since faded.</TEXT><PARA/><POP/></RDL>
 598152
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>This docking ring has stopped functioning.</TEXT><PARA/><POP/></RDL>
 598153
-Lobster's Infocard Range - 153/1998
+Destroyer Saint Louis
 598154
-Lobster's Infocard Range - 154/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>The Destroyer Saint Louis is a Gallant Class destroyer of the Gallic Navy launched from Maintenon Shipyard Shipyard in early 751 AGS (835 AS). The Saint Louis has recently been reassigned to Squadron l'Occident after the renewed conflict with Bretonia. L'Occident has been given the task securing the Orkney System to prevent Bretonia from taking the Union's flank. Progress has been slow and cautious.</TEXT><PARA/><POP/></RDL>
 598155
-Lobster's Infocard Range - 155/1998
+Destroyer Faucon
 598156
-Lobster's Infocard Range - 156/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>The Destroyer Faucon is a Gallant Class destroyer of the Gallic Navy launched from Maintenon Shipyard Shipyard in early 750 AGS (834 AS). The Faucon was directed to form Squadron l'Occident to look after the border with Rheinland with the sister ship Levrette. Recently, the renewed conflict with Bretonia saw l'Occident given the task of securing the Orkney System to prevent Bretonia from taking the Union's flank. Progress has been slow and cautious.</TEXT><PARA/><POP/></RDL>
 598157
-Lobster's Infocard Range - 157/1998
+Destroyer Levrette
 598158
-Lobster's Infocard Range - 158/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>The Destroyer Levrette is a Gallant Class destroyer of the Gallic Navy launched from Maintenon Shipyard Shipyard in early 750 AGS (834 AS). The Levrette was directed to form Squadron l'Occident to look after the border with Rheinland with the sister ship Faucon. Recently, the renewed conflict with Bretonia saw l'Occident given the task of securing the Orkney System to prevent Bretonia from taking the Union's flank. Progress has been slow and cautious.</TEXT><PARA/><POP/></RDL>
 598159
-Lobster's Infocard Range - 159/1998
+Destroyer Eclatant
 598160
-Lobster's Infocard Range - 160/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>The Destroyer Eclatant is a Gallant Class destroyer of the Gallic Navy launched from Rambouillet Shipyard in 752 AGS (836 AS). The Levrette moved into Provence with its sister ship Valeureuse, but unlike the Valeureuse proceeded into Orkney. Eclatant holds the distinction of being the first Gallic ship through the Orkney gate in the Navy's task force. The ship received orders to join Squadron l'Occident following their arrival.</TEXT><PARA/><POP/></RDL>
 598161
-Lobster's Infocard Range - 161/1998
+EFL Oil and Machinery Repair Ship
 598162
-Lobster's Infocard Range - 162/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>One of the first tasks of the Gallic forces deployed to Orkney was to secure the area around the Vierzon Wreck. In a stroke of good fortune, the derelict trade lane network around the wreck was able to be minimally restored with a healthy dose of cannibalization combined with the swift arrival of spare parts from Abbeville.</TEXT><PARA/><POP/></RDL>
 598163
-Lobster's Infocard Range - 163/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Archer</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>The LNS Nashville was a Liberty Siege Cruiser launched from Norfolk Shipyard in 822 AS. A veteran of the Gallic War, the cruiser took part in the defense of California before being mothballed at the conclusion of the conflict.</TEXT><PARA/><PARA/><TEXT>Nashville was remobilized following Kusari's attack on Norfolk and assigned to Task Force 14. The cruiser took part in the attack on the Shikoku Jump Gate with Battlecruiser Juniata. Nashville was sunk by the destroyer IKN Hiuchi during actions in Center Approach after taking a mortal blow to her main power distribution while firing on Kusari weapons platforms. The cruiser's personnel were able to evacuate successfully thanks to the Juniata's actions.</TEXT><PARA/><POP/></RDL>
 598164
-Lobster's Infocard Range - 164/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Archer</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>The LNS Oklahoma City was a Liberty Siege Cruiser launched from Norfolk Shipyard in 833 AS. As one of the newer cruisers in the fleet, her first actions were patrol duties in the New York and California systems.</TEXT><PARA/><PARA/><TEXT>Oklahoma City was assigned to Task Force 14 following Kusari's attack on Norfolk. The cruiser took part in the attack on the Shikoku Jump Gate with Battlecruiser Juniata. Oklahoma City managed to destroy multiple weapons platforms before its engines were destroyed and a torpedo run broke in half. A popular rumor within the Navy has spread claiming the Oklahoma City's main gun kept firing to the last, even as it broke in two.</TEXT><PARA/><POP/></RDL>
 598165
-Lobster's Infocard Range - 165/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Archer</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>The LNS Portland was a Liberty Siege Cruiser launched from Norfolk Shipyard in 818 AS. The cruiser saw several actions in New Hampshire and Bremen in the Hudson War. Portland was mothballed as part of the Navy's prioritization and divestment program following the Gallic Conflict.</TEXT><PARA/><PARA/><TEXT>Portland was remobilized following Kusari's attack on Norfolk and took part in the attack on the Shikoku Gate in Galileo. Facing off against Kusari's newest battlecruiser, the IKN Hotakadake, Portland put up a valiant fight against the superior foe. The cruiser ultimately fell to the Hotakadake's heavier armaments but in doing so ensured the other cruisers in Attack Group North were able to destroy Kusari's weapons platforms and push the Hotakadake back into Shikoku.</TEXT><PARA/><POP/></RDL>
 598166
-Lobster's Infocard Range - 166/1998
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Takeda</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>The IKN Kitakami was launched from Kure Shipyards in the middle of the Tau Kusari-Gallia War. The destroyer saw action in Burgundy as an escort for the Ueda, returning to duties in Honshu after the invasion.</TEXT><PARA/><PARA/><TEXT>Kitakami took part in the battle of Galileo during the Liberty-Kusari War. The ship was the key unit of the KNF's western flank during the battle. Kitakami kept the attention of the battlecruiser LNS Constellation during the battle, using its agility and aggression to keep the larger ship away from the central battle. The Kitakami was sustained a critical hit to its reactor half-way through the battle, but in an act of ingenuity and determination the Kitakami's crew rerouted emergency power to the main battery and damaged the Constellation's engines. The defiant destroyer was finally put down by Constellation's main guns before the Interdictor withdrew for emergency repairs.</TEXT><PARA/><POP/></RDL>
 598167
 Lobster's Infocard Range - 167/1998
 598168
@@ -84456,6 +84458,12 @@ Degraded Composite Plating
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Degraded Composite Plating</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>An unidentified composite with uneven internal bonding. Scanners estimate structural integrity at 90%.</TEXT><PARA/><POP/></RDL>
 853971
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>Degraded Composite Plating</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>An unidentified composite with uneven internal bonding. Scanners estimate structural integrity at 95%.</TEXT><PARA/><POP/></RDL>
+853972
+Bodo's Wurstbude Roundel (S)
+853973
+Bodo's Wurstbude (M)
+853974
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TRA data="1" mask="1" def="-2"/><JUST loc="center"/><TEXT>BODO'S WURSTBUDE ROUNDEL</TEXT><PARA/><TRA data="0" mask="1" def="-1"/><JUST loc="left"/><PARA/><TEXT>This promotional roundel was commissioned by Bodo's Wurstbude to celebrate the release of the Supersaftigeplanetenumfassenderiesenwurst. This eating mega-challenge requires contenders to finish a 2 meter-long bockwurst (and side dishes) within a set time period. Winners receive promotional merchandise (including free copies of this roundel), a month's supply of Rheinbier, and an engraved plaque within the eponymous Wurstbude.</TEXT><PARA/><POP/></RDL>
 917504
 Arrival of Freeport 7 Survivors
 917505
@@ -112971,13 +112979,13 @@ Rodez Outpost
 1117639
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Perche</TEXT><PARA/><TEXT>GRAVITY: Partial</TEXT><PARA/><TEXT>DOCKING: Yes</TEXT><PARA/><TEXT>AMENITIES: Limited</TEXT><PARA/><TEXT>CREW: 110</TEXT><PARA/><POP/></RDL>
 1117640
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A Royal Enclave base, Rodez is a small, modular station that took after appraisal and scavenging of formerly Council-owned Perpignan. Currently little more than a cluster of hangar modules, time will tell if the Enclave manages to spare additional effort to append to it, as most of its attention appears focused upon the Aquitane and Brittany systems.</TEXT><PARA/><PARA/><TEXT>Patrols from Rodez make frequent sorties in an attempt to crack down upon Brigand and Maquis presence striking from the system's fields and nebulae, but little progress can be made against such guerilla warfare given the means currently availible to the Enclave in Roussillon.</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>A Royal Enclave base, Rodez is a small, modular station that took after appraisal and scavenging of formerly Council-owned Perpignan. Currently little more than a cluster of hangar modules, time will tell if the Enclave manages to spare additional effort to append to it, as most of its attention appears focused upon the Aquitane and Brittany systems.</TEXT><PARA/><PARA/><TEXT>Patrols from Rodez make frequent sorties in an attempt to crack down upon Brigand and Maquis presence striking from the system's fields and nebulae, but little progress can be made against such guerilla warfare given the means currently available to the Enclave in Roussillon.</TEXT><PARA/><POP/></RDL>
 1117641
 Battleship Chaumont
 1117642
 <?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>CLASS: Alsace</TEXT><PARA/><TEXT>CREW: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><TRA data="0x00000000" mask="-1" def="-1"/><JUST loc="left"/><TEXT>ARMAMENT: </TEXT><TRA data="0x0000FF01" mask="-1"/><TEXT>CLASSIFIED</TEXT><PARA/><POP/></RDL>
 1117643
-<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Representative of the new Alsace class battleships in use by the Council, Chaumont was heavily damaged by Gallic Navy in Burgundy, and since then remains stationed not far from the Lorraine Jump Gate to defend the system from GRN attack patrols and scouts.</TEXT><PARA/><POP/></RDL>
+<?xml version="1.0" encoding="UTF-16"?><RDL><PUSH/><TEXT>Chaumont was representative of the new Alsace class battleships in use by the Council at the outbreak of the Second Gallic Civil War. Chaumont was heavily damaged by Gallic Navy in Burgundy and spent the majority of the civil war stationed not far from the Lorraine Jump Gate to defend the system from GRN attack patrols and scouts.</TEXT><PARA/><PARA/><TEXT>Following the conclusion of the civil war, the heavily damaged Chaumont did not see action during the Kusari Invasion as the ship was deemed too damaged to be a priority to repair. After the loss of Epinal and Les Voges, Chaumont was reprioritized for repairs. Freshly refurbished and upgraded to the latest standards, the Chaumont completed overhaul in 752 AGS (836 AS).</TEXT><PARA/><PARA/><TEXT>Chaumont is now stationed in Orkney as the Gallic Navy's flagship for operations in the system.</TEXT><PARA/><POP/></RDL>
 1117644
 Aisne Asteroid Field
 1117645
